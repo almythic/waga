@@ -1,0 +1,169 @@
+/* ============================================================
+   INTRO — WHAT IS DETOX BOX
+============================================================ */
+.intro {
+  position: relative;
+  background: var(--color-neutral-50);
+  overflow: hidden;
+  padding: var(--space-32) var(--space-8);
+}
+
+.intro-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+}
+
+/* -------------------------------------------------------
+   LEFT — TEXT
+------------------------------------------------------- */
+.intro-text {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.intro-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+  margin-bottom: var(--space-6);
+}
+
+.intro-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(44px, 5.5vw, 72px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--color-primary-900);
+  margin-bottom: var(--space-6);
+}
+
+.intro-rule {
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent-600);
+  border: none;
+  margin: 0 0 var(--space-6);
+}
+
+.intro-body {
+  font-size: var(--font-size-body);
+  font-weight: 300;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-700);
+  max-width: 420px;
+  margin-bottom: var(--space-4);
+}
+
+.intro-body:last-of-type { margin-bottom: var(--space-8); }
+
+.btn-primary-dark {
+  background: var(--color-primary-800);
+  border-color: var(--color-primary-800);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.btn-primary-dark:hover {
+  background: var(--color-primary-900);
+  border-color: var(--color-primary-900);
+  box-shadow: var(--shadow-md);
+}
+.btn-md {
+  font-size: var(--font-size-caption);
+  padding: var(--space-3) var(--space-6);
+  height: 44px;
+}
+
+/* -------------------------------------------------------
+   RIGHT — PILLARS
+------------------------------------------------------- */
+.intro-pillars {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pillar {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6) 0;
+}
+
+.pillar-number {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 64px;
+  font-variant-numeric: lining-nums;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-primary-800);
+}
+
+.pillar-pct {
+  font-size: 36px;
+  letter-spacing: -0.01em;
+}
+
+.pillar-unit {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.pillar-label {
+  font-size: var(--font-size-small);
+  font-weight: 300;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-600);
+  max-width: 220px;
+}
+
+.pillar-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--color-neutral-200);
+}
+
+/* -------------------------------------------------------
+   BOTANICAL DECORATION
+------------------------------------------------------- */
+.intro-botanical {
+  position: absolute;
+  bottom: -20px;
+  right: 4%;
+  width: 300px;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------
+   RESPONSIVE
+------------------------------------------------------- */
+@media (max-width: 900px) {
+  .intro { padding: var(--space-24) var(--space-6); }
+  .intro-inner {
+    flex-direction: column;
+    gap: var(--space-16);
+  }
+  .intro-pillars {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0;
+    padding-top: 0;
+    width: 100%;
+  }
+  .pillar { flex: 1 1 120px; }
+  .pillar-divider { display: none; }
+  .intro-botanical { width: 180px; right: 2%; }
+}

@@ -1,0 +1,95 @@
+<section id="order" class="order-section">
+  <div class="order-inner">
+
+    <!-- Left: Offer details -->
+    <div class="order-details">
+      <span class="order-overline">Begin Your Program</span>
+      <h2 class="order-headline">Detox Box</h2>
+
+      <div class="order-price-block">
+        <span class="order-price">$1,995</span>
+        <span class="order-price-note">five-day program · NYC delivery included</span>
+      </div>
+
+      <hr class="order-rule" />
+
+      <ul class="order-includes">
+        <li class="order-includes-item">Five days of physician-designed meals, calibrated by the day</li>
+        <li class="order-includes-item">Fresh delivery to your door each morning in New York City</li>
+        <li class="order-includes-item">Bioavailable nutrition — no powders, no supplements, only real food</li>
+        <li class="order-includes-item">A clinical protocol refined over twenty years of nutritional science</li>
+        <li class="order-includes-item">Personal intake review by our nutritionist before your start date</li>
+      </ul>
+
+      <p class="order-trust">Free NYC delivery &nbsp;·&nbsp; Physician-designed &nbsp;·&nbsp; 100% whole food</p>
+    </div>
+
+    <!-- Right: Order form -->
+    <div class="order-form-wrap">
+
+      <form class="order-form" id="orderForm" novalidate>
+
+        <div class="order-row">
+          <div class="order-field">
+            <label class="order-label" for="orderName">Full Name</label>
+            <input class="order-input" type="text" id="orderName" name="name"
+              placeholder="Your full name" autocomplete="name" required />
+          </div>
+
+          <div class="order-field">
+            <label class="order-label" for="orderEmail">Email Address</label>
+            <input class="order-input" type="email" id="orderEmail" name="email"
+              placeholder="you@example.com" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="order-row">
+          <div class="order-field">
+            <label class="order-label" for="orderPhone">Phone</label>
+            <input class="order-input" type="tel" id="orderPhone" name="phone"
+              placeholder="+1 (212) 000-0000" autocomplete="tel" required />
+          </div>
+
+          <div class="order-field">
+            <label class="order-label" for="orderDate">Preferred Start Date</label>
+            <input class="order-input" type="date" id="orderDate" name="start_date" required />
+          </div>
+        </div>
+
+        <div class="order-field">
+          <label class="order-label" for="orderAddress">Delivery Address</label>
+          <input class="order-input" type="text" id="orderAddress" name="address"
+            placeholder="Street address, New York, NY" autocomplete="street-address" required />
+        </div>
+
+        <div class="order-field">
+          <label class="order-label" for="orderNotes">
+            Notes <span class="order-label-optional">(optional)</span>
+          </label>
+          <textarea class="order-input order-textarea" id="orderNotes" name="notes"
+            placeholder="Dietary restrictions or questions..." rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="order-submit">Place Your Order</button>
+
+        <p class="order-disclaimer">
+          Our team will confirm your order and delivery details within 24 hours.
+          Secure payment processed upon confirmation.
+        </p>
+
+      </form>
+
+      <!-- Success state — shown after submit -->
+      <div class="order-success" hidden>
+        <div class="order-success-check" aria-hidden="true">✓</div>
+        <h3 class="order-success-title">Request Received</h3>
+        <p class="order-success-text">
+          Thank you. Our team will be in touch within 24 hours to confirm your
+          start date and complete your order.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>

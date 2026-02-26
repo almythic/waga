@@ -1,0 +1,269 @@
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 680px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #0a1a0d;
+}
+
+/* -------------------------------------------------------
+   VIDEO BACKGROUND
+------------------------------------------------------- */
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* -------------------------------------------------------
+   OVERLAYS
+------------------------------------------------------- */
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(6, 18, 8, 0.50);
+}
+
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 75% 65% at 50% 54%, rgba(4,12,5,0.52) 0%, transparent 70%),
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.28) 0%,
+      rgba(0,0,0,0.05) 25%,
+      rgba(0,0,0,0.05) 60%,
+      rgba(0,0,0,0.60) 100%
+    );
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* -------------------------------------------------------
+   HERO CONTENT
+------------------------------------------------------- */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--space-6);
+  max-width: 860px;
+  width: 100%;
+}
+
+.hero-eyebrow,
+.hero-headline,
+.hero-rule,
+.hero-subline,
+.hero-actions {
+  opacity: 0;
+  animation: fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow  { animation-delay: 0.5s; }
+.hero-headline { animation-delay: 0.75s; }
+.hero-rule     { animation-delay: 1.05s; }
+.hero-subline  { animation-delay: 1.2s; }
+.hero-actions  { animation-delay: 1.4s; }
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-400);
+  margin-bottom: var(--space-6);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(62px, 9vw, 106px);
+  line-height: 0.94;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin-bottom: var(--space-6);
+  text-shadow: 0 2px 40px rgba(0,0,0,0.35);
+}
+
+.hero-rule {
+  width: 36px;
+  height: 1px;
+  background: var(--color-accent-700);
+  border: none;
+  margin: 0 auto var(--space-6);
+}
+
+.hero-subline {
+  font-size: var(--font-size-body-lg);
+  font-weight: 300;
+  line-height: var(--line-height-relaxed);
+  color: rgba(255,255,255,0.78);
+  max-width: 480px;
+  margin-bottom: var(--space-8);
+  text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+/* -------------------------------------------------------
+   BUTTONS
+------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  transition: background 140ms ease, border-color 140ms ease,
+              color 140ms ease, box-shadow 140ms ease;
+}
+
+.btn-lg {
+  font-size: var(--font-size-small);
+  padding: var(--space-4) var(--space-8);
+  height: 52px;
+}
+
+.btn-accent {
+  background: var(--color-accent-500);
+  border-color: var(--color-accent-500);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-accent:hover {
+  background: var(--color-accent-600);
+  border-color: var(--color-accent-600);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-ghost-inv {
+  background: transparent;
+  border-color: rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.78);
+}
+
+.btn-ghost-inv:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.55);
+  color: #ffffff;
+}
+
+/* -------------------------------------------------------
+   SCROLL INDICATOR
+------------------------------------------------------- */
+.hero-scroll {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  opacity: 0;
+  animation: fadeUp 1s 2.2s ease forwards;
+}
+
+.hero-scroll-text {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.10);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.45));
+  animation: scrollDrop 2.6s ease-in-out infinite;
+}
+
+@keyframes scrollDrop {
+  0%   { top: -100%; }
+  100% { top: 100%; }
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 768px) {
+  .nav { padding: var(--space-4) var(--space-6); }
+  .nav.is-scrolled { padding: var(--space-3) var(--space-6); }
+  .nav-links { display: none; }
+
+  .hero-headline { font-size: clamp(50px, 13vw, 72px); }
+  .hero-subline { font-size: var(--font-size-body); }
+
+  .btn-lg {
+    font-size: var(--font-size-caption);
+    padding: var(--space-3) var(--space-6);
+    height: 46px;
+  }
+  .hero-scroll { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-video { animation: none; }
+  .hero-scroll-line::after { animation: none; }
+}

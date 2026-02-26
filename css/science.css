@@ -1,0 +1,175 @@
+/* ============================================================
+   THE SCIENCE — INGREDIENT GRID
+============================================================ */
+.science {
+  background: var(--color-neutral-50);
+  padding: var(--space-32) var(--space-8);
+}
+
+.science-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* Header */
+.science-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: var(--space-12);
+  margin-bottom: 0;
+}
+
+.science-eyebrow {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+  margin-bottom: var(--space-4);
+}
+
+.science-headline {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--color-primary-900);
+}
+
+.science-subline {
+  font-size: var(--font-size-small);
+  font-weight: 300;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-600);
+  max-width: 340px;
+  text-align: right;
+}
+
+/* Ingredient grid */
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: var(--space-12);
+  border-top: 1px solid var(--color-neutral-200);
+}
+
+.ingredient {
+  padding: var(--space-8) 0;
+}
+
+.ingredient:nth-child(n+4) {
+  border-top: 1px solid var(--color-neutral-200);
+}
+
+.ingredient-index {
+  font-family: var(--font-display);
+  font-size: 16px;
+  letter-spacing: 0.10em;
+  color: var(--color-neutral-400);
+  display: block;
+  margin-bottom: var(--space-4);
+}
+
+.ingredient-category {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+  margin-bottom: var(--space-2);
+}
+
+.ingredient-name {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+  color: var(--color-primary-900);
+  margin-bottom: var(--space-4);
+}
+
+.ingredient-claim {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  line-height: var(--line-height-snug);
+  color: var(--color-primary-700);
+  border-left: 2px solid var(--color-accent-500);
+  padding-left: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.ingredient-desc {
+  font-size: var(--font-size-small);
+  font-weight: 300;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-600);
+}
+
+/* Trust strip */
+.science-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: var(--space-8);
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.science-trust {
+  background: var(--color-neutral-100);
+  padding: var(--space-8);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+}
+
+.science-trust-mark {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border: 1px solid var(--color-accent-500);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.science-trust-mark svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-accent-500);
+}
+
+.science-trust-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--color-primary-800);
+  margin-bottom: var(--space-2);
+}
+
+.science-trust-text {
+  font-size: var(--font-size-small);
+  font-weight: 300;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-600);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .science { padding: var(--space-24) var(--space-6); }
+  .science-header { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+  .science-subline { text-align: left; max-width: 100%; }
+  .science-grid { grid-template-columns: repeat(2, 1fr); column-gap: var(--space-8); }
+  .science-footer { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 520px) {
+  .science-grid { grid-template-columns: 1fr; }
+}

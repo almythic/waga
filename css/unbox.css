@@ -1,0 +1,235 @@
+/* ============================================================
+   UNBOX — The Product Up Close
+   Sticky scroll: frame pins to viewport, scenes swap on scroll
+   ============================================================ */
+
+.unbox-section {
+  background: var(--color-primary-900);
+}
+
+/* ── Intro — flows normally above the sticky block ── */
+
+.unbox-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: var(--space-24) var(--space-6);
+  text-align: center;
+}
+
+.unbox-intro-inner {
+  max-width: 600px;
+}
+
+.unbox-overline {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-accent-400);
+  margin-bottom: var(--space-6);
+}
+
+.unbox-heading {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-neutral-50);
+  margin: 0 0 var(--space-6);
+}
+
+.unbox-lead {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: var(--color-neutral-500);
+  margin: 0;
+}
+
+/* ── Sticky block ── */
+
+.unbox-scenes {
+  /* 6 scenes × ~83vh scroll each + 1 viewport to release sticky */
+  height: 600vh;
+}
+
+.unbox-frame {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Layer order within .unbox-frame ── */
+/* images(1) → overlay(2) → content(3) → counter(3) */
+
+/* ── Images ── */
+
+.unbox-images {
+  position: absolute;
+  inset: 0;
+  z-index: 1; /* base layer */
+}
+
+.unbox-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: translateY(100%); /* default: parked below, JS drives position */
+  will-change: transform;
+  /* No CSS transition — scroll position drives transform directly */
+}
+
+/* ── Gradient overlay ── */
+
+.unbox-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2; /* above images */
+  background: linear-gradient(
+    to top,
+    rgba(15, 33, 19, 0.92) 0%,
+    rgba(15, 33, 19, 0.40) 30%,
+    rgba(15, 33, 19, 0.08) 60%,
+    rgba(15, 33, 19, 0.00) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Content panels ── */
+
+.unbox-contents {
+  position: absolute;
+  inset: 0;
+  z-index: 3; /* above overlay and images */
+  pointer-events: none;
+}
+
+.unbox-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-16) var(--space-16) var(--space-16);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  pointer-events: none;
+}
+
+.unbox-content.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Accent line above tag */
+.unbox-content::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-accent-400);
+  margin-bottom: var(--space-4);
+}
+
+.unbox-scene-tag {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+  color: var(--color-accent-300);
+  margin-bottom: var(--space-3);
+}
+
+.unbox-scene-name {
+  font-family: var(--font-display);
+  font-size: var(--font-size-display);
+  font-weight: var(--font-weight-light);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-tighter);
+  color: var(--color-neutral-50);
+  margin: 0 0 var(--space-4);
+}
+
+.unbox-scene-desc {
+  font-family: var(--font-body);
+  font-size: var(--font-size-body-lg);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-relaxed);
+  color: rgba(250, 249, 247, 0.65);
+  max-width: 500px;
+  margin: 0;
+}
+
+/* ── Scene counter ── */
+
+.unbox-counter {
+  position: absolute;
+  bottom: var(--space-16);
+  right: var(--space-16);
+  z-index: 3; /* same layer as content, above images */
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.unbox-counter-current {
+  color: var(--color-accent-300);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-semibold);
+}
+
+.unbox-counter-sep {
+  color: var(--color-neutral-600);
+}
+
+.unbox-counter-total {
+  color: var(--color-neutral-600);
+}
+
+/* ── Mobile ── */
+
+@media (max-width: 768px) {
+
+  .unbox-intro {
+    min-height: 60vh;
+    padding: var(--space-16) var(--space-6);
+  }
+
+  .unbox-heading {
+    font-size: var(--font-size-h1);
+  }
+
+  .unbox-content {
+    padding: var(--space-8) var(--space-6) var(--space-12);
+  }
+
+  .unbox-scene-name {
+    font-size: var(--font-size-h2);
+  }
+
+  .unbox-scene-desc {
+    font-size: var(--font-size-body);
+  }
+
+  .unbox-counter {
+    bottom: var(--space-12);
+    right: var(--space-6);
+  }
+}
