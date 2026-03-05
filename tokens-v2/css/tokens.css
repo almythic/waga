@@ -1,0 +1,67 @@
+/* ============================================================
+   WAGA Wellness — Design Tokens
+   ============================================================ */
+:root {
+  /* Brand Colors */
+  --waga-olive: #5F6F52;
+  --waga-laurel: #A9B388;
+  --waga-cornsilk: #FEFAE0;
+  --waga-meringue: #F9EBC7;
+  --waga-camel: #B99470;
+  --waga-alloy: #C4661F;
+  --waga-russet: #783D19;
+
+  /* Warm Neutrals */
+  --color-neutral-50: #FDFBF5;
+  --color-neutral-100: #FAF6EC;
+  --color-neutral-200: #F3ECDA;
+  --color-neutral-300: #E5DBBF;
+  --color-neutral-400: #C9B896;
+  --color-neutral-500: #A6926E;
+  --color-neutral-600: #8A7556;
+  --color-neutral-700: #6B5A42;
+  --color-neutral-800: #4A3D2E;
+  --color-neutral-900: #2E2518;
+  --color-neutral-950: #1A150D;
+
+  /* Primary · Camel */
+  --color-primary-50: #FBF5EE;
+  --color-primary-100: #F5E8D5;
+  --color-primary-200: #EDCFAA;
+  --color-primary-300: #DFB07A;
+  --color-primary-400: #B99470;
+  --color-primary-500: #A67D56;
+  --color-primary-600: #8F6843;
+  --color-primary-700: #755436;
+  --color-primary-800: #5E432D;
+  --color-primary-900: #4A3525;
+
+  /* Accent · Russet / Alloy */
+  --color-accent-50: #FDF3EB;
+  --color-accent-100: #FAE0CA;
+  --color-accent-200: #F1C297;
+  --color-accent-300: #E49C5E;
+  --color-accent-400: #C4661F;
+  --color-accent-500: #A8571A;
+  --color-accent-600: #8D4917;
+  --color-accent-700: #783D19;
+  --color-accent-800: #5F3015;
+  --color-accent-900: #462311;
+
+  /* Botanical · Olive / Laurel */
+  --color-botanical-50: #F4F6F0;
+  --color-botanical-100: #E6EADE;
+  --color-botanical-200: #CDD6BE;
+  --color-botanical-300: #A9B388;
+  --color-botanical-400: #8A9A6E;
+  --color-botanical-500: #5F6F52;
+  --color-botanical-600: #4D5B43;
+  --color-botanical-700: #3D4836;
+  --color-botanical-800: #2E362A;
+  --color-botanical-900: #1F241D;
+
+  /* Typography */
+  --font-heading: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --font-accent: 'Baskervville', 'Baskerville', 'Georgia', serif;
+  --font-body: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
+}

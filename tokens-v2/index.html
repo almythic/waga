@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WAGA Wellness — Design Tokens</title>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/showcase.css">
+</head>
+<body>
+
+<div class="showcase">
+
+  <!-- ============================================================ -->
+  <!-- HEADER -->
+  <!-- ============================================================ -->
+  <header class="showcase-header">
+    <div class="subtitle">Design System</div>
+    <h1>WAGA Wellness</h1>
+    <div class="version">Foundational Tokens · v1.0</div>
+  </header>
+
+  <!-- ============================================================ -->
+  <!-- 1. BRAND PALETTE -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Brand Palette</h2>
+    <p class="section-desc">Seven foundational colors drawn from warm earth tones. Cornsilk and Meringue dominate as backgrounds. Camel anchors the brand. Alloy Orange and Russet provide accent energy. Olive and Laurel add subtle nature references — never dominant.</p>
+
+    <div class="brand-colors">
+      <div class="brand-swatch dark" style="background: #5F6F52;">
+        <span class="swatch-name">Dark Olive</span>
+        <span class="swatch-hex">#5F6F52</span>
+      </div>
+      <div class="brand-swatch dark" style="background: #A9B388;">
+        <span class="swatch-name">Laurel Green</span>
+        <span class="swatch-hex">#A9B388</span>
+      </div>
+      <div class="brand-swatch light" style="background: #FEFAE0;">
+        <span class="swatch-name">Cornsilk</span>
+        <span class="swatch-hex">#FEFAE0</span>
+      </div>
+      <div class="brand-swatch light" style="background: #F9EBC7;">
+        <span class="swatch-name">Meringue</span>
+        <span class="swatch-hex">#F9EBC7</span>
+      </div>
+      <div class="brand-swatch dark" style="background: #B99470;">
+        <span class="swatch-name">Camel</span>
+        <span class="swatch-hex">#B99470</span>
+      </div>
+      <div class="brand-swatch dark" style="background: #C4661F;">
+        <span class="swatch-name">Alloy Orange</span>
+        <span class="swatch-hex">#C4661F</span>
+      </div>
+      <div class="brand-swatch dark" style="background: #783D19;">
+        <span class="swatch-name">Russet</span>
+        <span class="swatch-hex">#783D19</span>
+      </div>
+    </div>
+
+    <!-- 60-30-10 -->
+    <div class="palette-label">60 · 30 · 10 Proportion</div>
+    <div class="proportion-bar">
+      <div class="proportion-segment light" style="flex: 60; background: #FDFBF5; color: #6B5A42;">60% — Warm Whites</div>
+      <div class="proportion-segment light" style="flex: 30; background: #F9EBC7; color: #6B5A42;">30% — Sand / Cream</div>
+      <div class="proportion-segment dark" style="flex: 10; background: #C4661F; color: #fff;">10%</div>
+    </div>
+    <div class="proportion-labels">
+      <span style="--dot-color: #FDFBF5;"><span style="background: #FDFBF5; border: 1px solid #E5DBBF; width: 10px; height: 10px; display: inline-block; border-radius: 2px; margin-right: 6px; vertical-align: middle;"></span>Backgrounds</span>
+      <span><span style="background: #F9EBC7; width: 10px; height: 10px; display: inline-block; border-radius: 2px; margin-right: 6px; vertical-align: middle;"></span>Surfaces & Cards</span>
+      <span><span style="background: #C4661F; width: 10px; height: 10px; display: inline-block; border-radius: 2px; margin-right: 6px; vertical-align: middle;"></span>Accent & CTAs</span>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2. EXTENDED SCALES -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Color Scales</h2>
+    <p class="section-desc">Each brand color expanded into a 10-step scale for flexible application. Warm neutrals replace standard grays — every shade carries the earthy warmth of the brand.</p>
+
+    <div class="palette-group">
+      <div class="palette-label">Warm Neutrals</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #FDFBF5;"><span class="swatch-name">50</span><span class="swatch-hex">#FDFBF5</span></div>
+        <div class="swatch light" style="background: #FAF6EC;"><span class="swatch-name">100</span><span class="swatch-hex">#FAF6EC</span></div>
+        <div class="swatch light" style="background: #F3ECDA;"><span class="swatch-name">200</span><span class="swatch-hex">#F3ECDA</span></div>
+        <div class="swatch light" style="background: #E5DBBF;"><span class="swatch-name">300</span><span class="swatch-hex">#E5DBBF</span></div>
+        <div class="swatch light" style="background: #C9B896;"><span class="swatch-name">400</span><span class="swatch-hex">#C9B896</span></div>
+        <div class="swatch dark" style="background: #A6926E;"><span class="swatch-name">500</span><span class="swatch-hex">#A6926E</span></div>
+        <div class="swatch dark" style="background: #8A7556;"><span class="swatch-name">600</span><span class="swatch-hex">#8A7556</span></div>
+        <div class="swatch dark" style="background: #6B5A42;"><span class="swatch-name">700</span><span class="swatch-hex">#6B5A42</span></div>
+        <div class="swatch dark" style="background: #4A3D2E;"><span class="swatch-name">800</span><span class="swatch-hex">#4A3D2E</span></div>
+        <div class="swatch dark" style="background: #2E2518;"><span class="swatch-name">900</span><span class="swatch-hex">#2E2518</span></div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-label">Primary · Camel</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #FBF5EE;"><span class="swatch-name">50</span><span class="swatch-hex">#FBF5EE</span></div>
+        <div class="swatch light" style="background: #F5E8D5;"><span class="swatch-name">100</span><span class="swatch-hex">#F5E8D5</span></div>
+        <div class="swatch light" style="background: #EDCFAA;"><span class="swatch-name">200</span><span class="swatch-hex">#EDCFAA</span></div>
+        <div class="swatch light" style="background: #DFB07A;"><span class="swatch-name">300</span><span class="swatch-hex">#DFB07A</span></div>
+        <div class="swatch dark" style="background: #B99470;"><span class="swatch-name">400</span><span class="swatch-hex">#B99470</span></div>
+        <div class="swatch dark" style="background: #A67D56;"><span class="swatch-name">500</span><span class="swatch-hex">#A67D56</span></div>
+        <div class="swatch dark" style="background: #8F6843;"><span class="swatch-name">600</span><span class="swatch-hex">#8F6843</span></div>
+        <div class="swatch dark" style="background: #755436;"><span class="swatch-name">700</span><span class="swatch-hex">#755436</span></div>
+        <div class="swatch dark" style="background: #5E432D;"><span class="swatch-name">800</span><span class="swatch-hex">#5E432D</span></div>
+        <div class="swatch dark" style="background: #4A3525;"><span class="swatch-name">900</span><span class="swatch-hex">#4A3525</span></div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-label">Accent · Russet / Alloy</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #FDF3EB;"><span class="swatch-name">50</span><span class="swatch-hex">#FDF3EB</span></div>
+        <div class="swatch light" style="background: #FAE0CA;"><span class="swatch-name">100</span><span class="swatch-hex">#FAE0CA</span></div>
+        <div class="swatch light" style="background: #F1C297;"><span class="swatch-name">200</span><span class="swatch-hex">#F1C297</span></div>
+        <div class="swatch light" style="background: #E49C5E;"><span class="swatch-name">300</span><span class="swatch-hex">#E49C5E</span></div>
+        <div class="swatch dark" style="background: #C4661F;"><span class="swatch-name">400</span><span class="swatch-hex">#C4661F</span></div>
+        <div class="swatch dark" style="background: #A8571A;"><span class="swatch-name">500</span><span class="swatch-hex">#A8571A</span></div>
+        <div class="swatch dark" style="background: #8D4917;"><span class="swatch-name">600</span><span class="swatch-hex">#8D4917</span></div>
+        <div class="swatch dark" style="background: #783D19;"><span class="swatch-name">700</span><span class="swatch-hex">#783D19</span></div>
+        <div class="swatch dark" style="background: #5F3015;"><span class="swatch-name">800</span><span class="swatch-hex">#5F3015</span></div>
+        <div class="swatch dark" style="background: #462311;"><span class="swatch-name">900</span><span class="swatch-hex">#462311</span></div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-label">Botanical · Olive / Laurel</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #F4F6F0;"><span class="swatch-name">50</span><span class="swatch-hex">#F4F6F0</span></div>
+        <div class="swatch light" style="background: #E6EADE;"><span class="swatch-name">100</span><span class="swatch-hex">#E6EADE</span></div>
+        <div class="swatch light" style="background: #CDD6BE;"><span class="swatch-name">200</span><span class="swatch-hex">#CDD6BE</span></div>
+        <div class="swatch dark" style="background: #A9B388;"><span class="swatch-name">300</span><span class="swatch-hex">#A9B388</span></div>
+        <div class="swatch dark" style="background: #8A9A6E;"><span class="swatch-name">400</span><span class="swatch-hex">#8A9A6E</span></div>
+        <div class="swatch dark" style="background: #5F6F52;"><span class="swatch-name">500</span><span class="swatch-hex">#5F6F52</span></div>
+        <div class="swatch dark" style="background: #4D5B43;"><span class="swatch-name">600</span><span class="swatch-hex">#4D5B43</span></div>
+        <div class="swatch dark" style="background: #3D4836;"><span class="swatch-name">700</span><span class="swatch-hex">#3D4836</span></div>
+        <div class="swatch dark" style="background: #2E362A;"><span class="swatch-name">800</span><span class="swatch-hex">#2E362A</span></div>
+        <div class="swatch dark" style="background: #1F241D;"><span class="swatch-name">900</span><span class="swatch-hex">#1F241D</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 2b. SEMANTIC COLORS -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Semantic Colors</h2>
+    <p class="section-desc">Four state scales rooted in the earthy palette. Hues shift to communicate meaning while saturation and brightness stay grounded — nothing feels alien next to our neutrals, camel, and botanical tones.</p>
+
+    <div class="palette-group">
+      <div class="palette-label">Success · Warm Sage · ~135°</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #F2F5EC;"><span class="swatch-name">50</span><span class="swatch-hex">#F2F5EC</span></div>
+        <div class="swatch light" style="background: #E0E8D4;"><span class="swatch-name">100</span><span class="swatch-hex">#E0E8D4</span></div>
+        <div class="swatch light" style="background: #C5D4AE;"><span class="swatch-name">200</span><span class="swatch-hex">#C5D4AE</span></div>
+        <div class="swatch dark" style="background: #9DB87E;"><span class="swatch-name">300</span><span class="swatch-hex">#9DB87E</span></div>
+        <div class="swatch dark" style="background: #7A9B5A;"><span class="swatch-name">400</span><span class="swatch-hex">#7A9B5A</span></div>
+        <div class="swatch dark" style="background: #5F7D45;"><span class="swatch-name">500</span><span class="swatch-hex">#5F7D45</span></div>
+        <div class="swatch dark" style="background: #4C6638;"><span class="swatch-name">600</span><span class="swatch-hex">#4C6638</span></div>
+        <div class="swatch dark" style="background: #3D512E;"><span class="swatch-name">700</span><span class="swatch-hex">#3D512E</span></div>
+        <div class="swatch dark" style="background: #314027;"><span class="swatch-name">800</span><span class="swatch-hex">#314027</span></div>
+        <div class="swatch dark" style="background: #23301C;"><span class="swatch-name">900</span><span class="swatch-hex">#23301C</span></div>
+      </div>
+      <div style="height: 12px;"></div>
+      <div class="semantic-alert" style="background: #F2F5EC; border: 1px solid #C5D4AE; color: #3D512E;">
+        <div class="semantic-dot" style="background: #5F7D45;"></div>
+        <div><strong>Order confirmed.</strong> Your five-day detox program begins Monday.</div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-label">Warning · Warm Amber · ~38°</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #FDF5E6;"><span class="swatch-name">50</span><span class="swatch-hex">#FDF5E6</span></div>
+        <div class="swatch light" style="background: #FAE6C2;"><span class="swatch-name">100</span><span class="swatch-hex">#FAE6C2</span></div>
+        <div class="swatch light" style="background: #F2CE8E;"><span class="swatch-name">200</span><span class="swatch-hex">#F2CE8E</span></div>
+        <div class="swatch dark" style="background: #E4B05A;"><span class="swatch-name">300</span><span class="swatch-hex">#E4B05A</span></div>
+        <div class="swatch dark" style="background: #CF9432;"><span class="swatch-name">400</span><span class="swatch-hex">#CF9432</span></div>
+        <div class="swatch dark" style="background: #AD7A24;"><span class="swatch-name">500</span><span class="swatch-hex">#AD7A24</span></div>
+        <div class="swatch dark" style="background: #8C621E;"><span class="swatch-name">600</span><span class="swatch-hex">#8C621E</span></div>
+        <div class="swatch dark" style="background: #704E1A;"><span class="swatch-name">700</span><span class="swatch-hex">#704E1A</span></div>
+        <div class="swatch dark" style="background: #5A3E16;"><span class="swatch-name">800</span><span class="swatch-hex">#5A3E16</span></div>
+        <div class="swatch dark" style="background: #422E12;"><span class="swatch-name">900</span><span class="swatch-hex">#422E12</span></div>
+      </div>
+      <div style="height: 12px;"></div>
+      <div class="semantic-alert" style="background: #FDF5E6; border: 1px solid #F2CE8E; color: #704E1A;">
+        <div class="semantic-dot" style="background: #CF9432;"></div>
+        <div><strong>Delivery window closing.</strong> Please confirm your address by 6pm today.</div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-label">Error · Warm Clay · ~12°</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #FBF0EB;"><span class="swatch-name">50</span><span class="swatch-hex">#FBF0EB</span></div>
+        <div class="swatch light" style="background: #F5D8CC;"><span class="swatch-name">100</span><span class="swatch-hex">#F5D8CC</span></div>
+        <div class="swatch light" style="background: #EDBAAA;"><span class="swatch-name">200</span><span class="swatch-hex">#EDBAAA</span></div>
+        <div class="swatch dark" style="background: #D9907A;"><span class="swatch-name">300</span><span class="swatch-hex">#D9907A</span></div>
+        <div class="swatch dark" style="background: #C06B50;"><span class="swatch-name">400</span><span class="swatch-hex">#C06B50</span></div>
+        <div class="swatch dark" style="background: #A3533B;"><span class="swatch-name">500</span><span class="swatch-hex">#A3533B</span></div>
+        <div class="swatch dark" style="background: #864431;"><span class="swatch-name">600</span><span class="swatch-hex">#864431</span></div>
+        <div class="swatch dark" style="background: #6B3728;"><span class="swatch-name">700</span><span class="swatch-hex">#6B3728</span></div>
+        <div class="swatch dark" style="background: #552C21;"><span class="swatch-name">800</span><span class="swatch-hex">#552C21</span></div>
+        <div class="swatch dark" style="background: #3E201A;"><span class="swatch-name">900</span><span class="swatch-hex">#3E201A</span></div>
+      </div>
+      <div style="height: 12px;"></div>
+      <div class="semantic-alert" style="background: #FBF0EB; border: 1px solid #EDBAAA; color: #6B3728;">
+        <div class="semantic-dot" style="background: #C06B50;"></div>
+        <div><strong>Payment declined.</strong> Please update your card details to continue.</div>
+      </div>
+    </div>
+
+    <div class="palette-group">
+      <div class="palette-label">Info · Warm Stone · ~220°</div>
+      <div class="palette-row">
+        <div class="swatch light" style="background: #F0F1F4;"><span class="swatch-name">50</span><span class="swatch-hex">#F0F1F4</span></div>
+        <div class="swatch light" style="background: #DCDEE5;"><span class="swatch-name">100</span><span class="swatch-hex">#DCDEE5</span></div>
+        <div class="swatch light" style="background: #B9BDCA;"><span class="swatch-name">200</span><span class="swatch-hex">#B9BDCA</span></div>
+        <div class="swatch dark" style="background: #939AAD;"><span class="swatch-name">300</span><span class="swatch-hex">#939AAD</span></div>
+        <div class="swatch dark" style="background: #6F7890;"><span class="swatch-name">400</span><span class="swatch-hex">#6F7890</span></div>
+        <div class="swatch dark" style="background: #586177;"><span class="swatch-name">500</span><span class="swatch-hex">#586177</span></div>
+        <div class="swatch dark" style="background: #474F62;"><span class="swatch-name">600</span><span class="swatch-hex">#474F62</span></div>
+        <div class="swatch dark" style="background: #3A3F4F;"><span class="swatch-name">700</span><span class="swatch-hex">#3A3F4F</span></div>
+        <div class="swatch dark" style="background: #2E323F;"><span class="swatch-name">800</span><span class="swatch-hex">#2E323F</span></div>
+        <div class="swatch dark" style="background: #22252E;"><span class="swatch-name">900</span><span class="swatch-hex">#22252E</span></div>
+      </div>
+      <div style="height: 12px;"></div>
+      <div class="semantic-alert" style="background: #F0F1F4; border: 1px solid #B9BDCA; color: #3A3F4F;">
+        <div class="semantic-dot" style="background: #6F7890;"></div>
+        <div><strong>Consultation scheduled.</strong> Check your email for calendar details.</div>
+      </div>
+    </div>
+
+    <!-- Harmony strip -->
+    <div style="margin-top: 16px;">
+      <div class="palette-label">Full Palette Harmony</div>
+      <div style="display: flex; gap: 0; border-radius: 8px; overflow: hidden; height: 48px; box-shadow: 0 1px 3px rgba(74, 61, 46, 0.08);">
+        <div style="flex: 2; background: #FDFBF5;" title="Neutral 50"></div>
+        <div style="flex: 2; background: #FEFAE0;" title="Cornsilk"></div>
+        <div style="flex: 2; background: #F9EBC7;" title="Meringue"></div>
+        <div style="flex: 1.5; background: #B99470;" title="Camel"></div>
+        <div style="flex: 1; background: #C4661F;" title="Alloy"></div>
+        <div style="flex: 1; background: #783D19;" title="Russet"></div>
+        <div style="flex: 0.5; background: #A9B388;" title="Laurel"></div>
+        <div style="flex: 0.5; background: #5F6F52;" title="Olive"></div>
+        <div style="flex: 0.2; background: #E5DBBF;"></div>
+        <div style="flex: 1; background: #5F7D45;" title="Success"></div>
+        <div style="flex: 1; background: #CF9432;" title="Warning"></div>
+        <div style="flex: 1; background: #C06B50;" title="Error"></div>
+        <div style="flex: 1; background: #6F7890;" title="Info"></div>
+      </div>
+      <div style="display: flex; margin-top: 8px; font-size: 11px; color: #A6926E;">
+        <div style="flex: 10.5; text-align: center;">Brand Palette</div>
+        <div style="flex: 0.2;"></div>
+        <div style="flex: 4; text-align: center;">Semantic</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 3. TYPOGRAPHY -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Typography — Dual Voice</h2>
+    <p class="section-desc">Work Sans is the primary voice — headings and body. Clean, modern, the "techy" feel. Baskervville Italic is the accent voice — taglines, emotional phrases, moments of warmth within a heading. Inspired by Oura Ring's approach: structure in sans-serif, emotion in serif italic.</p>
+
+    <!-- Dual Voice Demo -->
+    <div class="type-dual-demo">
+      <div class="heading-line" style="font-size: 61px; line-height: 72px;">Five Days.</div>
+      <div class="accent-line" style="font-size: 61px; line-height: 72px;">A quiet reset.</div>
+    </div>
+
+    <div class="type-dual-demo" style="background: linear-gradient(135deg, #FAF6EC, #F3ECDA);">
+      <div class="heading-line" style="font-size: 49px; line-height: 58px;">Nourish. Restore.</div>
+      <div class="accent-line" style="font-size: 49px; line-height: 58px;">Made for your body.</div>
+    </div>
+
+    <div class="type-dual-demo" style="background: #2E2518;">
+      <div class="heading-line" style="font-size: 39px; line-height: 48px; color: #FAF6EC;">Nearly two decades</div>
+      <div class="accent-line" style="font-size: 39px; line-height: 48px; color: #C9B896;">of science and care.</div>
+    </div>
+
+    <div style="height: 48px;"></div>
+
+    <!-- Primary Voice: Work Sans Headings -->
+    <div class="palette-label">Primary Voice — Work Sans <span class="voice-label voice-primary">Headings + Body</span></div>
+    <div style="height: 16px;"></div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Display · 76px · Light 300</span><span>Work Sans</span><span>-0.03em</span></div>
+      <div class="type-sample-heading" style="font-size: 76px; line-height: 84px; letter-spacing: -0.03em; font-weight: 300;">Five Days</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>H1 · 61px · Light 300</span><span>Work Sans</span><span>-0.03em</span></div>
+      <div class="type-sample-heading" style="font-size: 61px; line-height: 68px; letter-spacing: -0.03em; font-weight: 300;">The Science of Reset</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>H2 · 49px · Light 300</span><span>Work Sans</span><span>-0.03em</span></div>
+      <div class="type-sample-heading" style="font-size: 49px; line-height: 56px; letter-spacing: -0.03em; font-weight: 300;">Nourish from Within</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>H3 · 39px · Regular 400</span><span>Work Sans</span><span>-0.015em</span></div>
+      <div class="type-sample-heading" style="font-size: 39px; line-height: 48px; letter-spacing: -0.015em; font-weight: 400;">The Program</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>H4 · 31px · Medium 500</span><span>Work Sans</span><span>-0.015em</span></div>
+      <div class="type-sample-heading" style="font-size: 31px; line-height: 40px; letter-spacing: -0.015em; font-weight: 500;">Nearly Two Decades of Expertise</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>H5 · 25px · Semibold 600</span><span>Work Sans</span><span>-0.015em</span></div>
+      <div class="type-sample-heading" style="font-size: 25px; line-height: 32px; letter-spacing: -0.015em; font-weight: 600;">Delivered to Your Door</div>
+    </div>
+
+    <div style="height: 32px;"></div>
+
+    <!-- Accent Voice: Baskervville Italic -->
+    <div class="palette-label">Accent Voice — Baskervville Italic <span class="voice-label voice-accent">Taglines + Emotion</span></div>
+    <div style="height: 16px;"></div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Accent Display · 76px</span><span>Baskervville Italic</span><span>-0.02em</span></div>
+      <div class="type-sample-accent" style="font-size: 76px; line-height: 84px; letter-spacing: -0.02em;">A quiet transformation.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Accent Large · 49px</span><span>Baskervville Italic</span><span>-0.02em</span></div>
+      <div class="type-sample-accent" style="font-size: 49px; line-height: 58px; letter-spacing: -0.02em;">Made for your body.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Accent Medium · 31px</span><span>Baskervville Italic</span><span>-0.015em</span></div>
+      <div class="type-sample-accent" style="font-size: 31px; line-height: 40px; letter-spacing: -0.015em;">This is not for everyone.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Accent Small · 20px</span><span>Baskervville Italic</span><span>0</span></div>
+      <div class="type-sample-accent" style="font-size: 20px; line-height: 28px;">"The best five days I've given myself in years."</div>
+    </div>
+
+    <div style="height: 32px;"></div>
+
+    <!-- Body Text -->
+    <div class="palette-label">Body Text — Work Sans</div>
+    <div style="height: 16px;"></div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Body Large · 20px</span><span>Work Sans · 400</span><span>0</span></div>
+      <div class="type-sample-body" style="font-size: 20px; line-height: 32px; max-width: 680px;">WAGA's five-day detox program is a medically-guided transformation, designed by a team of nutritionists and doctors with nearly 20 years of clinical experience.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Body · 16px</span><span>Work Sans · 400</span><span>0</span></div>
+      <div class="type-sample-body" style="font-size: 16px; line-height: 26px; max-width: 640px;">Each meal is crafted with precision — sourced from whole, organic ingredients and calibrated to support your body through every stage of the detox process. What began as a hospitalized program in partnership with medical specialists has been refined into something you can experience from home.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Small · 14px</span><span>Work Sans · 400</span><span>0</span></div>
+      <div class="type-sample-body" style="font-size: 14px; line-height: 22px; color: #8A7556; max-width: 600px;">Consultation with our nutritionist is included. All meals are prepared fresh daily and delivered to your address in insulated packaging.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta"><span>Caption · 12px</span><span>Work Sans · 500</span><span>+0.06em</span></div>
+      <div class="type-sample-body" style="font-size: 12px; line-height: 16px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: #A6926E;">The Program · Day Three</div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 4. SPACING -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-desc">All spacing on the 8pt grid. Generous whitespace is essential to the quiet luxury aesthetic — never crowd elements. Sections breathe with 64–128px separation.</p>
+
+    <div class="spacing-scale">
+      <div class="spacing-item"><span class="label">3xs</span><span class="value">2px</span><div class="spacing-bar" style="width: 2px;"></div></div>
+      <div class="spacing-item"><span class="label">2xs</span><span class="value">4px</span><div class="spacing-bar" style="width: 4px;"></div></div>
+      <div class="spacing-item"><span class="label">xs</span><span class="value">8px</span><div class="spacing-bar" style="width: 8px;"></div></div>
+      <div class="spacing-item"><span class="label">sm</span><span class="value">12px</span><div class="spacing-bar" style="width: 12px;"></div></div>
+      <div class="spacing-item"><span class="label">md</span><span class="value">16px</span><div class="spacing-bar" style="width: 16px;"></div></div>
+      <div class="spacing-item"><span class="label">lg</span><span class="value">24px</span><div class="spacing-bar" style="width: 24px;"></div></div>
+      <div class="spacing-item"><span class="label">xl</span><span class="value">32px</span><div class="spacing-bar" style="width: 32px;"></div></div>
+      <div class="spacing-item"><span class="label">2xl</span><span class="value">48px</span><div class="spacing-bar" style="width: 48px;"></div></div>
+      <div class="spacing-item"><span class="label">3xl</span><span class="value">64px</span><div class="spacing-bar" style="width: 64px;"></div></div>
+      <div class="spacing-item"><span class="label">4xl</span><span class="value">96px</span><div class="spacing-bar" style="width: 96px;"></div></div>
+      <div class="spacing-item"><span class="label">5xl</span><span class="value">128px</span><div class="spacing-bar" style="width: 128px;"></div></div>
+      <div class="spacing-item"><span class="label">6xl</span><span class="value">192px</span><div class="spacing-bar" style="width: 192px;"></div></div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 5. SHADOWS -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Elevation</h2>
+    <p class="section-desc">Warm-tinted shadows using rgba(74, 61, 46) — no cool gray shadows. Cards and elevated elements feel grounded in the earthy palette.</p>
+
+    <div class="shadow-grid">
+      <div class="shadow-card" style="box-shadow: 0 1px 2px rgba(74, 61, 46, 0.06);">
+        <span class="label">xs</span>
+        <span class="value">Subtle</span>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 1px 3px rgba(74, 61, 46, 0.08), 0 1px 2px rgba(74, 61, 46, 0.04);">
+        <span class="label">sm</span>
+        <span class="value">Default</span>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 4px 8px rgba(74, 61, 46, 0.08), 0 2px 4px rgba(74, 61, 46, 0.04);">
+        <span class="label">md</span>
+        <span class="value">Hover</span>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 12px 24px rgba(74, 61, 46, 0.10), 0 4px 8px rgba(74, 61, 46, 0.04);">
+        <span class="label">lg</span>
+        <span class="value">Elevated</span>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 20px 40px rgba(74, 61, 46, 0.12), 0 8px 16px rgba(74, 61, 46, 0.04);">
+        <span class="label">xl</span>
+        <span class="value">Modal</span>
+      </div>
+      <div class="shadow-card" style="box-shadow: 0 32px 64px rgba(74, 61, 46, 0.16);">
+        <span class="label">2xl</span>
+        <span class="value">Dramatic</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 6. RADIUS -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <p class="section-desc">Sharp to medium — editorial luxury. The default for most components is 4–8px. Nested children always use a smaller radius than their parent.</p>
+
+    <div class="radius-grid">
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 0;"></div>
+        <span class="label">None</span><span class="value">0</span>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 4px;"></div>
+        <span class="label">sm</span><span class="value">4px</span>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 8px;"></div>
+        <span class="label">md</span><span class="value">8px</span>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 12px;"></div>
+        <span class="label">lg</span><span class="value">12px</span>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 16px;"></div>
+        <span class="label">xl</span><span class="value">16px</span>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 24px;"></div>
+        <span class="label">2xl</span><span class="value">24px</span>
+      </div>
+      <div class="radius-item">
+        <div class="radius-box" style="border-radius: 9999px; width: 80px; height: 80px;"></div>
+        <span class="label">Full</span><span class="value">9999px</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 7. BUTTONS -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Buttons</h2>
+    <p class="section-desc">Four button types across three sizes. Primary (Alloy Orange) is reserved for the single most important action per screen. Secondary and tertiary for supporting actions. Botanical for nature-themed contexts.</p>
+
+    <div class="button-row">
+      <button class="btn btn-primary btn-lg">Begin Your Reset</button>
+      <button class="btn btn-secondary btn-lg">Learn More</button>
+      <button class="btn btn-tertiary btn-lg">View Menu →</button>
+      <button class="btn btn-botanical btn-lg">The Science</button>
+    </div>
+    <div class="button-row">
+      <button class="btn btn-primary btn-md">Order Now</button>
+      <button class="btn btn-secondary btn-md">Discover</button>
+      <button class="btn btn-tertiary btn-md">Read More →</button>
+      <button class="btn btn-botanical btn-md">Our Story</button>
+    </div>
+    <div class="button-row">
+      <button class="btn btn-primary btn-sm">Book</button>
+      <button class="btn btn-secondary btn-sm">Details</button>
+      <button class="btn btn-tertiary btn-sm">More →</button>
+      <button class="btn btn-botanical btn-sm">About</button>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. MOTION -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Motion</h2>
+    <p class="section-desc">Luxury feels unhurried. Ease-out for elements entering the viewport, ease-in for elements leaving. Organic easing is the default for most interactions. Hover any card to preview.</p>
+
+    <div class="motion-grid">
+      <div class="motion-demo">
+        <div class="label">Ease Out</div>
+        <div class="motion-track"><div class="motion-dot dot-ease-out"></div></div>
+        <div class="timing">cubic-bezier(0.16, 1, 0.3, 1)</div>
+      </div>
+      <div class="motion-demo">
+        <div class="label">Ease In</div>
+        <div class="motion-track"><div class="motion-dot dot-ease-in"></div></div>
+        <div class="timing">cubic-bezier(0.55, 0.085, 0.68, 0.53)</div>
+      </div>
+      <div class="motion-demo">
+        <div class="label">Ease In-Out</div>
+        <div class="motion-track"><div class="motion-dot dot-ease-in-out"></div></div>
+        <div class="timing">cubic-bezier(0.45, 0, 0.55, 1)</div>
+      </div>
+      <div class="motion-demo">
+        <div class="label">Spring</div>
+        <div class="motion-track"><div class="motion-dot dot-spring"></div></div>
+        <div class="timing">cubic-bezier(0.175, 0.885, 0.32, 1.1)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer style="text-align: center; padding-top: 64px; border-top: 1px solid rgba(107, 90, 66, 0.12);">
+    <div style="font-family: var(--font-heading); font-size: 20px; color: #1A150D; margin-bottom: 8px;">WAGA Wellness</div>
+    <div style="font-size: 13px; color: #A6926E; letter-spacing: 0.04em;">Design Tokens v1.0 · Warm Earth · Quiet Luxury</div>
+  </footer>
+
+</div>
+
+<div class="copy-toast" id="copyToast"></div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
