@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WAGA Wellness — Design Tokens</title>
-<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital@1&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/showcase.css">
 </head>
@@ -437,7 +437,7 @@
   <!-- ============================================================ -->
   <section class="section">
     <h2 class="section-title">Border Radius</h2>
-    <p class="section-desc">Sharp to medium — editorial luxury. The default for most components is 4–8px. Nested children always use a smaller radius than their parent.</p>
+    <p class="section-desc">Sharp to medium — editorial luxury. Buttons and inputs use 8px (radius-md). Cards also use 8px. Nested children always use a smaller radius than their parent. Pills use radius-full.</p>
 
     <div class="radius-grid">
       <div class="radius-item">
@@ -472,11 +472,30 @@
   </section>
 
   <!-- ============================================================ -->
-  <!-- 7. BUTTONS -->
+  <!-- 7. BADGES / PILLS -->
+  <!-- ============================================================ -->
+  <section class="section">
+    <h2 class="section-title">Badges / Pills</h2>
+    <p class="section-desc">Pill-shaped labels for categories, status indicators, and section markers. Four color variants that stay within the earthy palette. All use full border-radius, bordered, 11px bold uppercase text with widest tracking.</p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin-top: 24px;">
+      <span style="display: inline-flex; align-items: center; padding: 6px 20px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(196, 102, 31, 0.06); color: #C4661F; border: 1px solid rgba(196, 102, 31, 0.20);">Accent Soft</span>
+      <span style="display: inline-flex; align-items: center; padding: 6px 20px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: #FBF5EE; color: #8F6843; border: 1px solid #EDCFAA;">Warm Camel</span>
+      <span style="display: inline-flex; align-items: center; padding: 6px 20px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: #FAF6EC; color: #8A7556; border: 1px solid #E5DBBF;">Sand</span>
+      <span style="display: inline-flex; align-items: center; padding: 6px 20px; border-radius: 9999px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(169, 179, 136, 0.10); color: #5F6F52; border: 1px solid #E6EADE;">Botanical</span>
+    </div>
+
+    <div style="margin-top: 24px; font-size: 13px; color: #8A7556; line-height: 1.6;">
+      <strong style="color: #4A3D2E;">Usage:</strong> Section labels ("The Program", "The Science"), category tags, status indicators. Default variant is Accent Soft. Use Botanical sparingly — green stays recessive.
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- 8. BUTTONS -->
   <!-- ============================================================ -->
   <section class="section">
     <h2 class="section-title">Buttons</h2>
-    <p class="section-desc">Four button types across three sizes. Primary (Alloy Orange) is reserved for the single most important action per screen. Secondary and tertiary for supporting actions. Botanical for nature-themed contexts.</p>
+    <p class="section-desc">Four button types across three sizes. 8px border radius (radius-md) — warm and approachable, not corporate. Regular weight (400), not medium. Primary (Alloy Orange) is reserved for the single most important action per screen.</p>
 
     <div class="button-row">
       <button class="btn btn-primary btn-lg">Begin Your Reset</button>

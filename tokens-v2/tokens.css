@@ -1,0 +1,408 @@
+/* ==========================================================================
+   WAGA WELLNESS — Design Tokens v2.0
+   
+   Foundational visual system for the WAGA Wellness US website.
+   Warm earthy luxury · Baskervville Italic + Work Sans · 8pt grid · 1.250 ratio
+   
+   v2.0 Changes:
+   - Font weights reduced to Regular (400) + Semi-Bold (600) only
+   - Letter spacing: added --tracking-tighter (-0.04em) for display headings
+   - Button radius: radius-sm → radius-md (4px → 8px)
+   - Button weight: font-medium → font-regular
+   - Input radius: matched to buttons (radius-md)
+   - Baskervville: italic only (no upright)
+   - Badge/pill component tokens added (4 variants)
+   ========================================================================== */
+
+:root {
+
+  /* =======================================================================
+     COLOR SYSTEM
+     
+     Palette derived from warm earth tones. Green is present but recessive.
+     The dominant mood is sand/cream warmth with camel/russet accents.
+     Follows 60-30-10: cream backgrounds · sand surfaces · camel/russet accents
+     ======================================================================= */
+
+  /* --- Brand Palette (raw values) --- */
+  --waga-olive:          #5F6F52;
+  --waga-laurel:         #A9B388;
+  --waga-cornsilk:       #FEFAE0;
+  --waga-meringue:       #F9EBC7;
+  --waga-camel:          #B99470;
+  --waga-alloy:          #C4661F;
+  --waga-russet:         #783D19;
+
+  /* --- Warm Neutral Scale (derived from palette) ---
+     Built from warm undertones to match the earthy direction.
+     No cool grays — everything has warmth. */
+  --color-neutral-50:    #FDFBF5;   /* Lightest warm white */
+  --color-neutral-100:   #FAF6EC;   /* Off-white cream */
+  --color-neutral-200:   #F3ECDA;   /* Light sand */
+  --color-neutral-300:   #E5DBBF;   /* Sand */
+  --color-neutral-400:   #C9B896;   /* Warm tan */
+  --color-neutral-500:   #A6926E;   /* Muted earth */
+  --color-neutral-600:   #8A7556;   /* Dark tan */
+  --color-neutral-700:   #6B5A42;   /* Deep earth */
+  --color-neutral-800:   #4A3D2E;   /* Dark brown */
+  --color-neutral-900:   #2E2518;   /* Near-black warm */
+  --color-neutral-950:   #1A150D;   /* Deepest warm black */
+
+  /* --- Primary: Camel (the luxury accent) ---
+     Warm, golden-earth tone. The signature WAGA color. */
+  --color-primary-50:    #FBF5EE;
+  --color-primary-100:   #F5E8D5;
+  --color-primary-200:   #EDCFAA;
+  --color-primary-300:   #DFB07A;
+  --color-primary-400:   #B99470;   /* ← Camel, the anchor */
+  --color-primary-500:   #A67D56;
+  --color-primary-600:   #8F6843;
+  --color-primary-700:   #755436;
+  --color-primary-800:   #5E432D;
+  --color-primary-900:   #4A3525;
+
+  /* --- Accent: Russet/Alloy (the CTA spark) ---
+     Deep warm orange-brown. Used sparingly for buttons and key CTAs. */
+  --color-accent-50:     #FDF3EB;
+  --color-accent-100:    #FAE0CA;
+  --color-accent-200:    #F1C297;
+  --color-accent-300:    #E49C5E;
+  --color-accent-400:    #C4661F;   /* ← Alloy Orange */
+  --color-accent-500:    #A8571A;
+  --color-accent-600:    #8D4917;
+  --color-accent-700:    #783D19;   /* ← Russet */
+  --color-accent-800:    #5F3015;
+  --color-accent-900:    #462311;
+
+  /* --- Botanical: Olive/Laurel (nature, subtle) ---
+     Used very sparingly — badges, subtle backgrounds, nature references. */
+  --color-botanical-50:  #F4F6F0;
+  --color-botanical-100: #E6EADE;
+  --color-botanical-200: #CDD6BE;
+  --color-botanical-300: #A9B388;   /* ← Laurel Green */
+  --color-botanical-400: #8A9A6E;
+  --color-botanical-500: #5F6F52;   /* ← Dark Olive */
+  --color-botanical-600: #4D5B43;
+  --color-botanical-700: #3D4836;
+  --color-botanical-800: #2E362A;
+  --color-botanical-900: #1F241D;
+
+  /* --- Success: Warm Sage (hue ~135°) --- */
+  --color-success-50:  #F2F5EC;
+  --color-success-100: #E0E8D4;
+  --color-success-200: #C5D4AE;
+  --color-success-300: #9DB87E;
+  --color-success-400: #7A9B5A;
+  --color-success-500: #5F7D45;
+  --color-success-600: #4C6638;
+  --color-success-700: #3D512E;
+  --color-success-800: #314027;
+  --color-success-900: #23301C;
+
+  /* --- Warning: Warm Amber (hue ~38°) --- */
+  --color-warning-50:  #FDF5E6;
+  --color-warning-100: #FAE6C2;
+  --color-warning-200: #F2CE8E;
+  --color-warning-300: #E4B05A;
+  --color-warning-400: #CF9432;
+  --color-warning-500: #AD7A24;
+  --color-warning-600: #8C621E;
+  --color-warning-700: #704E1A;
+  --color-warning-800: #5A3E16;
+  --color-warning-900: #422E12;
+
+  /* --- Error: Warm Clay (hue ~12°) --- */
+  --color-error-50:  #FBF0EB;
+  --color-error-100: #F5D8CC;
+  --color-error-200: #EDBAAA;
+  --color-error-300: #D9907A;
+  --color-error-400: #C06B50;
+  --color-error-500: #A3533B;
+  --color-error-600: #864431;
+  --color-error-700: #6B3728;
+  --color-error-800: #552C21;
+  --color-error-900: #3E201A;
+
+  /* --- Info: Warm Stone (hue ~220°) --- */
+  --color-info-50:  #F0F1F4;
+  --color-info-100: #DCDEE5;
+  --color-info-200: #B9BDCA;
+  --color-info-300: #939AAD;
+  --color-info-400: #6F7890;
+  --color-info-500: #586177;
+  --color-info-600: #474F62;
+  --color-info-700: #3A3F4F;
+  --color-info-800: #2E323F;
+  --color-info-900: #22252E;
+
+  /* --- Semantic State Tokens (light mode) --- */
+  --color-success-bg:     var(--color-success-50);
+  --color-success-border: var(--color-success-200);
+  --color-success-text:   var(--color-success-700);
+  --color-success-icon:   var(--color-success-500);
+  --color-success-solid:  var(--color-success-500);
+
+  --color-warning-bg:     var(--color-warning-50);
+  --color-warning-border: var(--color-warning-200);
+  --color-warning-text:   var(--color-warning-700);
+  --color-warning-icon:   var(--color-warning-500);
+  --color-warning-solid:  var(--color-warning-500);
+
+  --color-error-bg:       var(--color-error-50);
+  --color-error-border:   var(--color-error-200);
+  --color-error-text:     var(--color-error-700);
+  --color-error-icon:     var(--color-error-500);
+  --color-error-solid:    var(--color-error-500);
+
+  --color-info-bg:        var(--color-info-50);
+  --color-info-border:    var(--color-info-200);
+  --color-info-text:      var(--color-info-700);
+  --color-info-icon:      var(--color-info-500);
+  --color-info-solid:     var(--color-info-500);
+
+  /* --- Semantic Surfaces --- */
+  --color-bg-page:       var(--color-neutral-50);
+  --color-bg-cream:      #FEFAE0;
+  --color-bg-sand:       #F9EBC7;
+  --color-bg-card:       #FFFFFF;
+  --color-bg-elevated:   var(--color-neutral-100);
+  --color-bg-muted:      var(--color-neutral-200);
+  --color-bg-inverse:    var(--color-neutral-900);
+
+  /* --- Text Colors --- */
+  --color-text-primary:   var(--color-neutral-900);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary:  var(--color-neutral-500);
+  --color-text-inverse:   var(--color-neutral-50);
+  --color-text-accent:    var(--color-accent-400);
+  --color-text-heading:   var(--color-neutral-950);
+
+  /* --- Border Colors --- */
+  --color-border-default: rgba(107, 90, 66, 0.12);
+  --color-border-strong:  rgba(107, 90, 66, 0.22);
+  --color-border-muted:   rgba(107, 90, 66, 0.06);
+  --color-border-accent:  var(--color-primary-400);
+
+  /* --- Interactive States --- */
+  --color-btn-primary-bg:       var(--color-accent-400);
+  --color-btn-primary-bg-hover: var(--color-accent-500);
+  --color-btn-primary-text:     #FFFFFF;
+  --color-btn-secondary-bg:     transparent;
+  --color-btn-secondary-border: var(--color-neutral-800);
+  --color-btn-secondary-text:   var(--color-neutral-800);
+
+
+  /* =======================================================================
+     TYPOGRAPHY — Dual Voice System
+     
+     Work Sans — primary voice. Headings + body. Clean, modern, structural.
+     Baskervville Italic — accent voice. Emotional moments within headings,
+     taglines, and storytelling. ITALIC ONLY — never upright.
+     
+     Dual-voice headings (Oura-inspired): Work Sans sets up the thought,
+     Baskervville Italic lands the emotional punch — inside the same h1.
+     Example: "Five Days to Feel Like" (Work Sans) + "Yourself Again." (Baskervville)
+     
+     Weights: Regular (400) and Semi-Bold (600) only. No light, medium, or bold.
+     Scale: 1.250 (Major Third) from 16px base.
+     ======================================================================= */
+
+  /* --- Font Families --- */
+  --font-heading: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --font-accent:  'Baskervville', 'Baskerville', 'Georgia', serif;   /* Italic only — NEVER upright */
+  --font-body:    'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
+
+  /* --- Type Scale (1.250 ratio, 16px base) --- */
+  --text-caption:  12px;
+  --text-sm:       14px;
+  --text-base:     16px;
+  --text-lg:       20px;
+  --text-xl:       25px;
+  --text-2xl:      31px;
+  --text-3xl:      39px;
+  --text-4xl:      49px;
+  --text-5xl:      61px;
+  --text-6xl:      76px;
+
+  /* --- Font Weights ---
+     Two weights only. Regular for most text. Semi-bold for emphasis. */
+  --font-regular:   400;
+  --font-bold:      600;
+
+  /* --- Line Heights (snapped to 4px grid) --- */
+  --leading-caption: 16px;
+  --leading-sm:      20px;
+  --leading-base:    24px;
+  --leading-lg:      28px;
+  --leading-xl:      32px;
+  --leading-2xl:     40px;
+  --leading-3xl:     48px;
+  --leading-4xl:     56px;
+  --leading-5xl:     68px;
+  --leading-6xl:     84px;
+
+  /* --- Letter Spacing ---
+     Display type gets TIGHTER as size increases.
+     ALL CAPS / badges get WIDER for legibility. */
+  --tracking-tighter: -0.04em;   /* Display headings (49px+) */
+  --tracking-tight:   -0.03em;   /* Large headings (31–48px) */
+  --tracking-snug:    -0.015em;  /* Medium headings (20–31px) */
+  --tracking-normal:   0;        /* Body text */
+  --tracking-wide:     0.02em;   /* Small text */
+  --tracking-wider:    0.06em;   /* ALL CAPS labels */
+  --tracking-widest:   0.1em;    /* Spaced-out caps, badges */
+
+
+  /* =======================================================================
+     SPACING (8pt Grid)
+     ======================================================================= */
+
+  --space-3xs:  2px;
+  --space-2xs:  4px;
+  --space-xs:   8px;
+  --space-sm:   12px;
+  --space-md:   16px;
+  --space-lg:   24px;
+  --space-xl:   32px;
+  --space-2xl:  48px;
+  --space-3xl:  64px;
+  --space-4xl:  96px;
+  --space-5xl:  128px;
+  --space-6xl:  192px;
+
+
+  /* =======================================================================
+     ELEVATION & SHADOWS
+     ======================================================================= */
+
+  --shadow-xs:  0 1px 2px rgba(74, 61, 46, 0.06);
+  --shadow-sm:  0 1px 3px rgba(74, 61, 46, 0.08), 0 1px 2px rgba(74, 61, 46, 0.04);
+  --shadow-md:  0 4px 8px rgba(74, 61, 46, 0.08), 0 2px 4px rgba(74, 61, 46, 0.04);
+  --shadow-lg:  0 12px 24px rgba(74, 61, 46, 0.10), 0 4px 8px rgba(74, 61, 46, 0.04);
+  --shadow-xl:  0 20px 40px rgba(74, 61, 46, 0.12), 0 8px 16px rgba(74, 61, 46, 0.04);
+  --shadow-2xl: 0 32px 64px rgba(74, 61, 46, 0.16);
+
+
+  /* =======================================================================
+     BORDER RADIUS
+     ======================================================================= */
+
+  --radius-none:  0;
+  --radius-sm:    4px;
+  --radius-md:    8px;
+  --radius-lg:    12px;
+  --radius-xl:    16px;
+  --radius-2xl:   24px;
+  --radius-full:  9999px;
+
+
+  /* =======================================================================
+     LAYOUT
+     ======================================================================= */
+
+  --container-sm:   640px;
+  --container-md:   768px;
+  --container-lg:   1024px;
+  --container-xl:   1280px;
+  --container-2xl:  1440px;
+
+  --grid-columns:   12;
+  --grid-gutter:    var(--space-lg);
+
+  --nav-height:     64px;
+  --nav-height-mobile: 56px;
+
+  --z-base:     0;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    600;
+  --z-tooltip:  700;
+
+
+  /* =======================================================================
+     MOTION
+     ======================================================================= */
+
+  --duration-instant:  50ms;
+  --duration-fast:     150ms;
+  --duration-normal:   250ms;
+  --duration-slow:     400ms;
+  --duration-slower:   600ms;
+  --duration-slowest:  1000ms;
+
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:      cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-in-out:  cubic-bezier(0.45, 0, 0.55, 1);
+  --ease-organic: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-spring:  cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+  --stagger-1: 0ms;
+  --stagger-2: 60ms;
+  --stagger-3: 120ms;
+  --stagger-4: 180ms;
+  --stagger-5: 240ms;
+
+
+  /* =======================================================================
+     COMPONENT TOKENS
+     ======================================================================= */
+
+  /* --- Buttons --- */
+  --btn-height-sm:  36px;
+  --btn-height-md:  44px;
+  --btn-height-lg:  52px;
+  --btn-padding-x:  var(--space-lg);
+  --btn-radius:     var(--radius-md);     /* 8px — warm, approachable */
+  --btn-font:       var(--font-body);
+  --btn-weight:     var(--font-regular);
+  --btn-tracking:   var(--tracking-wide);
+
+  /* --- Inputs --- */
+  --input-height-sm:  36px;
+  --input-height-md:  44px;
+  --input-height-lg:  52px;
+  --input-padding-x:  var(--space-md);
+  --input-radius:     var(--radius-md);   /* Match buttons */
+  --input-border:     var(--color-border-default);
+
+  /* --- Cards --- */
+  --card-padding:      var(--space-lg);
+  --card-radius:       var(--radius-md);
+  --card-shadow:       var(--shadow-sm);
+  --card-shadow-hover: var(--shadow-md);
+
+  /* --- Badges / Pills ---
+     Pill-shaped labels for categories, status, and section markers.
+     Four color variants within the earthy palette.
+     All use: radius-full, bordered, uppercase text. */
+  --badge-radius:      var(--radius-full);
+  --badge-padding:     6px 20px;
+  --badge-font-size:   11px;
+  --badge-weight:      var(--font-bold);
+  --badge-tracking:    var(--tracking-widest);
+
+  /* Accent Soft (default) — warm orange tint */
+  --badge-accent-bg:        rgba(196, 102, 31, 0.06);
+  --badge-accent-text:      var(--color-accent-400);
+  --badge-accent-border:    rgba(196, 102, 31, 0.20);
+
+  /* Warm — golden camel earth */
+  --badge-warm-bg:          var(--color-primary-50);
+  --badge-warm-text:        var(--color-primary-600);
+  --badge-warm-border:      var(--color-primary-200);
+
+  /* Sand — neutral, subtle */
+  --badge-sand-bg:          var(--color-neutral-100);
+  --badge-sand-text:        var(--color-neutral-600);
+  --badge-sand-border:      var(--color-neutral-300);
+
+  /* Botanical — green, nature contexts */
+  --badge-botanical-bg:     rgba(169, 179, 136, 0.10);
+  --badge-botanical-text:   var(--color-botanical-500);
+  --badge-botanical-border: var(--color-botanical-100);
+
+  /* --- Focus Ring --- */
+  --focus-ring: 0 0 0 2px var(--color-bg-page), 0 0 0 4px var(--color-primary-400);
+}
