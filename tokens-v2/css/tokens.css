@@ -60,18 +60,20 @@
   --color-botanical-800: #2E362A;
   --color-botanical-900: #1F241D;
 
-  /* Typography — Dual Voice: Work Sans (structure) + Baskervville Italic (emotion) */
-  --font-heading: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
-  --font-accent: 'Baskervville', 'Baskerville', 'Georgia', serif;
+  /* Typography — Dual Voice: Geist (structure) + Instrument Serif Italic (emotion) */
+  --font-heading: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
+  --font-accent: 'Instrument Serif', 'Georgia', serif;
   /* Italic only */
-  --font-body: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --font-body: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
   --font-regular: 400;
-  --font-bold: 600;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
 
-  /* Letter Spacing — tighter as size increases */
-  --tracking-tighter: -0.04em;
-  --tracking-tight: -0.03em;
-  --tracking-snug: -0.015em;
+  /* Letter Spacing — calibrated for Geist (naturally tighter than Work Sans) */
+  --tracking-tighter: -0.025em;
+  --tracking-tight: -0.015em;
+  --tracking-snug: -0.01em;
   --tracking-normal: 0;
   --tracking-wide: 0.02em;
   --tracking-wider: 0.06em;
