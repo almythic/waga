@@ -546,6 +546,25 @@ h6 {
   background-color: var(--color-neutral-50);
 }
 
+/* Explicit dark header for non-hero pages (cream background, dark text) */
+body:not(.page-hero) .site-header {
+  background-color: rgba(253, 251, 245, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+body:not(.page-hero) .site-header .logo-img {
+  filter: brightness(0.35);
+}
+
+body:not(.page-hero) .site-header .nav-link {
+  color: var(--color-text-secondary);
+}
+
+body:not(.page-hero) .site-header .nav-toggle span {
+  background-color: var(--color-text-heading);
+}
+
 .header-inner {
   display: flex;
   align-items: center;
