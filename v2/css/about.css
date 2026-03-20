@@ -1,0 +1,418 @@
+/* ==========================================================================
+   WAGA WELLNESS — About Page Styles
+
+   Split narrative: human (warm) ↔ institutional (proof), alternating.
+   ========================================================================== */
+
+
+/* =======================================================================
+   1. HERO
+   ======================================================================= */
+
+.about-hero {
+  position: relative;
+  min-height: 80vh;
+  min-height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl) var(--space-md);
+}
+
+.about-hero h1 {
+  margin-bottom: var(--space-xs);
+}
+
+.about-hero .accent-voice {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   2. SPLIT LAYOUT (text + image side by side)
+   ======================================================================= */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.split-text h3 {
+  margin-bottom: var(--space-sm);
+}
+
+.split-text .accent-voice {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.split-text p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+.split-text p + p {
+  margin-top: var(--space-md);
+}
+
+.split-image {
+  aspect-ratio: 4 / 3;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.split-image-placeholder {
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
+
+/* =======================================================================
+   3. STATS ROW
+   ======================================================================= */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2xl) var(--space-lg);
+  max-width: 960px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.stat {
+  padding: var(--space-lg) 0;
+}
+
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-4xl);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-2xs);
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  letter-spacing: var(--tracking-wide);
+}
+
+
+/* =======================================================================
+   4. TIMELINE / EVOLUTION
+   ======================================================================= */
+
+.timeline {
+  max-width: 860px;
+  margin-inline: auto;
+  position: relative;
+}
+
+/* Vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--space-md);
+  width: 1px;
+  background-color: var(--color-border-default);
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: var(--space-3xl);
+  padding-bottom: var(--space-2xl);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Dot on the line */
+.timeline-dot {
+  position: absolute;
+  left: calc(var(--space-md) - 5px);
+  top: var(--space-xs);
+  width: 11px;
+  height: 11px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent-400);
+  border: 2px solid var(--color-bg-cream);
+}
+
+.timeline-year {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-accent-500);
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-item h4 {
+  margin-bottom: var(--space-xs);
+}
+
+.timeline-item .accent-voice {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.timeline-item p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   5. TEAM GRID
+   ======================================================================= */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 640px;
+  margin-inline: auto;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-photo {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-neutral-200);
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.team-photo-placeholder {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
+.team-member h5 {
+  margin-bottom: var(--space-3xs);
+}
+
+.team-role {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-accent-500);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-sm);
+}
+
+.team-member p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+  max-width: 280px;
+  margin-inline: auto;
+}
+
+
+/* =======================================================================
+   6. PHILOSOPHY
+   ======================================================================= */
+
+.philosophy-list {
+  max-width: 720px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xl);
+}
+
+.philosophy-item {
+  text-align: center;
+}
+
+.philosophy-item h3 {
+  margin-bottom: var(--space-xs);
+}
+
+.philosophy-item .accent-voice {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   7. HERITAGE
+   ======================================================================= */
+
+.heritage-content {
+  max-width: 640px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.heritage-content p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+.heritage-countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.heritage-country {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+
+/* =======================================================================
+   8. CTA
+   ======================================================================= */
+
+.about-cta {
+  text-align: center;
+  padding-block: var(--space-5xl);
+  background-color: var(--color-bg-sand);
+}
+
+.about-cta h2 {
+  margin-bottom: var(--space-xs);
+}
+
+.about-cta .accent-voice {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.about-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+
+/* =======================================================================
+   9. RESPONSIVE
+   ======================================================================= */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .split.reverse .split-text {
+    order: 2;
+  }
+
+  .split.reverse .split-image {
+    order: 1;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Timeline centered with alternating sides */
+  .timeline::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    width: 50%;
+    padding-left: 0;
+    padding-right: var(--space-2xl);
+  }
+
+  .timeline-item:nth-child(even) {
+    margin-left: 50%;
+    padding-left: var(--space-2xl);
+    padding-right: 0;
+  }
+
+  .timeline-dot {
+    left: auto;
+    right: calc(-5px - 0.5px);
+  }
+
+  .timeline-item:nth-child(even) .timeline-dot {
+    left: calc(-5px - 0.5px);
+    right: auto;
+  }
+
+  .timeline-item:nth-child(odd) {
+    text-align: right;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .about-hero .accent-voice {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .stat-number {
+    font-size: var(--text-5xl);
+    line-height: var(--leading-5xl);
+  }
+}
+
+/* Wide: 1280px+ */
+@media (min-width: 1280px) {
+  .about-hero .accent-voice {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+  }
+}

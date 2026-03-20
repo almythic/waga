@@ -1,0 +1,461 @@
+/* ==========================================================================
+   WAGA WELLNESS — Program Page Styles
+
+   The vertical journey: hero → intro → day 1-5 → receive → transform → CTA
+   ========================================================================== */
+
+
+/* =======================================================================
+   1. HERO
+   ======================================================================= */
+
+.program-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl) var(--space-md);
+}
+
+.program-hero h1 {
+  margin-bottom: var(--space-xs);
+}
+
+.program-hero .accent-voice {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  color: var(--color-text-secondary);
+}
+
+.program-hero .program-hero-hook {
+  margin-top: var(--space-2xl);
+  margin-inline: auto;
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  max-width: 520px;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-tertiary);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  transition: opacity var(--duration-slow) var(--ease-organic);
+}
+
+.scroll-indicator.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-indicator-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 1.5px solid var(--color-text-tertiary);
+  border-bottom: 1.5px solid var(--color-text-tertiary);
+  transform: rotate(45deg);
+  animation: scrollBounce 2s var(--ease-in-out) infinite;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(6px); }
+}
+
+
+/* =======================================================================
+   2. INTRO SECTION
+   ======================================================================= */
+
+.program-intro {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.program-intro p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+.program-intro p + p {
+  margin-top: var(--space-lg);
+}
+
+.program-includes {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+.program-includes-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-bg-card);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.program-includes-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-600);
+  font-size: var(--text-xl);
+}
+
+.program-includes-item h5 {
+  margin-bottom: var(--space-2xs);
+}
+
+.program-includes-item p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-sm);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   3. DAY SECTIONS
+   ======================================================================= */
+
+.day-section {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-4xl);
+  transition: background-color var(--duration-slowest) var(--ease-organic);
+}
+
+.day-content {
+  max-width: 960px;
+  margin-inline: auto;
+  width: 100%;
+}
+
+/* Day header */
+.day-number {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-accent-400);
+  margin-bottom: var(--space-sm);
+}
+
+.day-title {
+  margin-bottom: var(--space-xs);
+}
+
+.day-subtitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.day-body {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  max-width: 640px;
+  margin-bottom: var(--space-2xl);
+}
+
+/* Three tracks: physiological, mental, psychological */
+.day-tracks {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.day-track {
+  padding: var(--space-lg);
+  background-color: rgba(253, 251, 245, 0.6);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--color-border-muted);
+}
+
+/* On sand backgrounds, use white cards */
+.day-section.section-sand .day-track {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.day-track-label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.day-track-label.track-body {
+  color: var(--color-accent-500);
+}
+
+.day-track-label.track-mind {
+  color: var(--color-botanical-500);
+}
+
+.day-track-label.track-spirit {
+  color: var(--color-info-500);
+}
+
+.day-track p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   4. STICKY DAY INDICATOR
+   ======================================================================= */
+
+.day-indicator {
+  position: fixed;
+  top: calc(var(--nav-height-mobile) + var(--space-md));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background-color: rgba(253, 251, 245, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  font-size: var(--text-caption);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-secondary);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration-normal) var(--ease-organic),
+    visibility var(--duration-normal) var(--ease-organic);
+}
+
+.day-indicator.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.day-indicator-progress {
+  width: 32px;
+  height: 3px;
+  background-color: var(--color-neutral-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.day-indicator-fill {
+  height: 100%;
+  background-color: var(--color-accent-400);
+  border-radius: var(--radius-full);
+  transition: width var(--duration-normal) var(--ease-organic);
+}
+
+
+/* =======================================================================
+   5. WHAT YOU RECEIVE
+   ======================================================================= */
+
+.receive-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-2xl);
+}
+
+.receive-item {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  background-color: var(--color-bg-card);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.receive-icon {
+  width: 64px;
+  height: 64px;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-600);
+  font-size: var(--text-2xl);
+}
+
+.receive-item h5 {
+  margin-bottom: var(--space-xs);
+}
+
+.receive-item p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   6. TRANSFORMATION SUMMARY
+   ======================================================================= */
+
+.transform-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.transform-column {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.transform-column h4 {
+  margin-bottom: var(--space-sm);
+}
+
+.transform-column .accent-voice {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.transform-column p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+  max-width: 320px;
+  margin-inline: auto;
+}
+
+.transform-divider {
+  display: none;
+  width: 1px;
+  background-color: var(--color-border-default);
+}
+
+
+/* =======================================================================
+   7. FINAL CTA
+   ======================================================================= */
+
+.program-cta {
+  text-align: center;
+  padding-block: var(--space-5xl);
+  background-color: var(--color-bg-sand);
+}
+
+.program-cta h2 {
+  margin-bottom: var(--space-xs);
+}
+
+.program-cta .accent-voice {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.program-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+
+/* =======================================================================
+   8. RESPONSIVE
+   ======================================================================= */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .program-includes {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .day-tracks {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .receive-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .transform-grid {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: flex-start;
+  }
+
+  .transform-divider {
+    display: block;
+    align-self: stretch;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .day-indicator {
+    top: calc(var(--nav-height) + var(--space-md));
+  }
+
+  .program-hero .accent-voice {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+
+  .receive-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Wide: 1280px+ */
+@media (min-width: 1280px) {
+  .program-hero .accent-voice {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-indicator-arrow {
+    animation: none;
+  }
+}

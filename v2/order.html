@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Reserve your 5-Day Detox Box by WAGA Wellness. $2,000 for a medically-designed, five-day nutritional reset delivered to your door in NYC.">
+    <meta name="theme-color" content="#FDFBF5">
+    <title>Order — WAGA Wellness</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.18/dist/lenis.css">
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/order.css">
+</head>
+
+<body>
+
+    <!-- Skip to content -->
+    <a href="#main" class="skip-link">Skip to content</a>
+
+    <div id="site-header"></div>
+
+    <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+    <main id="main">
+
+        <!-- ============================================================
+         HERO
+         ============================================================ -->
+        <section class="order-hero">
+            <p class="text-label reveal">Preorder &amp; Waitlist</p>
+            <h1 class="reveal" data-reveal-delay="1">Reserve Your Reset</h1>
+            <p class="accent-voice reveal" data-reveal-delay="2">Limited spots each month.</p>
+            <p class="order-hero-hook reveal" data-reveal-delay="3">
+                Enrollment is limited for each monthly round so we can protect quality, logistics, and support. Complete
+                the steps below to reserve your spot.
+            </p>
+        </section>
+
+
+        <!-- ============================================================
+         STEP INDICATOR
+         ============================================================ -->
+        <div class="step-indicator" aria-live="polite" aria-atomic="true">
+            <span class="step-indicator-text">Step 1 of 4</span>
+            <div class="step-indicator-progress">
+                <div class="step-indicator-fill" style="width: 25%;"></div>
+            </div>
+            <div class="step-dots">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+        </div>
+
+
+        <!-- ============================================================
+         FORM WIZARD
+         ============================================================ -->
+        <form id="order-form" class="order-steps" novalidate>
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 1 — YOUR PROGRAM
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step active" id="step-1">
+                <div class="container">
+
+                    <div class="form-section-title">
+                        <p class="text-label">Step 1</p>
+                        <h3>Your Program</h3>
+                        <p class="accent-voice">Everything you need for five days.</p>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-card-header">
+                            <p class="program-card-price">$2,000</p>
+                            <p class="program-card-price-sub">/ 5-Day Detox Box</p>
+                            <p class="program-card-badge">&#9737; Kosher &amp; Halal safe</p>
+                        </div>
+                        <div class="program-card-body">
+                            <h5>Your Detox Box includes:</h5>
+                            <ul class="program-includes-list">
+                                <li>All food, drinks, and functional components for the full 5 days</li>
+                                <li>Glass jars and eco-conscious gable box packaging</li>
+                                <li>Printed guide explaining the science, daily routine, and how to prepare</li>
+                                <li>Email and message support during your 5-day cycle</li>
+                            </ul>
+                            <p class="program-card-meta">
+                                One 5-day cycle&ensp;·&ensp;NYC &amp; Tri-State area only&ensp;·&ensp;Limited spots per
+                                month
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="step-nav" style="max-width: 720px; margin-inline: auto;">
+                        <button type="button" class="btn btn-primary btn-lg" data-action="next" style="flex: 1;">
+                            Continue
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 2 — ABOUT YOU (Health & Dietary Profile)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step" id="step-2">
+                <div class="container">
+                    <div class="order-form-container">
+
+                        <div class="form-section-title">
+                            <p class="text-label">Step 2</p>
+                            <h3>About You</h3>
+                            <p class="accent-voice">Help us personalize your experience.</p>
+                            <p>Our nutritionist reviews every response to ensure your box is safe and tailored to you.
+                            </p>
+                        </div>
+
+                        <!-- Preferred Diet -->
+                        <div class="form-group">
+                            <label class="form-label">Preferred diet *</label>
+                            <div class="form-radio-group">
+                                <div class="form-radio-option">
+                                    <input type="radio" id="diet-standard" name="diet" value="Standard" required>
+                                    <label for="diet-standard" class="form-radio-label">Standard</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="diet-vegetarian" name="diet" value="Vegetarian">
+                                    <label for="diet-vegetarian" class="form-radio-label">Vegetarian</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="diet-vegan" name="diet" value="Vegan">
+                                    <label for="diet-vegan" class="form-radio-label">Vegan</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="diet-pescatarian" name="diet" value="Pescatarian">
+                                    <label for="diet-pescatarian" class="form-radio-label">Pescatarian</label>
+                                </div>
+                                <div class="form-radio-option">
+                                    <input type="radio" id="diet-other" name="diet" value="Other">
+                                    <label for="diet-other" class="form-radio-label">Other</label>
+                                </div>
+                            </div>
+                            <p class="form-error-message">Please select an option</p>
+                        </div>
+
+                        <!-- Food Allergies -->
+                        <div class="form-group">
+                            <label for="allergies" class="form-label">
+                                Food allergies <span class="form-label-optional">(optional)</span>
+                            </label>
+                            <textarea id="allergies" class="form-textarea" rows="2"
+                                placeholder="e.g. nuts, shellfish, gluten, dairy..."></textarea>
+                            <p class="form-hint">List any known food allergies or intolerances.</p>
+                        </div>
+
+                        <!-- Chronic Diseases -->
+                        <div class="form-group">
+                            <label for="chronic" class="form-label">
+                                Chronic diseases <span class="form-label-optional">(optional)</span>
+                            </label>
+                            <textarea id="chronic" class="form-textarea" rows="2"
+                                placeholder="e.g. diabetes, hypertension, autoimmune conditions..."></textarea>
+                        </div>
+
+                        <!-- Regular Medications -->
+                        <div class="form-group">
+                            <label for="medications" class="form-label">
+                                Regular therapy / medications <span class="form-label-optional">(optional)</span>
+                            </label>
+                            <textarea id="medications" class="form-textarea" rows="2"
+                                placeholder="List any medications you take regularly..."></textarea>
+                        </div>
+
+                        <!-- Foods You Dislike -->
+                        <div class="form-group">
+                            <label for="dislikes" class="form-label">
+                                Foods you dislike or don't eat <span class="form-label-optional">(optional)</span>
+                            </label>
+                            <textarea id="dislikes" class="form-textarea" rows="2"
+                                placeholder="e.g. olives, cilantro, raw tomatoes..."></textarea>
+                        </div>
+
+                        <!-- Additional Health Notes -->
+                        <div class="form-group">
+                            <label for="health-notes" class="form-label">
+                                Additional health notes <span class="form-label-optional">(optional)</span>
+                            </label>
+                            <textarea id="health-notes" class="form-textarea" rows="2"
+                                placeholder="Anything else we should know about your health or preferences..."></textarea>
+                        </div>
+
+                        <div class="step-nav">
+                            <button type="button" class="btn btn-secondary btn-lg btn-back"
+                                data-action="back">Back</button>
+                            <button type="button" class="btn btn-primary btn-lg" data-action="next">Continue</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 3 — DELIVERY DETAILS
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step" id="step-3">
+                <div class="container">
+                    <div class="order-form-container">
+
+                        <div class="form-section-title">
+                            <p class="text-label">Step 3</p>
+                            <h3>Delivery Details</h3>
+                            <p class="accent-voice">Where should we deliver your reset?</p>
+                        </div>
+
+                        <div class="form-row-2col">
+                            <!-- Full Name -->
+                            <div class="form-group">
+                                <label for="full-name" class="form-label">Full name *</label>
+                                <input type="text" id="full-name" class="form-input" placeholder="First and last name"
+                                    required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email *</label>
+                                <input type="email" id="email" class="form-input" placeholder="you@example.com"
+                                    required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone *</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="+1 (212) ..." required>
+                            <p class="form-error-message">This field is required</p>
+                        </div>
+
+                        <!-- Address -->
+                        <div class="form-group">
+                            <label for="address" class="form-label">Delivery address with instructions *</label>
+                            <input type="text" id="address" class="form-input"
+                                placeholder="e.g. 123 Park Ave, Apt 4B, New York, NY 10016" required>
+                            <p class="form-error-message">This field is required</p>
+                            <p class="form-hint">Include apartment or suite number and any gate codes.</p>
+                        </div>
+
+                        <!-- Delivery Notes -->
+                        <div class="form-group">
+                            <label for="delivery-notes" class="form-label">
+                                Delivery notes <span class="form-label-optional">(optional)</span>
+                            </label>
+                            <textarea id="delivery-notes" class="form-textarea" rows="2"
+                                placeholder="e.g. Leave with doorman, ring bell twice..."></textarea>
+                        </div>
+
+                        <div class="step-nav">
+                            <button type="button" class="btn btn-secondary btn-lg btn-back"
+                                data-action="back">Back</button>
+                            <button type="button" class="btn btn-primary btn-lg" data-action="next">Review Your
+                                Order</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 4 — REVIEW & RESERVE
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step" id="step-4">
+                <div class="container">
+                    <div class="review-container">
+
+                        <div class="form-section-title">
+                            <p class="text-label">Step 4</p>
+                            <h3>Review &amp; Reserve</h3>
+                            <p class="accent-voice">Confirm your details below.</p>
+                        </div>
+
+                        <!-- Program Review -->
+                        <div class="review-section">
+                            <div class="review-section-header">
+                                <h5>Program</h5>
+                                <button type="button" class="review-edit-btn" data-action="edit"
+                                    data-target="1">Edit</button>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Selection</span>
+                                <span class="review-row-value" id="review-program">5-Day Detox Box — $2,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Health Profile Review -->
+                        <div class="review-section">
+                            <div class="review-section-header">
+                                <h5>Health Profile</h5>
+                                <button type="button" class="review-edit-btn" data-action="edit"
+                                    data-target="2">Edit</button>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Preferred Diet</span>
+                                <span class="review-row-value" id="review-diet"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Food Allergies</span>
+                                <span class="review-row-value" id="review-allergies"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Chronic Diseases</span>
+                                <span class="review-row-value" id="review-chronic"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Medications</span>
+                                <span class="review-row-value" id="review-medications"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Food Dislikes</span>
+                                <span class="review-row-value" id="review-dislikes"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Additional Notes</span>
+                                <span class="review-row-value" id="review-health-notes"></span>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Review -->
+                        <div class="review-section">
+                            <div class="review-section-header">
+                                <h5>Delivery</h5>
+                                <button type="button" class="review-edit-btn" data-action="edit"
+                                    data-target="3">Edit</button>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Full Name</span>
+                                <span class="review-row-value" id="review-name"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Email</span>
+                                <span class="review-row-value" id="review-email"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Phone</span>
+                                <span class="review-row-value" id="review-phone"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Address</span>
+                                <span class="review-row-value" id="review-address"></span>
+                            </div>
+                            <div class="review-row">
+                                <span class="review-row-label">Delivery Notes</span>
+                                <span class="review-row-value" id="review-delivery-notes"></span>
+                            </div>
+                        </div>
+
+                        <div class="review-disclaimer">
+                            Submitting this form does not charge your card. It lets us review your details, confirm
+                            availability, and follow up with payment and next steps.
+                        </div>
+
+                        <div class="step-nav">
+                            <button type="button" class="btn btn-secondary btn-lg btn-back"
+                                data-action="back">Back</button>
+                            <button type="submit" class="btn btn-primary btn-lg">Reserve Your Spot</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 5 — CONFIRMATION
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step" id="step-5">
+                <div class="container">
+                    <div class="confirmation-container">
+
+                        <div class="confirmation-icon" aria-hidden="true">&#10003;</div>
+                        <h2>You're on the List</h2>
+                        <p class="accent-voice">We'll be in touch soon.</p>
+
+                        <div class="confirmation-steps">
+                            <div class="confirmation-step">
+                                <div class="confirmation-step-number">1</div>
+                                <p>You've submitted your details and preferences. Our team has received your reservation
+                                    request.</p>
+                            </div>
+                            <div class="confirmation-step">
+                                <div class="confirmation-step-number">2</div>
+                                <p>We'll confirm delivery coverage and availability for the upcoming cycle, and review
+                                    your health profile.</p>
+                            </div>
+                            <div class="confirmation-step">
+                                <div class="confirmation-step-number">3</div>
+                                <p>You'll receive payment instructions and final confirmation via email. Your spot is
+                                    secured once payment is received.</p>
+                            </div>
+                        </div>
+
+                        <a href="index.html" class="btn btn-secondary btn-lg">Return Home</a>
+
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
+
+        <!-- ============================================================
+         FAQ SECTION
+         ============================================================ -->
+        <section class="faq-section" id="order-faq">
+            <div class="container">
+                <div class="faq-container">
+
+                    <div class="section-heading reveal">
+                        <p class="text-label">Questions</p>
+                        <h2>Frequently Asked</h2>
+                        <p class="accent-voice">Before you begin.</p>
+                    </div>
+
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            Is this safe if I have a medical condition?
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" role="region">
+                            <div class="faq-answer-inner">
+                                <p>Detox Box by WAGA is a structured, food-based program. It is safe for most medical
+                                    conditions. If you have any concerns, our nutritionist is available for individual
+                                    consultations before you begin.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            Can I choose my exact dates?
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" role="region">
+                            <div class="faq-answer-inner">
+                                <p>The program runs once a month. Exact dates will be announced on our website each
+                                    month, and you will be able to sign up for that particular month's cycle.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            What areas do you deliver to?
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" role="region">
+                            <div class="faq-answer-inner">
+                                <p>We deliver across the NYC Tri-State Area:</p>
+                                <p><strong>New York</strong> — New York City, Long Island (Nassau &amp; Suffolk), Lower
+                                    Hudson Valley (Westchester, Rockland, Putnam)</p>
+                                <p><strong>New Jersey</strong> — North &amp; Central NJ (Bergen, Hudson, Essex, Union,
+                                    Middlesex)</p>
+                                <p><strong>Connecticut</strong> — Southwestern CT / Fairfield County (Stamford,
+                                    Greenwich, Norwalk)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <button type="button" class="faq-question" aria-expanded="false">
+                            What if I have food allergies?
+                            <span class="faq-icon" aria-hidden="true"></span>
+                        </button>
+                        <div class="faq-answer" role="region">
+                            <div class="faq-answer-inner">
+                                <p>You can list allergies and key restrictions in the health profile section of the
+                                    order form. We will review them and let you know whether we can accommodate your
+                                    needs for the upcoming round.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="faq-disclaimer reveal">
+                        This program is for educational and lifestyle support only and is not intended to diagnose,
+                        treat, cure, or prevent any disease. Your spot is confirmed only after our team reviews your
+                        information, confirms availability, and payment is received.
+                    </p>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="site-footer"></div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/order.js"></script>
+</body>
+
+</html>
