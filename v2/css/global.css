@@ -236,8 +236,9 @@ h6 {
   color: var(--color-neutral-50);
 }
 
-.section-olive .section-heading .text-label {
-  color: #DFB07A; /* Brand accent for dark backgrounds */
+.section-olive .section-heading .text-label,
+.section-olive .text-label {
+  color: var(--color-primary-300); /* Brand accent for dark backgrounds */
 }
 
 .section-olive .section-heading .accent-voice {
