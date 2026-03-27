@@ -1,0 +1,399 @@
+/* ==========================================================================
+   WAGA WELLNESS — Science Page Styles
+
+   Three-tier architecture: overview → detail → source.
+   Medical journal structure with visual diagram placeholders.
+   ========================================================================== */
+
+
+/* =======================================================================
+   1. HERO
+   ======================================================================= */
+
+.science-hero {
+  position: relative;
+  min-height: 80vh;
+  min-height: 80dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-4xl) var(--space-md);
+}
+
+.science-hero h1 {
+  margin-bottom: var(--space-xs);
+}
+
+.science-hero .accent-voice {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  color: var(--color-text-secondary);
+}
+
+.science-hero-summary {
+  margin-top: var(--space-xl);
+  margin-inline: auto;
+  max-width: 560px;
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   2. OVERVIEW CLAIMS (Tier 1)
+   ======================================================================= */
+
+.claims-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.claim-card {
+  padding: var(--space-xl);
+  background-color: var(--color-bg-card);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  text-align: center;
+}
+
+.claim-icon {
+  width: 56px;
+  height: 56px;
+  margin-inline: auto;
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-botanical-100);
+  color: var(--color-botanical-500);
+  font-size: var(--text-xl);
+}
+
+.claim-card h4 {
+  margin-bottom: var(--space-xs);
+}
+
+.claim-card p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   3. PHASE EXPLANATIONS (Tier 2 — split layout with diagrams)
+   ======================================================================= */
+
+.science-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.science-split-text .text-label {
+  margin-bottom: var(--space-sm);
+}
+
+.science-split-text h3 {
+  margin-bottom: var(--space-xs);
+}
+
+.science-split-text .accent-voice {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.science-split-text p {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+.science-split-text p + p {
+  margin-top: var(--space-md);
+}
+
+/* Diagram placeholder */
+.diagram-placeholder {
+  aspect-ratio: 16 / 10;
+  background-color: var(--color-neutral-100);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+}
+
+.diagram-label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-tertiary);
+  letter-spacing: var(--tracking-wide);
+}
+
+.diagram-sublabel {
+  font-size: var(--text-caption);
+  color: var(--color-neutral-400);
+}
+
+
+/* =======================================================================
+   4. KEY MECHANISMS (Tier 2 — deeper detail)
+   ======================================================================= */
+
+.mechanism {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.mechanism + .mechanism {
+  margin-top: var(--space-3xl);
+  padding-top: var(--space-3xl);
+  border-top: 1px solid var(--color-border-default);
+}
+
+.mechanism-header {
+  margin-bottom: var(--space-lg);
+}
+
+.mechanism-header .text-label {
+  margin-bottom: var(--space-xs);
+}
+
+.mechanism-header h3 {
+  margin-bottom: var(--space-xs);
+}
+
+.mechanism-header .accent-voice {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+.mechanism-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+.mechanism-text p {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+.mechanism-text p + p {
+  margin-top: var(--space-md);
+}
+
+.mechanism-chart {
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-neutral-100);
+  border: 1.5px dashed var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+}
+
+
+/* =======================================================================
+   5. NUTRITIONAL FRAMEWORK (data table)
+   ======================================================================= */
+
+.nutrition-table-wrapper {
+  max-width: 960px;
+  margin-inline: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.nutrition-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+}
+
+.nutrition-table thead {
+  position: sticky;
+  top: 0;
+}
+
+.nutrition-table th {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  font-weight: var(--font-semibold);
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  background-color: var(--color-bg-cream);
+  border-bottom: 1.5px solid var(--color-border-strong);
+}
+
+.nutrition-table td {
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border-muted);
+  white-space: nowrap;
+}
+
+.nutrition-table tbody tr:hover {
+  background-color: var(--color-neutral-100);
+}
+
+.nutrition-table .day-highlight {
+  font-weight: var(--font-medium);
+  color: var(--color-text-heading);
+}
+
+.nutrition-note {
+  margin-top: var(--space-md);
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  text-align: center;
+}
+
+
+/* =======================================================================
+   6. REFERENCES (Tier 3)
+   ======================================================================= */
+
+.references-list {
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.reference-group + .reference-group {
+  margin-top: var(--space-xl);
+}
+
+.reference-group-title {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border-muted);
+}
+
+.reference-item {
+  padding: var(--space-sm) 0;
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+.reference-item + .reference-item {
+  border-top: 1px solid var(--color-border-muted);
+}
+
+.reference-title {
+  font-weight: var(--font-medium);
+  color: var(--color-text-primary);
+}
+
+.reference-meta {
+  font-size: var(--text-caption);
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-3xs);
+}
+
+
+/* =======================================================================
+   7. CTA
+   ======================================================================= */
+
+.science-cta {
+  text-align: center;
+  padding-block: var(--space-5xl);
+  background-color: var(--color-bg-sand);
+}
+
+.science-cta h2 {
+  margin-bottom: var(--space-xs);
+}
+
+.science-cta .accent-voice {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.science-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+
+/* =======================================================================
+   8. RESPONSIVE
+   ======================================================================= */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .claims-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .science-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .science-split.reverse .science-split-text {
+    order: 2;
+  }
+
+  .science-split.reverse .diagram-placeholder {
+    order: 1;
+  }
+
+  .mechanism-body {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  .claims-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .science-hero .accent-voice {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+}
+
+/* Wide: 1280px+ */
+@media (min-width: 1280px) {
+  .science-hero .accent-voice {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+  }
+}

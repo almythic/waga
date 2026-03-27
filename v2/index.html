@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WAGA Wellness — A premium five-day detox meal program in New York City. Nearly 20 years of balanced nutrition expertise, delivered to your door.">
+  <meta name="theme-color" content="#FDFBF5">
+  <title>WAGA Wellness</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.18/dist/lenis.css">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body class="page-hero">
+
+  <!-- Skip to content -->
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <div id="site-header"></div>
+
+  <!-- ================================================================
+       MAIN CONTENT
+       ================================================================ -->
+  <main id="main">
+
+    <!-- ============================================================
+         1. HERO — Image bg + centered scroll-expanding video
+         ============================================================ -->
+    <section class="home-hero" id="homeHero">
+
+      <!-- Full-screen video background -->
+      <div class="home-hero-media" id="heroMedia">
+        <div class="home-hero-media-frame" id="heroMediaFrame">
+          <video
+            id="heroVideoEl"
+            src="assets/video/hero-video-web.mp4"
+            poster="assets/images/hero-video-poster.jpg"
+            muted loop playsinline
+            preload="none"
+          ></video>
+        </div>
+      </div>
+
+      <!-- Content — overlays the video, pushed off screen on scroll -->
+      <div class="home-hero-overlay">
+        <p class="home-hero-badge" id="heroBadge">Science-Backed · 20 Years of Clinical Research</p>
+        <h1 id="heroHeading">
+          Five Days<br>
+          to Feel Like<br>
+          <span class="accent-voice">Yourself Again.</span>
+        </h1>
+        <p class="home-hero-supporting" id="heroSupporting">
+          A clinically developed metabolic reset, delivered fresh to your door.
+        </p>
+        <div class="home-hero-ctas" id="heroCtas">
+          <a href="program.html" class="btn btn-primary btn-lg">Discover the Program</a>
+          <a href="about.html" class="btn btn-secondary btn-lg">Our Story</a>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="home-hero-scroll-hint" id="heroScrollHint" aria-hidden="true">
+        <span class="scroll-text">SCROLL TO EXPLORE</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         2. ABOUT PREVIEW — Heritage & credibility
+         Scroll-scrubbed video (left) + content (right)
+         ============================================================ -->
+    <section class="home-about-section" id="homeAbout">
+      <div class="home-about-pinned">
+        <div class="home-about-layout">
+
+          <!-- Left: scroll-scrubbed video -->
+          <div class="home-about-video-col">
+            <div class="home-about-video-frame">
+              <video
+                id="aboutScrubVideo"
+                src="assets/video/blob-video-white.mp4"
+                muted playsinline preload="auto"
+              ></video>
+            </div>
+          </div>
+
+          <!-- Right: content (fades in mid-scrub) -->
+          <div class="home-about-content-col" id="aboutContent">
+            <div class="section-heading">
+              <p class="text-label">Our Heritage</p>
+              <h2>Nearly 20 Years</h2>
+              <p class="accent-voice">of knowing what the body needs.</p>
+            </div>
+
+            <p class="home-about-text">
+              Born in a clinical setting, refined through thousands of clients across Serbia, Montenegro, Croatia, and Bosnia. From hospitalized wellness programs to home delivery&mdash;now arriving in New York.
+            </p>
+
+            <div class="home-stats-card">
+              <div class="home-stats">
+                <div>
+                  <p class="home-stat-value" data-count-to="20">20</p>
+                  <p class="home-stat-label">Years of Expertise</p>
+                </div>
+                <div>
+                  <p class="home-stat-value" data-count-to="5">5</p>
+                  <p class="home-stat-label">Countries Active</p>
+                </div>
+                <div>
+                  <p class="home-stat-value" data-count-suffix="+" data-count-to="1000">1,000+</p>
+                  <p class="home-stat-label">Clients Served</p>
+                </div>
+                <div>
+                  <p class="home-stat-value" data-count-to="8">8</p>
+                  <p class="home-stat-label">Medical Specialists</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="home-section-cta">
+              <a href="about.html" class="btn btn-secondary">Explore Our Story</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         3. PRODUCT UNBOX — Sticky scroll scenes
+         ============================================================ -->
+    <section id="unbox" class="home-unbox-section">
+      <!-- ── Intro — flows normally above the sticky block ── -->
+      <div class="home-unbox-intro section">
+        <div class="container">
+          <div class="home-unbox-intro-inner reveal">
+            <span class="text-label">The Product</span>
+            <h2 class="home-unbox-heading">Inside the Box</h2>
+            <p class="home-unbox-lead">Five days of transformation.<br>Delivered to your door, ready to begin.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Sticky scenes block — 600vh tall, frame pins to viewport ── -->
+      <div class="home-unbox-scenes">
+        <div class="home-unbox-frame">
+          <!-- Images — all stacked, one visible at a time -->
+          <div class="home-unbox-images" aria-hidden="true">
+            <img class="home-unbox-img" src="assets/images/unbox/1 — The Box.png" alt="" />
+            <img class="home-unbox-img" src="assets/images/unbox/2 — The Reveal.png" alt="" />
+            <img class="home-unbox-img" src="assets/images/unbox/3 — Morning ritual.png" alt="" />
+            <img class="home-unbox-img" src="assets/images/unbox/4 — The meal close-up.png" alt="" />
+            <img class="home-unbox-img" src="assets/images/unbox/5 — Ingredients_textures.png" alt="" />
+            <img class="home-unbox-img" src="assets/images/unbox/6 — The full spread.png" alt="" />
+          </div>
+
+          <!-- Gradient overlay -->
+          <div class="home-unbox-overlay"></div>
+
+          <!-- Content panels — one per scene -->
+          <div class="home-unbox-contents">
+            <div class="home-unbox-content" data-index="0">
+              <span class="home-unbox-scene-tag">Arrival</span>
+              <h3 class="home-unbox-scene-name">The Box</h3>
+              <p class="home-unbox-scene-desc">Precision-packed, pristinely presented. Your five-day journey arrives at your door in a single, considered delivery.</p>
+            </div>
+            <div class="home-unbox-content" data-index="1">
+              <span class="home-unbox-scene-tag">First Look</span>
+              <h3 class="home-unbox-scene-name">The Reveal</h3>
+              <p class="home-unbox-scene-desc">Open the lid. Inside, five days of transformation — arranged with care, ready to begin.</p>
+            </div>
+            <div class="home-unbox-content" data-index="2">
+              <span class="home-unbox-scene-tag">Day Begins</span>
+              <h3 class="home-unbox-scene-name">Morning Ritual</h3>
+              <p class="home-unbox-scene-desc">Cold-pressed, nutrient-dense. Each morning starts with a carefully calibrated drink designed to activate your body's natural detox pathways.</p>
+            </div>
+            <div class="home-unbox-content" data-index="3">
+              <span class="home-unbox-scene-tag">Nourishment</span>
+              <h3 class="home-unbox-scene-name">The Meal</h3>
+              <p class="home-unbox-scene-desc">Every plate is a prescription. Crafted by nutritionists, balanced for cellular repair, and made to taste like nothing you've had before.</p>
+            </div>
+            <div class="home-unbox-content" data-index="4">
+              <span class="home-unbox-scene-tag">Source</span>
+              <h3 class="home-unbox-scene-name">The Ingredients</h3>
+              <p class="home-unbox-scene-desc">Nothing hidden. Every element chosen for a specific physiological purpose — roots, herbs, and minerals working in concert.</p>
+            </div>
+            <div class="home-unbox-content" data-index="5">
+              <span class="home-unbox-scene-tag">Complete</span>
+              <h3 class="home-unbox-scene-name">The Full Spread</h3>
+              <p class="home-unbox-scene-desc">This is what five days looks like. Everything you need — nothing you don't. Delivered once, consumed with intention.</p>
+            </div>
+          </div>
+
+          <!-- Scene counter -->
+          <div class="home-unbox-counter" aria-hidden="true">
+            <span class="home-unbox-counter-current">01</span>
+            <span class="home-unbox-counter-sep">/</span>
+            <span class="home-unbox-counter-total">06</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- ============================================================
+         5. SCIENCE PREVIEW — The Cellular Atlas (Scroll-Driven)
+         ============================================================ -->
+    <section class="home-science-section" id="homeScience">
+
+      <!-- ── Intro — flows normally above the sticky block ── -->
+      <div class="home-science-intro section">
+        <div class="container">
+          <div class="home-science-intro-inner reveal">
+            <span class="text-label">The Research</span>
+            <h2 class="home-science-heading">A Biological Process.</h2>
+            <p class="home-science-lead">Four systems. One transformation.<br>Scroll to explore what happens inside.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Sticky scenes block — 800vh tall, frame pins to viewport ── -->
+      <div class="home-science-scroll-section">
+        <div class="home-science-frame">
+
+          <!-- Particle field — fills frame behind the SVG -->
+          <canvas class="home-science-particles" aria-hidden="true"></canvas>
+
+          <!-- SVG visual — centered, morphs per state -->
+          <div class="home-science-visual" data-state="0">
+            <div class="home-science-glow" aria-hidden="true"></div>
+            <svg class="home-science-form" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Outer ring — appears in state 3 -->
+              <circle class="home-science-ring" cx="200" cy="200" r="160" stroke="currentColor" stroke-width="0.75" fill="none" stroke-dasharray="6 10" opacity="0"/>
+              <!-- Secondary ring -->
+              <circle class="home-science-ring-inner" cx="200" cy="200" r="120" stroke="currentColor" stroke-width="0.5" fill="none" stroke-dasharray="4 8" opacity="0"/>
+              <!-- Connecting lines -->
+              <g class="home-science-lines">
+                <line class="conn conn-1" x1="200" y1="200" x2="200" y2="100" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line class="conn conn-2" x1="200" y1="200" x2="290" y2="250" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line class="conn conn-3" x1="200" y1="200" x2="110" y2="250" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line class="conn conn-4" x1="200" y1="200" x2="200" y2="310" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <!-- Cross connections -->
+                <line class="conn conn-5" x1="200" y1="100" x2="290" y2="250" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/>
+                <line class="conn conn-6" x1="290" y1="250" x2="200" y2="310" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/>
+                <line class="conn conn-7" x1="200" y1="310" x2="110" y2="250" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/>
+                <line class="conn conn-8" x1="110" y1="250" x2="200" y2="100" stroke="currentColor" stroke-width="0.75" stroke-linecap="round"/>
+              </g>
+              <!-- Nodes -->
+              <g class="home-science-nodes">
+                <circle class="node node-center" cx="200" cy="200" r="14" fill="currentColor"/>
+                <circle class="node node-1" cx="200" cy="100" r="8" fill="currentColor"/>
+                <circle class="node node-2" cx="290" cy="250" r="8" fill="currentColor"/>
+                <circle class="node node-3" cx="110" cy="250" r="8" fill="currentColor"/>
+                <circle class="node node-4" cx="200" cy="310" r="8" fill="currentColor"/>
+              </g>
+            </svg>
+          </div>
+
+          <!-- Content panels — stacked, one visible at a time -->
+          <div class="home-science-contents">
+            <div class="home-science-content" data-index="0">
+              <span class="home-science-card-tag">System 01</span>
+              <h3 class="home-science-card-title">Metabolism</h3>
+              <p class="home-science-card-desc">Your body shifts from storage to repair mode. Cellular energy redirected toward detoxification.</p>
+            </div>
+            <div class="home-science-content" data-index="1">
+              <span class="home-science-card-tag">System 02</span>
+              <h3 class="home-science-card-title">Gut Microbiome</h3>
+              <p class="home-science-card-desc">Bacterial balance is restored. Inflammation reduces. The gut-brain axis strengthens.</p>
+            </div>
+            <div class="home-science-content" data-index="2">
+              <span class="home-science-card-tag">System 03</span>
+              <h3 class="home-science-card-title">Inflammation</h3>
+              <p class="home-science-card-desc">Chronic inflammatory markers drop. CRP, IL-6, TNF-alpha — measurable reduction.</p>
+            </div>
+            <div class="home-science-content" data-index="3">
+              <span class="home-science-card-tag">System 04</span>
+              <h3 class="home-science-card-title">Sleep &amp; Hormones</h3>
+              <p class="home-science-card-desc">Deep sleep returns. Cortisol regulates. Hormonal rebalancing begins.</p>
+            </div>
+          </div>
+
+          <!-- Scene counter -->
+          <div class="home-science-counter" aria-hidden="true">
+            <span class="home-science-counter-current">01</span>
+            <span class="home-science-counter-sep">/</span>
+            <span class="home-science-counter-total">04</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="home-science-cta section">
+        <div class="container">
+          <p class="home-science-note">Backed by peer-reviewed research and overseen by a team of medical specialists.</p>
+          <div class="home-section-cta">
+            <a href="science.html" class="btn btn-secondary">Explore the Science</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         6. TESTIMONIALS PREVIEW — Social proof
+         ============================================================ -->
+    <section class="section section-olive">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="text-label">Real Results</p>
+          <h2>Real People.</h2>
+          <p class="accent-voice">In their own words.</p>
+        </div>
+
+        <div class="home-testimonials-grid">
+          <div class="home-testimonial-card reveal" data-reveal-delay="1">
+            <span class="home-testimonial-quotemark" aria-hidden="true">&ldquo;</span>
+            <div class="home-testimonial-stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+            </div>
+            <p class="home-testimonial-quote">&ldquo;The brain fog lifted by day three. I felt sharper than I have in years.&rdquo;</p>
+            <div class="home-testimonial-author">
+              <div class="home-testimonial-avatar" aria-hidden="true">JM</div>
+              <div>
+                <p class="home-testimonial-name">Jessica M.</p>
+                <p class="home-testimonial-location">Upper East Side, NYC</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-testimonial-card reveal" data-reveal-delay="2">
+            <span class="home-testimonial-quotemark" aria-hidden="true">&ldquo;</span>
+            <div class="home-testimonial-stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+            </div>
+            <p class="home-testimonial-quote">&ldquo;This isn&rsquo;t a punishment. It&rsquo;s a genuine medical protocol that happens to taste incredible.&rdquo;</p>
+            <div class="home-testimonial-author">
+              <div class="home-testimonial-avatar" aria-hidden="true">SR</div>
+              <div>
+                <p class="home-testimonial-name">Dr. Stefan R.</p>
+                <p class="home-testimonial-location">Tribeca, NYC</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-testimonial-card reveal" data-reveal-delay="3">
+            <span class="home-testimonial-quotemark" aria-hidden="true">&ldquo;</span>
+            <div class="home-testimonial-stars" aria-label="5 out of 5 stars">
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+              <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 1l2.47 5.01L18 6.9l-4 3.9.94 5.5L10 13.4l-4.94 2.9.94-5.5-4-3.9 5.53-.89z"/></svg>
+            </div>
+            <p class="home-testimonial-quote">&ldquo;My skin cleared by day four. I didn&rsquo;t expect visible results so quickly.&rdquo;</p>
+            <div class="home-testimonial-author">
+              <div class="home-testimonial-avatar" aria-hidden="true">ML</div>
+              <div>
+                <p class="home-testimonial-name">Marina L.</p>
+                <p class="home-testimonial-location">SoHo, NYC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="home-section-cta reveal">
+          <a href="testimonials.html" class="btn btn-secondary">Read All Testimonials</a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         7. FINAL CTA — Peak-end rule
+         ============================================================ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <h2>Your Reset Begins Here</h2>
+          <p class="accent-voice">Limited spots each month.</p>
+        </div>
+        
+        <div class="home-section-cta reveal" data-reveal-delay="2">
+          <a href="order.html" class="btn btn-primary btn-lg">Reserve Your Spot</a>
+        </div>
+        
+        <p class="reveal" data-reveal-delay="3" style="text-align: center; margin-top: var(--space-xl); font-size: var(--text-sm); color: var(--color-text-tertiary);">
+          Five days. Twenty meals. A team of specialists behind every bite.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/lenis@1.3.18/dist/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/hero.js"></script>
+</body>
+</html>

@@ -1,0 +1,1370 @@
+/* ==========================================================================
+   WAGA WELLNESS — Home Page Styles
+
+   Curated highlight reel: hero → program → about → menu → science →
+   testimonials → final CTA.
+   ========================================================================== */
+
+
+/* =======================================================================
+   1. HERO — Image bg + centered scroll-expanding video
+
+   Layer stack (z-index):
+   0. hero-image.jpeg — inset, rounded corners (fades out on scroll)
+   1. Dark gradient overlay — header readability, edges match image
+   2. Video — centered small box, grows to fill hero on scroll
+   3. Text overlay — pushed off-screen as video expands
+   4. Scroll hint
+   ======================================================================= */
+
+.home-hero {
+  position: relative;
+  height: 100vh;
+  height: 100dvh;
+  background-color: #1a1410;
+  overflow: hidden;
+}
+
+/* --- Dark overlay for text readability --- */
+.home-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.18) 30%,
+    rgba(0, 0, 0, 0.18) 65%,
+    rgba(0, 0, 0, 0.40) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Video — full-screen background --- */
+.home-hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  animation: heroVideoReveal 1.2s var(--ease-out) both;
+}
+
+.home-hero-media-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.home-hero-media-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes heroVideoReveal {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Content overlay — centered --- */
+.home-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+/* Staggered entrance — each child slides up and fades in.
+   animation-fill-mode is "forwards" not "both" so JS can
+   override transform once the animation completes. */
+.home-hero-overlay > * {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroTextIn 0.8s var(--ease-out) forwards;
+}
+
+.home-hero-overlay > *:nth-child(1) { animation-delay: 0.6s; }
+.home-hero-overlay > *:nth-child(2) { animation-delay: 0.75s; }
+.home-hero-overlay > *:nth-child(3) { animation-delay: 0.9s; }
+.home-hero-overlay > *:nth-child(4) { animation-delay: 1.05s; }
+.home-hero-overlay > *:nth-child(5) { animation-delay: 1.2s; }
+
+
+@keyframes heroTextIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge */
+.home-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-weight);
+  letter-spacing: var(--badge-tracking);
+  text-transform: uppercase;
+  color: var(--color-neutral-50);
+  background-color: rgba(74, 61, 46, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: var(--badge-padding);
+  border-radius: var(--badge-radius);
+  border: 1px solid rgba(253, 251, 245, 0.15);
+  margin-bottom: var(--space-xl);
+}
+
+/* Heading — warm white on video */
+.home-hero h1 {
+  margin-bottom: var(--space-md);
+  color: var(--color-neutral-50);
+}
+
+.home-hero h1 .accent-voice {
+  display: block;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: var(--color-neutral-50);
+}
+
+/* Supporting line */
+.home-hero-supporting {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-neutral-50);
+  max-width: 480px;
+  margin-bottom: var(--space-2xl);
+}
+
+/* CTA buttons */
+.home-hero-ctas {
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* Secondary button — light on dark */
+.home-hero .btn-secondary {
+  color: var(--color-neutral-50);
+  border-color: rgba(253, 251, 245, 0.4);
+}
+
+.home-hero .btn-secondary:hover {
+  border-color: var(--color-neutral-50);
+  background-color: rgba(253, 251, 245, 0.1);
+}
+
+/* Meta line */
+.home-hero-meta {
+  font-size: var(--text-sm);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-neutral-50);
+}
+
+/* Scroll hint */
+.home-hero-scroll-hint {
+  position: absolute;
+  bottom: var(--space-2xl);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  color: rgba(253, 251, 245, 0.7);
+  animation: heroScrollFadeIn 0.8s var(--ease-out) 1.5s both;
+}
+
+@keyframes heroScrollFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.home-hero-scroll-hint .scroll-text {
+  font-size: 10px;
+  font-weight: var(--font-medium);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.home-hero-scroll-hint .scroll-line {
+  width: 1px;
+  height: 48px;
+  background-color: rgba(253, 251, 245, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.home-hero-scroll-hint .scroll-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-neutral-50);
+  animation: scrollLineDrop 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+
+@keyframes scrollLineDrop {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+
+/* =======================================================================
+   1b. HERO — Responsive
+   ======================================================================= */
+
+@media (min-width: 768px) {
+  .home-hero-overlay {
+    padding: var(--space-2xl);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero-media,
+  .home-hero-overlay > *,
+  .home-hero-scroll-hint {
+    animation: none;
+    opacity: 1;
+  }
+
+  .home-hero-scroll-hint {
+    opacity: 0.5;
+  }
+}
+
+
+/* =======================================================================
+   2. PRODUCT UNBOX — Sticky scroll scenes
+   ======================================================================= */
+
+.home-unbox-section {
+  background-color: var(--color-neutral-900);
+}
+
+.home-unbox-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  background-color: var(--waga-olive); /* Botanical Olive background */
+}
+
+.home-unbox-intro-inner {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.home-unbox-intro .text-label {
+  color: #DFB07A;
+}
+
+.home-unbox-heading {
+  color: var(--color-neutral-50);
+  margin-bottom: var(--space-xl);
+}
+
+.home-unbox-lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-neutral-200); /* Lighter text for contrast on olive */
+}
+
+/* ── Sticky block ── */
+
+.home-unbox-scenes {
+  /* Increased scroll runway (was 600vh) to slow down scene transitions */
+  height: 1200vh;
+}
+
+.home-unbox-frame {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background-color: var(--color-neutral-900);
+}
+
+.home-unbox-images {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.home-unbox-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.home-unbox-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    to top,
+    rgba(15, 33, 19, 0.92) 0%,
+    rgba(15, 33, 19, 0.40) 30%,
+    rgba(15, 33, 19, 0.08) 60%,
+    rgba(15, 33, 19, 0.00) 100%
+  );
+  pointer-events: none;
+}
+
+.home-unbox-contents {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.home-unbox-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-2xl) var(--space-md) var(--space-xl);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+
+.home-unbox-content.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-unbox-content::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-accent-400);
+  margin-bottom: var(--space-sm);
+}
+
+.home-unbox-scene-tag {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-accent-300);
+  margin-bottom: var(--space-xs);
+}
+
+.home-unbox-scene-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-5xl);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-neutral-50);
+  margin-bottom: var(--space-sm);
+}
+
+.home-unbox-scene-desc {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: rgba(253, 251, 245, 0.65);
+  max-width: 500px;
+}
+
+.home-unbox-counter {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-md);
+  z-index: 3;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wide);
+}
+
+.home-unbox-counter-current {
+  color: var(--color-accent-300);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.home-unbox-counter-sep,
+.home-unbox-counter-total {
+  color: var(--color-neutral-500);
+}
+
+/* ── Mobile & Desktop adjustments ── */
+@media (min-width: 768px) {
+  .home-unbox-content {
+    padding: var(--space-3xl) var(--space-2xl);
+  }
+  
+  .home-unbox-scene-name {
+    font-size: var(--text-6xl);
+    line-height: var(--leading-6xl);
+  }
+  
+  .home-unbox-counter {
+    bottom: var(--space-3xl);
+    right: var(--space-2xl);
+  }
+}
+
+
+/* =======================================================================
+   3. ABOUT PREVIEW — Pinned scroll-scrubbed video + content
+
+   Structure:
+   .home-about-section          → tall scroll runway (height set by JS)
+     .home-about-pinned         → sticky viewport-height wrapper
+       .home-about-layout       → two-column flex inside the pinned frame
+         .home-about-video-col  → left: video
+         .home-about-content-col→ right: text content
+   ======================================================================= */
+
+.home-about-section {
+  background-color: var(--color-neutral-50);
+  position: relative;
+}
+
+/* Sticky inner — pins to viewport while parent is scrolled through */
+.home-about-pinned {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Two-column layout inside the pinned frame */
+.home-about-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+}
+
+/* --- Left: Video column --- */
+.home-about-video-col {
+  width: 100%;
+}
+
+.home-about-video-frame {
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  max-height: 80vh;
+  background-color: var(--color-neutral-50);
+}
+
+.home-about-video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: multiply;
+  -webkit-mask-image: radial-gradient(ellipse 55% 55% at center, black 40%, transparent 72%);
+  mask-image: radial-gradient(ellipse 55% 55% at center, black 40%, transparent 72%);
+}
+
+/* --- Right: Content column --- */
+.home-about-content-col {
+  width: 100%;
+}
+
+.home-about-content-col .section-heading {
+  text-align: left;
+  margin-bottom: var(--space-2xl);
+}
+
+.home-about-content-col .home-section-cta {
+  text-align: left;
+}
+
+.home-about-text {
+  max-width: 520px;
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+/* Decorative divider */
+.home-about-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: 200px;
+  margin-bottom: var(--space-2xl);
+}
+
+.home-about-divider::before,
+.home-about-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-primary-300), transparent);
+}
+
+.home-about-divider::after {
+  background: linear-gradient(90deg, transparent, var(--color-primary-300));
+}
+
+/* Stats card */
+.home-stats-card {
+  background-color: var(--color-bg-sand);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+}
+
+.home-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+  text-align: center;
+}
+
+.home-stat-value {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-3xl);
+  letter-spacing: var(--tracking-tight);
+  background: linear-gradient(135deg, var(--color-neutral-800) 0%, var(--waga-russet) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.home-stat-label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-top: var(--space-2xs);
+}
+
+/* Content fades in as video scrubs — controlled by JS */
+.home-about-content-col {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.home-about-content-col.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Desktop: side-by-side --- */
+@media (min-width: 768px) {
+  .home-about-layout {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-3xl);
+    padding-inline: var(--space-2xl);
+  }
+
+  .home-about-video-col {
+    width: 50%;
+    flex-shrink: 0;
+  }
+
+  .home-about-video-frame {
+    aspect-ratio: 3 / 4;
+    max-height: 85vh;
+  }
+
+  .home-about-content-col {
+    width: 50%;
+  }
+
+  .home-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-about-layout {
+    gap: var(--space-4xl);
+  }
+
+  .home-stat-value {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+  }
+}
+
+
+
+/* =======================================================================
+   5. SCIENCE PREVIEW — The Cellular Atlas (Scroll-Driven)
+   Full-viewport sticky scroll, similar to Unbox section.
+   SVG visual centered, content panels overlay bottom-left.
+   ======================================================================= */
+
+.home-science-section {
+  background-color: var(--color-neutral-100);
+}
+
+/* ── Intro block ── */
+.home-science-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-neutral-50) 0%, var(--color-neutral-100) 100%);
+}
+
+.home-science-intro-inner {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.home-science-heading {
+  margin-top: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.home-science-lead {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+/* ── Sticky scroll block ── */
+.home-science-scroll-section {
+  height: 800vh;
+}
+
+.home-science-frame {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--color-neutral-100) 0%, var(--color-neutral-50) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Particle canvas — fills the sticky frame ── */
+.home-science-particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── SVG visual — centered in the frame ── */
+.home-science-visual {
+  position: relative;
+  z-index: 1;
+  width: 420px;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s var(--ease-out);
+}
+
+.home-science-glow {
+  position: absolute;
+  inset: -60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(185, 148, 112, 0.2) 0%, transparent 65%);
+  opacity: 1;
+  transition: background 1s var(--ease-out);
+}
+
+.home-science-form {
+  width: 360px;
+  height: 360px;
+  color: var(--waga-camel);
+  transition: color 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+/* Lines & nodes default state */
+.home-science-lines line {
+  opacity: 0.2;
+  transition: opacity 0.6s var(--ease-out), stroke-width 0.6s var(--ease-out);
+}
+
+.home-science-nodes circle {
+  opacity: 0.4;
+  transition: opacity 0.6s var(--ease-out), r 0.6s var(--ease-out);
+}
+
+.node-center {
+  opacity: 0.9 !important;
+}
+
+.home-science-ring,
+.home-science-ring-inner {
+  transition: opacity 0.8s var(--ease-out);
+}
+
+/* ── State 0 — Metabolism (camel/amber)
+   Warm pulsing — center node breathes, active line throbs,
+   glow pulses with amber warmth ── */
+.home-science-visual[data-state="0"] .home-science-form { color: var(--waga-camel); }
+.home-science-visual[data-state="0"] .home-science-glow {
+  background: radial-gradient(circle, rgba(185, 148, 112, 0.25) 0%, transparent 65%);
+  animation: metabolismGlow 3s ease-in-out infinite;
+}
+@keyframes metabolismGlow {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+.home-science-visual[data-state="0"] .node-center {
+  animation: metabolismPulse 2s ease-in-out infinite;
+}
+@keyframes metabolismPulse {
+  0%, 100% { r: 14; opacity: 0.9; }
+  50% { r: 18; opacity: 1; }
+}
+.home-science-visual[data-state="0"] .node-1 { opacity: 0.9; r: 11; }
+.home-science-visual[data-state="0"] .conn-1 {
+  opacity: 0.7;
+  stroke-width: 2.5;
+  animation: lineThrobMetabolism 2s ease-in-out infinite;
+}
+@keyframes lineThrobMetabolism {
+  0%, 100% { opacity: 0.5; stroke-width: 1.5; }
+  50% { opacity: 0.8; stroke-width: 2.5; }
+}
+.home-science-visual[data-state="0"] .conn-5,
+.home-science-visual[data-state="0"] .conn-8 { opacity: 0.15; }
+
+/* ── State 1 — Gut Microbiome (russet)
+   Branching outward — side nodes pulse in alternation,
+   cross-connections shimmer, inner ring fades in ── */
+.home-science-visual[data-state="1"] .home-science-form { color: var(--waga-russet); }
+.home-science-visual[data-state="1"] .home-science-glow {
+  background: radial-gradient(circle, rgba(120, 61, 25, 0.22) 0%, transparent 65%);
+  animation: gutGlow 4s ease-in-out infinite;
+}
+@keyframes gutGlow {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.06); opacity: 1; }
+}
+.home-science-visual[data-state="1"] .node-2 {
+  opacity: 1; r: 11;
+  animation: gutNodeA 2.5s ease-in-out infinite;
+}
+.home-science-visual[data-state="1"] .node-3 {
+  opacity: 1; r: 11;
+  animation: gutNodeB 2.5s ease-in-out 1.25s infinite;
+}
+@keyframes gutNodeA {
+  0%, 100% { r: 8; opacity: 0.6; }
+  50% { r: 12; opacity: 1; }
+}
+@keyframes gutNodeB {
+  0%, 100% { r: 8; opacity: 0.6; }
+  50% { r: 12; opacity: 1; }
+}
+.home-science-visual[data-state="1"] .conn-2,
+.home-science-visual[data-state="1"] .conn-3 { opacity: 0.6; stroke-width: 2; }
+.home-science-visual[data-state="1"] .conn-5 {
+  animation: gutShimmer 3s ease-in-out infinite;
+}
+.home-science-visual[data-state="1"] .conn-8 {
+  animation: gutShimmer 3s ease-in-out 1.5s infinite;
+}
+@keyframes gutShimmer {
+  0%, 100% { opacity: 0.1; stroke-width: 0.75; }
+  50% { opacity: 0.45; stroke-width: 1.5; }
+}
+.home-science-visual[data-state="1"] .home-science-ring-inner {
+  opacity: 0.2;
+  animation: ringRotate 30s linear infinite reverse;
+}
+
+/* ── State 2 — Inflammation (olive)
+   Contraction — form tightens, vertical axis nodes pulse inward,
+   lines constrict rhythmically, ring tightens ── */
+.home-science-visual[data-state="2"] .home-science-form {
+  color: var(--waga-olive);
+  animation: inflammContract 4s ease-in-out infinite;
+}
+@keyframes inflammContract {
+  0%, 100% { transform: scale(0.97); }
+  50% { transform: scale(0.92); }
+}
+.home-science-visual[data-state="2"] .home-science-glow {
+  background: radial-gradient(circle, rgba(95, 111, 82, 0.2) 0%, transparent 65%);
+  animation: inflammGlow 4s ease-in-out infinite;
+}
+@keyframes inflammGlow {
+  0%, 100% { transform: scale(1.05); opacity: 0.9; }
+  50% { transform: scale(0.92); opacity: 0.6; }
+}
+.home-science-visual[data-state="2"] .node-1,
+.home-science-visual[data-state="2"] .node-4 {
+  opacity: 0.9; r: 10;
+  animation: inflammNode 3s ease-in-out infinite;
+}
+@keyframes inflammNode {
+  0%, 100% { r: 10; opacity: 0.9; }
+  50% { r: 7; opacity: 0.6; }
+}
+.home-science-visual[data-state="2"] .conn-1,
+.home-science-visual[data-state="2"] .conn-4 {
+  animation: inflammLine 3s ease-in-out infinite;
+}
+@keyframes inflammLine {
+  0%, 100% { opacity: 0.6; stroke-width: 2; }
+  50% { opacity: 0.3; stroke-width: 1; }
+}
+.home-science-visual[data-state="2"] .conn-6,
+.home-science-visual[data-state="2"] .conn-7 { opacity: 0.3; stroke-width: 1; }
+.home-science-visual[data-state="2"] .home-science-ring-inner {
+  opacity: 0.25;
+  animation: inflammRing 4s ease-in-out infinite;
+}
+@keyframes inflammRing {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.1; }
+}
+
+/* ── State 3 — Sleep & Hormones (alloy) — full activation
+   Everything illuminates — both rings rotate, all nodes full,
+   golden glow at maximum ── */
+.home-science-visual[data-state="3"] .home-science-form {
+  color: var(--waga-alloy);
+  transform: scale(1.08);
+}
+.home-science-visual[data-state="3"] .home-science-glow {
+  background: radial-gradient(circle, rgba(196, 102, 31, 0.25) 0%, transparent 65%);
+  animation: hormonesGlow 5s ease-in-out infinite;
+}
+@keyframes hormonesGlow {
+  0%, 100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+.home-science-visual[data-state="3"] .home-science-ring {
+  opacity: 0.4;
+  animation: ringRotate 25s linear infinite;
+}
+.home-science-visual[data-state="3"] .home-science-ring-inner {
+  opacity: 0.3;
+  animation: ringRotate 18s linear infinite reverse;
+}
+@keyframes ringRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.home-science-visual[data-state="3"] .node-center {
+  opacity: 1 !important;
+  animation: hormonesCenterPulse 3s ease-in-out infinite;
+}
+@keyframes hormonesCenterPulse {
+  0%, 100% { r: 16; }
+  50% { r: 20; }
+}
+.home-science-visual[data-state="3"] .home-science-nodes circle { opacity: 1; r: 11; }
+.home-science-visual[data-state="3"] .home-science-lines line { opacity: 0.7; stroke-width: 2; }
+
+/* ── Content panels — positioned bottom-left, stacked ── */
+.home-science-contents {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.home-science-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: var(--space-3xl) var(--space-xl) var(--space-2xl);
+  background: linear-gradient(to top, rgba(253, 251, 245, 0.95) 0%, rgba(253, 251, 245, 0.6) 60%, transparent 100%);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.home-science-content.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.home-science-content::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--waga-alloy);
+  margin-bottom: var(--space-md);
+}
+
+.home-science-card-tag {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--waga-alloy);
+  margin-bottom: var(--space-xs);
+}
+
+.home-science-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-3xl);
+  font-weight: var(--font-regular);
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-neutral-900);
+  margin-bottom: var(--space-sm);
+}
+
+.home-science-card-desc {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  max-width: 520px;
+}
+
+/* ── Counter — bottom right ── */
+.home-science-counter {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  z-index: 4;
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  font-family: var(--font-body);
+  font-size: var(--text-caption);
+  font-weight: var(--font-medium);
+  letter-spacing: var(--tracking-wide);
+}
+
+.home-science-counter-current {
+  color: var(--waga-alloy);
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+}
+
+.home-science-counter-sep,
+.home-science-counter-total {
+  color: var(--color-neutral-400);
+}
+
+/* ── CTA ── */
+.home-science-cta {
+  background-color: var(--color-neutral-50);
+  text-align: center;
+  padding-block: var(--space-5xl);
+}
+
+.home-science-note {
+  max-width: 640px;
+  margin-inline: auto;
+  margin-bottom: var(--space-2xl);
+  color: var(--color-text-tertiary);
+}
+
+/* ── Desktop ── */
+@media (min-width: 768px) {
+  .home-science-content {
+    padding: var(--space-3xl) var(--space-2xl) var(--space-2xl);
+    max-width: 600px;
+  }
+
+  .home-science-counter {
+    bottom: var(--space-2xl);
+    right: var(--space-2xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  .home-science-visual {
+    width: 500px;
+    height: 500px;
+  }
+
+  .home-science-form {
+    width: 440px;
+    height: 440px;
+  }
+
+  .home-science-card-title {
+    font-size: var(--text-4xl);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 767px) {
+  .home-science-visual {
+    width: 280px;
+    height: 280px;
+  }
+
+  .home-science-form {
+    width: 240px;
+    height: 240px;
+  }
+
+  .home-science-glow {
+    inset: -40px;
+  }
+
+  .home-science-content {
+    /* Extra bottom padding so text clears the absolute-positioned counter */
+    padding: var(--space-2xl) var(--space-md) var(--space-3xl);
+  }
+
+  .home-science-card-title {
+    font-size: var(--text-2xl);
+  }
+
+  .home-science-card-desc {
+    font-size: var(--text-base);
+    /* Keep text away from the counter in the bottom-right corner */
+    padding-right: 5rem;
+  }
+
+  .home-science-counter {
+    right: var(--space-md);
+    bottom: var(--space-md);
+  }
+}
+
+/* =======================================================================
+   6. TESTIMONIALS PREVIEW
+   ======================================================================= */
+
+.home-testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block: var(--space-xl);
+}
+
+.home-testimonial-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-neutral-50);
+  padding: var(--space-3xl) var(--space-2xl);
+  border-radius: var(--radius-xl);
+  /* Organic, warm, floaty shadow */
+  box-shadow: 0 24px 64px -12px rgba(185, 148, 112, 0.15),
+              0 0 1px rgba(185, 148, 112, 0.2);
+  transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+}
+
+.home-testimonial-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 32px 80px -16px rgba(185, 148, 112, 0.25),
+              0 0 1px rgba(185, 148, 112, 0.3);
+}
+
+/* Large decorative quote mark watermark */
+.home-testimonial-quotemark {
+  position: absolute;
+  top: -24px;
+  right: var(--space-lg);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 180px;
+  line-height: 1;
+  background: linear-gradient(180deg, var(--waga-meringue) 0%, rgba(249,235,199,0) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* SVG stars */
+.home-testimonial-stars {
+  display: flex;
+  gap: 4px;
+  margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.home-testimonial-stars svg {
+  width: 18px;
+  height: 18px;
+  color: #DFB07A; /* Using the specific warm gold requested earlier */
+}
+
+/* Luxurious typography for the quote */
+.home-testimonial-quote {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-2xl);
+  line-height: 1.35;
+  color: var(--color-neutral-900);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+  z-index: 1;
+}
+
+.home-testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  position: relative;
+  z-index: 1;
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(185, 148, 112, 0.15);
+}
+
+.home-testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--waga-meringue) 0%, var(--waga-camel) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-neutral-900);
+  box-shadow: 0 4px 12px rgba(185, 148, 112, 0.2);
+}
+
+.home-testimonial-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  color: var(--color-text-heading);
+  margin-bottom: 2px;
+}
+
+.home-testimonial-location {
+  font-size: var(--text-caption);
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+}
+
+
+
+/* =======================================================================
+   8. SECTION CTA (centered CTA below section content)
+   ======================================================================= */
+
+.home-section-cta {
+  text-align: center;
+  margin-top: var(--space-2xl);
+}
+
+
+/* =======================================================================
+   9. RESPONSIVE
+   ======================================================================= */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  .home-testimonials-grid {
+    grid-template-columns: repeat(3, 1fr);
+    align-items: start;
+  }
+  
+  /* Staggered organic layout for quote cards */
+  .home-testimonial-card:nth-child(2) {
+    margin-top: var(--space-4xl);
+  }
+  
+  .home-testimonial-card:nth-child(3) {
+    margin-top: var(--space-2xl);
+  }
+}
+
+/* =======================================================================
+   MOBILE — max-width: 767px
+   Section-by-section corrections for small screens.
+   ======================================================================= */
+
+/* 1. Hero — scale down type, tighten spacing */
+@media (max-width: 767px) {
+  .home-hero h1 {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+
+  .home-hero-badge {
+    font-size: 10px;
+    padding: 5px 10px;
+    margin-bottom: var(--space-lg);
+  }
+
+  .home-hero-supporting {
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    margin-bottom: var(--space-xl);
+  }
+
+  .home-hero-ctas {
+    margin-bottom: var(--space-lg);
+  }
+}
+
+/* 2. About preview — remove sticky/scrub, single-column, always-visible content */
+@media (max-width: 767px) {
+  /* Override any JS-set inline height */
+  .home-about-section {
+    height: auto !important;
+  }
+
+  /* Unstick the inner wrapper and let it flow */
+  .home-about-pinned {
+    position: relative;
+    height: auto;
+    min-height: 0;
+    padding-block: var(--space-4xl) var(--space-3xl);
+    align-items: flex-start;
+  }
+
+  .home-about-layout {
+    flex-direction: column;
+    gap: var(--space-2xl);
+    padding-inline: var(--space-md);
+  }
+
+  /* Hide scroll-scrubbed video — not usable on mobile */
+  .home-about-video-col {
+    display: none;
+  }
+
+  /* Content is always visible — JS skip handles the class, this is the fallback */
+  .home-about-content-col {
+    width: 100%;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Centre section heading and CTA */
+  .home-about-content-col .section-heading {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+
+  .home-about-content-col .home-section-cta {
+    text-align: center;
+  }
+
+  .home-about-text {
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    max-width: 100%;
+    margin-bottom: var(--space-xl);
+    text-align: center;
+  }
+
+  .home-stats-card {
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .home-stat-value {
+    font-size: var(--text-2xl);
+    line-height: var(--leading-2xl);
+  }
+}
+
+/* 3. Unbox scenes — scale down headline inside sticky frame */
+@media (max-width: 767px) {
+  .home-unbox-content {
+    /* Extra bottom padding so text clears the absolute-positioned counter */
+    padding: var(--space-xl) var(--space-md) var(--space-3xl);
+  }
+
+  .home-unbox-scene-name {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+
+  .home-unbox-scene-desc {
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    /* Keep text away from the counter in the bottom-right corner */
+    padding-right: 5rem;
+  }
+}
+
+/* 4. Science CTA — reduce excessive vertical padding */
+@media (max-width: 767px) {
+  .home-science-cta {
+    padding-block: var(--space-3xl);
+  }
+}
+
+/* 5. Testimonials — lighter cards on single-column mobile */
+@media (max-width: 767px) {
+  .home-testimonial-card {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .home-testimonial-quote {
+    font-size: var(--text-xl);
+    line-height: 1.45;
+    margin-bottom: var(--space-xl);
+  }
+}
+
+
+/* =======================================================================
+   10. REDUCED MOTION
+   ======================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .home-science-card,
+  .home-testimonial-card {
+    transition: none;
+  }
+}

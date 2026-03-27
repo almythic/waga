@@ -1,0 +1,614 @@
+/* ==========================================================================
+   WAGA WELLNESS — Program Page Styles
+   Hybrid Direction A + B redesign.
+   ========================================================================== */
+
+
+/* =======================================================================
+   1. HERO — Image hero, seamless fade into next section
+   ======================================================================= */
+
+.program-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Background image layer */
+.program-hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-color: var(--color-neutral-100);
+}
+
+/* Subtly darkened vignette overlay — matches Home page, improves text contrast */
+.program-hero-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.18) 30%,
+    rgba(0, 0, 0, 0.18) 65%,
+    rgba(0, 0, 0, 0.40) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Fade from transparent at top to neutral-50 at bottom — seamless blend into next section */
+.program-hero-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, var(--color-neutral-50) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.program-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Hero content — front layer */
+.program-hero-content {
+  position: relative;
+  z-index: 1;
+  padding: var(--space-4xl) var(--space-md);
+  max-width: 800px;
+  will-change: transform, opacity;
+}
+
+/* Badge pill */
+.program-hero .badge {
+  display: inline-block;
+  padding: var(--badge-padding);
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-weight);
+  letter-spacing: var(--badge-tracking);
+  text-transform: uppercase;
+  border-radius: var(--badge-radius);
+  background-color: var(--badge-warm-bg);
+  color: var(--badge-warm-text);
+  border: 1px solid var(--badge-warm-border);
+  margin-bottom: var(--space-xl);
+}
+
+/* Heading — solid light text */
+.program-hero-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-5xl);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-neutral-50);
+  margin-bottom: var(--space-md);
+}
+
+/* Accent voice below heading */
+.program-hero-accent {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  color: var(--color-neutral-200);
+}
+
+
+/* =======================================================================
+   2. FIXED LEFT-EDGE PROGRESS RAIL
+   ======================================================================= */
+
+.progress-rail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  width: 3px;
+  background-color: rgba(107, 90, 66, 0.10);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration-normal) var(--ease-organic),
+    visibility var(--duration-normal) var(--ease-organic);
+  pointer-events: none;
+}
+
+.progress-rail.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.progress-rail-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%; /* driven by JS */
+  background-color: var(--color-primary-400);
+  transition: height var(--duration-normal) var(--ease-organic);
+}
+
+/* Rotated label beside rail (desktop only) */
+.progress-rail-label {
+  display: none;
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  white-space: nowrap;
+}
+
+
+/* =======================================================================
+   3. INTRO SECTION — two-column: Protocol + Narrative
+   ======================================================================= */
+
+.program-intro-section {
+  background-color: var(--color-neutral-50);
+}
+
+.program-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+}
+
+/* --- Protocol column (left on desktop) --- */
+.program-intro-protocol .text-label {
+  margin-bottom: var(--space-lg);
+}
+
+.program-protocol-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.program-protocol-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--space-md);
+  align-items: start;
+  padding-block: var(--space-xl);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.program-protocol-item:first-child {
+  border-top: 1px solid var(--color-border-default);
+}
+
+.program-protocol-num {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-regular);
+  line-height: 1;
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-accent-400);
+}
+
+.program-protocol-text strong {
+  display: block;
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-2xs);
+}
+
+.program-protocol-text p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+/* --- Narrative column (right on desktop) --- */
+.program-intro-narrative .text-label {
+  margin-bottom: var(--space-sm);
+}
+
+.program-intro-narrative h2 {
+  margin-bottom: var(--space-md);
+}
+
+.program-intro-accent {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xl);
+}
+
+.program-intro-narrative p {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+}
+
+.program-intro-narrative p + p {
+  margin-top: var(--space-lg);
+}
+
+.program-intro-narrative .btn {
+  margin-top: var(--space-2xl);
+}
+
+
+/* =======================================================================
+   4. DAY SECTIONS — Two-column Protocol layout, progressive backgrounds
+   ======================================================================= */
+
+/* Base: neutral-50 (warm white) — Day 1 */
+.day-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-4xl);
+  overflow: hidden;
+  background-color: var(--color-neutral-50);
+}
+
+/* Progressive warmth across the five days */
+.day-section-2 { background-color: var(--color-neutral-100); }
+.day-section-3 { background-color: var(--waga-cornsilk); }
+.day-section-4 { background-color: var(--waga-meringue); }
+.day-section-5 { background-color: var(--color-primary-50); }
+
+/* Large faded day number watermark */
+.day-watermark {
+  position: absolute;
+  right: -0.05em;
+  bottom: -0.15em;
+  z-index: 0;
+  font-family: var(--font-heading);
+  font-size: clamp(160px, 28vw, 380px);
+  font-weight: var(--font-bold);
+  line-height: 1;
+  letter-spacing: var(--tracking-tighter);
+  color: rgba(74, 61, 46, 0.06);
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Two-column grid */
+.day-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3xl);
+  width: 100%;
+}
+
+/* Day number label */
+.day-number {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-accent-400);
+  margin-bottom: var(--space-sm);
+}
+
+.day-title {
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.day-subtitle {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.day-body {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  max-width: 560px;
+}
+
+/* Clinical column */
+.day-col-clinical {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* Track cards */
+.day-track {
+  padding: var(--space-lg);
+  border-left: 3px solid var(--color-primary-400);
+  background-color: var(--color-bg-card);
+  box-shadow: var(--card-shadow);
+  border-radius: 0 var(--card-radius) var(--card-radius) 0;
+}
+
+.day-track-label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+}
+
+.day-track-label.track-body  { color: var(--color-accent-500); }
+.day-track-label.track-mind  { color: var(--color-botanical-500); }
+.day-track-label.track-spirit { color: var(--color-info-500); }
+
+.day-track p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   5. WHAT YOU RECEIVE — Horizontal strip (light bg)
+   ======================================================================= */
+
+#program-receive {
+  background-color: var(--color-neutral-50);
+}
+
+.receive-strip {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+}
+
+.receive-card {
+  flex-shrink: 0;
+  padding: var(--space-xl) var(--space-lg);
+  border-left: 3px solid var(--color-primary-400);
+  background-color: var(--color-bg-card);
+  border-radius: 0 var(--card-radius) var(--card-radius) 0;
+  box-shadow: var(--card-shadow);
+}
+
+.receive-card-count {
+  font-family: var(--font-heading);
+  font-size: var(--text-4xl);
+  font-weight: var(--font-regular);
+  line-height: 1;
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-accent-400);
+  margin-bottom: var(--space-sm);
+}
+
+.receive-card-title {
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-xs);
+}
+
+.receive-card-body {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   6. TRANSFORMATION SUMMARY — section-olive (dark bg)
+   ======================================================================= */
+
+/* Colors for dark olive context */
+#program-transform .text-label            { color: var(--color-primary-300); }
+#program-transform h2                     { color: var(--color-neutral-50); }
+#program-transform .section-heading .accent-voice { color: var(--color-neutral-200); }
+#program-transform .transform-column h4  { color: var(--color-neutral-50); }
+#program-transform .transform-column .accent-voice { color: var(--color-primary-200); }
+#program-transform .transform-column > p:last-child { color: rgba(253, 251, 245, 0.72); }
+
+.transform-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.transform-column {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.transform-column h4 {
+  margin-bottom: var(--space-sm);
+}
+
+.transform-column .accent-voice {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.transform-column p {
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+  max-width: 320px;
+  margin-inline: auto;
+}
+
+.transform-divider {
+  display: none;
+  width: 1px;
+  background-color: var(--color-border-default);
+}
+
+
+/* =======================================================================
+   7. FINAL CTA
+   ======================================================================= */
+
+.program-cta {
+  text-align: center;
+  padding-block: var(--space-5xl);
+  background-color: var(--color-neutral-50);
+}
+
+.program-cta .badge {
+  display: inline-block;
+  padding: var(--badge-padding);
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-weight);
+  letter-spacing: var(--badge-tracking);
+  text-transform: uppercase;
+  border-radius: var(--badge-radius);
+  background-color: rgba(185, 148, 112, 0.08);
+  color: var(--color-neutral-600);
+  border: 1px solid rgba(185, 148, 112, 0.2);
+  margin-bottom: var(--space-xl);
+}
+
+.program-cta h2 {
+  margin-bottom: var(--space-xs);
+}
+
+.program-cta .accent-voice {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2xl);
+}
+
+.program-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+}
+
+
+/* =======================================================================
+   8. RESPONSIVE
+   ======================================================================= */
+
+/* Tablet: 768px+ */
+@media (min-width: 768px) {
+  /* Hero */
+  .program-hero-heading {
+    font-size: var(--text-6xl);
+    line-height: var(--leading-6xl);
+  }
+
+  .program-hero-accent {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+
+  /* Receive strip: horizontal scroll on tablet+ */
+  .receive-strip {
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-lg);
+    /* Hide scrollbar but keep scroll functionality */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: var(--space-xs);
+  }
+
+  .receive-strip::-webkit-scrollbar {
+    display: none;
+  }
+
+  .receive-card {
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  .transform-grid {
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: flex-start;
+  }
+
+  .transform-divider {
+    display: block;
+    align-self: stretch;
+  }
+}
+
+/* Desktop: 1024px+ */
+@media (min-width: 1024px) {
+  /* Hero */
+  .program-hero-content {
+    padding: var(--space-5xl) var(--space-lg);
+  }
+
+  /* Intro: two columns, protocol left, narrative right */
+  .program-intro-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: start;
+  }
+
+  .program-intro-protocol {
+    order: -1;
+  }
+
+  /* Day sections: two-column layout */
+  .day-content {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4xl);
+    align-items: center;
+  }
+
+  /* Clinical column goes left */
+  .day-col-clinical {
+    order: -1;
+  }
+
+  /* Receive strip: 4 equal cards */
+  .receive-card {
+    flex: 1;
+    min-width: 0;
+    scroll-snap-align: none;
+  }
+
+  /* Progress rail label (desktop only) */
+  .progress-rail-label {
+    display: block;
+  }
+}
+
+/* Wide: 1280px+ */
+@media (min-width: 1280px) {
+  .program-hero-heading {
+    font-size: 76px;
+    line-height: 84px;
+    letter-spacing: var(--tracking-tighter);
+  }
+
+  .program-hero-accent {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .progress-rail-fill {
+    transition: none;
+  }
+}
