@@ -1,5 +1,5 @@
 /* ============================================================
-   WAGA Wellness — Design Tokens
+   WAGA Wellness — Design Tokens (Production CSS) v2.0
    ============================================================ */
 :root {
   /* Brand Colors */
@@ -60,8 +60,39 @@
   --color-botanical-800: #2E362A;
   --color-botanical-900: #1F241D;
 
-  /* Typography */
-  --font-heading: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
-  --font-accent: 'Baskervville', 'Baskerville', 'Georgia', serif;
-  --font-body: 'Work Sans', 'Helvetica Neue', system-ui, sans-serif;
+  /* Typography — Dual Voice: Geist (structure) + Instrument Serif Italic (emotion) */
+  --font-heading: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
+  --font-accent: 'Instrument Serif', 'Georgia', serif;
+  /* Italic only */
+  --font-body: 'Geist', 'Helvetica Neue', system-ui, sans-serif;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  /* Letter Spacing — calibrated for Geist (naturally tighter than Work Sans) */
+  --tracking-tighter: -0.025em;
+  --tracking-tight: -0.015em;
+  --tracking-snug: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.02em;
+  --tracking-wider: 0.06em;
+  --tracking-widest: 0.1em;
+
+  /* Badge / Pill Variants */
+  --badge-accent-bg: rgba(196, 102, 31, 0.06);
+  --badge-accent-text: #C4661F;
+  --badge-accent-border: rgba(196, 102, 31, 0.20);
+
+  --badge-warm-bg: #FBF5EE;
+  --badge-warm-text: #8F6843;
+  --badge-warm-border: #EDCFAA;
+
+  --badge-sand-bg: #FAF6EC;
+  --badge-sand-text: #8A7556;
+  --badge-sand-border: #E5DBBF;
+
+  --badge-botanical-bg: rgba(169, 179, 136, 0.10);
+  --badge-botanical-text: #5F6F52;
+  --badge-botanical-border: #E6EADE;
 }
