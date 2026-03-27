@@ -276,12 +276,14 @@
 }
 
 .home-unbox-intro .text-label {
+  display: block;
+  margin-bottom: var(--space-sm);
   color: #DFB07A;
 }
 
 .home-unbox-heading {
   color: var(--color-neutral-50);
-  margin-bottom: var(--space-xl);
+  margin-bottom: var(--space-md);
 }
 
 .home-unbox-lead {
