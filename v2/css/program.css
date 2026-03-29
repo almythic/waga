@@ -8,101 +8,6 @@
    1. HERO — Image hero, seamless fade into next section
    ======================================================================= */
 
-.program-hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Background image layer */
-.program-hero-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: var(--color-neutral-100);
-}
-
-/* Subtly darkened vignette overlay — matches Home page, improves text contrast */
-.program-hero-image::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.50) 0%,
-    rgba(0, 0, 0, 0.18) 30%,
-    rgba(0, 0, 0, 0.18) 65%,
-    rgba(0, 0, 0, 0.40) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Fade from transparent at top to neutral-50 at bottom — seamless blend into next section */
-.program-hero-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, var(--color-neutral-50) 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.program-hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Hero content — front layer */
-.program-hero-content {
-  position: relative;
-  z-index: 1;
-  padding: var(--space-4xl) var(--space-md);
-  max-width: 800px;
-  will-change: transform, opacity;
-}
-
-/* Badge pill */
-.program-hero .badge {
-  display: inline-block;
-  padding: var(--badge-padding);
-  font-size: var(--badge-font-size);
-  font-weight: var(--badge-weight);
-  letter-spacing: var(--badge-tracking);
-  text-transform: uppercase;
-  border-radius: var(--badge-radius);
-  background-color: var(--badge-warm-bg);
-  color: var(--badge-warm-text);
-  border: 1px solid var(--badge-warm-border);
-  margin-bottom: var(--space-xl);
-}
-
-/* Heading — solid light text */
-.program-hero-heading {
-  font-family: var(--font-heading);
-  font-size: var(--text-5xl);
-  font-weight: var(--font-regular);
-  line-height: var(--leading-5xl);
-  letter-spacing: var(--tracking-tighter);
-  color: var(--color-neutral-50);
-  margin-bottom: var(--space-md);
-}
-
-/* Accent voice below heading */
-.program-hero-accent {
-  font-size: var(--text-2xl);
-  line-height: var(--leading-2xl);
-  color: var(--color-neutral-200);
-}
-
-
 /* =======================================================================
    2. FIXED LEFT-EDGE PROGRESS RAIL
    ======================================================================= */
@@ -361,6 +266,135 @@
 
 
 /* =======================================================================
+   4b. DAYS SCROLL — Scroll-scrubbed slide-up transitions (desktop)
+   Mirrors the "Inside the Box" unbox section on the home page.
+   Each day panel slides up from below proportional to scroll position.
+   ======================================================================= */
+
+/* Mobile-first: days flow normally — all visible */
+.days-scroll-section {
+  position: relative;
+}
+
+/* Desktop: sticky scroll container */
+@media (min-width: 1024px) {
+  .days-scroll-section {
+    height: 600vh; /* 120vh dwell per day */
+  }
+
+  .days-sticky-frame {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  /* Stack all panels. z-index and transform are set by JS.
+     CSS provides the pre-JS default: Day 1 visible, rest off-screen below. */
+  .days-sticky-frame .day-section {
+    position: absolute;
+    inset: 0;
+    min-height: unset;
+    height: 100%;
+    transform: translateY(100%);
+    will-change: transform;
+  }
+
+  .days-sticky-frame .day-section:first-child {
+    transform: translateY(0);
+  }
+
+  /* Content stagger: enters when JS adds .is-active */
+  .days-sticky-frame .day-section .day-number,
+  .days-sticky-frame .day-section .day-title,
+  .days-sticky-frame .day-section .day-subtitle,
+  .days-sticky-frame .day-section .day-body,
+  .days-sticky-frame .day-section .day-col-clinical {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity var(--duration-slow) var(--ease-out),
+      transform var(--duration-slow) var(--ease-out);
+  }
+
+  .days-sticky-frame .day-section.is-active .day-number {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .days-sticky-frame .day-section.is-active .day-title {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.06s;
+  }
+
+  .days-sticky-frame .day-section.is-active .day-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.12s;
+  }
+
+  .days-sticky-frame .day-section.is-active .day-body {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.18s;
+  }
+
+  .days-sticky-frame .day-section.is-active .day-col-clinical {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.08s;
+  }
+
+  /* Settled panels (fully behind the active card) keep their content visible.
+     Placed after .is-active rules — same specificity, last wins.
+     .is-settled and .is-active never coexist on the same panel. */
+  .days-sticky-frame .day-section.is-settled .day-number,
+  .days-sticky-frame .day-section.is-settled .day-title,
+  .days-sticky-frame .day-section.is-settled .day-subtitle,
+  .days-sticky-frame .day-section.is-settled .day-body,
+  .days-sticky-frame .day-section.is-settled .day-col-clinical {
+    opacity: 1;
+    transform: translateY(0);
+    transition: none;
+  }
+}
+
+/* Reduced motion: revert desktop to normal flow (same as mobile) */
+@media (min-width: 1024px) and (prefers-reduced-motion: reduce) {
+  .days-scroll-section {
+    height: auto;
+  }
+
+  .days-sticky-frame {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+
+  .days-sticky-frame .day-section {
+    position: static;
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: auto;
+    transform: none;
+    will-change: auto;
+  }
+
+  .days-sticky-frame .day-section .day-number,
+  .days-sticky-frame .day-section .day-title,
+  .days-sticky-frame .day-section .day-subtitle,
+  .days-sticky-frame .day-section .day-body,
+  .days-sticky-frame .day-section .day-col-clinical {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+
+/* =======================================================================
    5. WHAT YOU RECEIVE — Horizontal strip (light bg)
    ======================================================================= */
 
@@ -432,9 +466,14 @@
 
 .transform-column h4 {
   margin-bottom: var(--space-sm);
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: var(--font-regular);
 }
 
 .transform-column .accent-voice {
+  font-family: var(--font-body);
+  font-style: normal;
   font-size: var(--text-lg);
   line-height: var(--leading-lg);
   color: var(--color-text-secondary);
@@ -460,20 +499,9 @@
    7. FINAL CTA
    ======================================================================= */
 
-.program-cta {
-  text-align: center;
-  padding-block: var(--space-5xl);
-  background-color: var(--color-neutral-50);
-}
+/* (Legacy program-cta wrapper moved to global section-cta) */
 
 .program-cta .badge {
-  display: inline-block;
-  padding: var(--badge-padding);
-  font-size: var(--badge-font-size);
-  font-weight: var(--badge-weight);
-  letter-spacing: var(--badge-tracking);
-  text-transform: uppercase;
-  border-radius: var(--badge-radius);
   background-color: rgba(185, 148, 112, 0.08);
   color: var(--color-neutral-600);
   border: 1px solid rgba(185, 148, 112, 0.2);
@@ -505,17 +533,6 @@
 
 /* Tablet: 768px+ */
 @media (min-width: 768px) {
-  /* Hero */
-  .program-hero-heading {
-    font-size: var(--text-6xl);
-    line-height: var(--leading-6xl);
-  }
-
-  .program-hero-accent {
-    font-size: var(--text-3xl);
-    line-height: var(--leading-3xl);
-  }
-
   /* Receive strip: horizontal scroll on tablet+ */
   .receive-strip {
     flex-direction: row;
@@ -551,11 +568,6 @@
 
 /* Desktop: 1024px+ */
 @media (min-width: 1024px) {
-  /* Hero */
-  .program-hero-content {
-    padding: var(--space-5xl) var(--space-lg);
-  }
-
   /* Intro: two columns, protocol left, narrative right */
   .program-intro-grid {
     grid-template-columns: 1fr 1fr;
@@ -592,19 +604,6 @@
   }
 }
 
-/* Wide: 1280px+ */
-@media (min-width: 1280px) {
-  .program-hero-heading {
-    font-size: 76px;
-    line-height: 84px;
-    letter-spacing: var(--tracking-tighter);
-  }
-
-  .program-hero-accent {
-    font-size: var(--text-4xl);
-    line-height: var(--leading-4xl);
-  }
-}
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {

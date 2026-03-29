@@ -9,105 +9,6 @@
 
 
 /* =======================================================================
-   1. HERO — Image Hero
-   ======================================================================= */
-
-.about-hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-}
-
-/* Background image layer */
-.about-hero-image {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background-color: var(--color-neutral-100);
-}
-
-/* Subtly darkened vignette overlay — matches Home page, improves text contrast */
-.about-hero-image::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.50) 0%,
-    rgba(0, 0, 0, 0.18) 30%,
-    rgba(0, 0, 0, 0.18) 65%,
-    rgba(0, 0, 0, 0.40) 100%
-  );
-  pointer-events: none;
-  z-index: 1;
-}
-
-.about-hero-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  /* Fades from completely transparent at the top to seamlessly blend into the stats section below */
-  background: linear-gradient(to bottom, transparent 0%, transparent 50%, var(--color-neutral-50) 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.hero-bg-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-/* Hero content — front layer */
-.about-hero-content {
-  position: relative;
-  z-index: 1;
-  padding: var(--space-4xl) var(--space-md);
-  max-width: 800px;
-  will-change: transform, opacity;
-}
-
-/* Badge pill */
-.about-hero .badge {
-  display: inline-block;
-  padding: var(--badge-padding);
-  font-size: var(--badge-font-size);
-  font-weight: var(--badge-weight);
-  letter-spacing: var(--badge-tracking);
-  text-transform: uppercase;
-  border-radius: var(--badge-radius);
-  background-color: var(--badge-warm-bg);
-  color: var(--badge-warm-text);
-  border: 1px solid var(--badge-warm-border);
-  margin-bottom: var(--space-xl);
-}
-
-/* Heading — solid light text */
-.about-hero-heading {
-  font-family: var(--font-heading);
-  font-size: var(--text-5xl);
-  font-weight: var(--font-regular);
-  line-height: var(--leading-5xl);
-  letter-spacing: var(--tracking-tighter);
-  color: var(--color-neutral-50);
-  margin-bottom: var(--space-md);
-}
-
-/* Accent voice below heading */
-.about-hero-accent {
-  font-size: var(--text-2xl);
-  line-height: var(--leading-2xl);
-  color: var(--color-neutral-200);
-}
-
-
-/* =======================================================================
    2. STATS — Seamless emergence from hero
    ======================================================================= */
 
@@ -840,17 +741,6 @@
 /* Tablet: 768px+ */
 @media (min-width: 768px) {
 
-  /* Hero */
-  .about-hero-heading {
-    font-size: var(--text-6xl);
-    line-height: var(--leading-6xl);
-  }
-
-  .about-hero-accent {
-    font-size: var(--text-3xl);
-    line-height: var(--leading-3xl);
-  }
-
   /* Stats */
   .about-stats-row {
     grid-template-columns: repeat(4, 1fr);
@@ -875,22 +765,7 @@
     gap: var(--space-xl);
   }
 
-  /* CTA */
-  .about-cta-heading {
-    font-size: var(--text-5xl);
-    line-height: var(--leading-5xl);
-  }
-}
-
-/* Desktop: 1024px+ */
-@media (min-width: 1024px) {
-
-  /* Hero */
-  .about-hero-content {
-    padding: var(--space-5xl) var(--space-lg);
-  }
-
-  /* Stats */
+  /* Editorial */
   .about-stats {
     padding-block: var(--space-5xl);
   }
@@ -918,17 +793,6 @@
 
 /* Wide: 1280px+ */
 @media (min-width: 1280px) {
-  .about-hero-heading {
-    font-size: 76px;
-    line-height: 84px;
-    letter-spacing: var(--tracking-tighter);
-  }
-
-  .about-hero-accent {
-    font-size: var(--text-4xl);
-    line-height: var(--leading-4xl);
-  }
-
   .about-editorial-accent {
     font-size: var(--text-2xl);
     line-height: var(--leading-2xl);
@@ -994,10 +858,6 @@
    ======================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .about-hero-content {
-    transform: none !important;
-    opacity: 1 !important;
-  }
 
   .about-milestone {
     opacity: 1;

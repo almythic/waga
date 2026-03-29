@@ -280,6 +280,30 @@ h6 {
 
 
 /* =======================================================================
+   4b. BADGES
+   ======================================================================= */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--badge-padding);
+  border-radius: var(--badge-radius);
+  font-size: var(--badge-font-size);
+  font-weight: var(--badge-weight);
+  letter-spacing: var(--badge-tracking);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.badge-warm {
+  background-color: var(--badge-warm-bg);
+  color: var(--badge-warm-text);
+  border: 1px solid var(--badge-warm-border);
+}
+
+
+/* =======================================================================
    5. BUTTONS
    Four variants: primary, secondary, tertiary, botanical.
    Three sizes: sm (36px), md (44px), lg (52px).
@@ -441,6 +465,153 @@ h6 {
 
 
 /* =======================================================================
+   6b. PAGE HERO (GLOBAL COMPONENT)
+   ======================================================================= */
+
+.page-hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-neutral-900);
+}
+
+.page-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.page-hero-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-neutral-900);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+.page-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(21, 21, 20, 0.9) 0%,
+    rgba(21, 21, 20, 0.5) 40%,
+    transparent 80%
+  );
+  z-index: 2;
+  pointer-events: none;
+}
+
+.page-hero-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Modifiers for seamless bottom fades, used on About/Program */
+.page-hero-image.hero-with-fade::before {
+  opacity: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.50) 0%,
+    rgba(0, 0, 0, 0.18) 30%,
+    rgba(0, 0, 0, 0.18) 65%,
+    rgba(0, 0, 0, 0.40) 100%
+  );
+}
+
+.page-hero-image.hero-with-fade::after {
+  background: linear-gradient(to bottom, transparent 0%, transparent 50%, var(--color-neutral-50) 100%);
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 3;
+  padding: var(--space-4xl) var(--space-md);
+  max-width: 800px;
+  text-align: center;
+  margin-inline: auto;
+  will-change: transform, opacity;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-hero-content .badge,
+.page-hero-content .badge-warm {
+  margin-bottom: var(--space-xl);
+}
+
+.page-hero-heading {
+  font-family: var(--font-heading);
+  font-size: var(--text-5xl);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-5xl);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-neutral-50);
+  margin-bottom: var(--space-md);
+}
+
+.page-hero-accent {
+  font-size: var(--text-2xl);
+  line-height: var(--leading-2xl);
+  color: var(--color-neutral-200);
+}
+
+
+/* =======================================================================
+   6c. CTA SECTION (GLOBAL COMPONENT)
+   ======================================================================= */
+
+.section-cta {
+  text-align: center;
+  padding-block: var(--space-5xl);
+  background-color: var(--color-neutral-50);
+}
+
+.section-cta-inner {
+  max-width: var(--container-md);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section-cta-inner .badge,
+.section-cta-inner .badge-warm {
+  margin-bottom: var(--space-xl);
+}
+
+.section-cta-heading {
+  margin-bottom: var(--space-md);
+}
+
+.section-cta-inner .accent-voice {
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.section-cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  justify-content: center;
+  margin-top: var(--space-2xl);
+}
+
+
+/* =======================================================================
    7. CARDS
    ======================================================================= */
 
@@ -511,7 +682,7 @@ h6 {
 
 /* Transparent header for pages with full-viewport heroes —
    inset to match the hero image edges */
-.page-hero .site-header {
+.has-transparent-header .site-header {
   background-color: transparent;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
@@ -521,7 +692,7 @@ h6 {
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
-.page-hero .site-header.scrolled {
+.has-transparent-header .site-header.scrolled {
   left: 0;
   right: 0;
   top: 0;
@@ -531,38 +702,38 @@ h6 {
   -webkit-backdrop-filter: blur(12px);
 }
 
-.page-hero .site-header:not(.scrolled) .logo-img {
+.has-transparent-header .site-header:not(.scrolled) .logo-img {
   filter: brightness(10);
 }
 
-.page-hero .site-header:not(.scrolled) .nav-link {
+.has-transparent-header .site-header:not(.scrolled) .nav-link {
   color: var(--color-neutral-50);
 }
 
-.page-hero .site-header:not(.scrolled) .nav-link.active {
+.has-transparent-header .site-header:not(.scrolled) .nav-link.active {
   color: var(--color-neutral-50);
 }
 
-.page-hero .site-header:not(.scrolled) .nav-toggle span {
+.has-transparent-header .site-header:not(.scrolled) .nav-toggle span {
   background-color: var(--color-neutral-50);
 }
 
 /* Explicit dark header for non-hero pages (cream background, dark text) */
-body:not(.page-hero) .site-header {
+body:not(.has-transparent-header) .site-header {
   background-color: rgba(253, 251, 245, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-body:not(.page-hero) .site-header .logo-img {
+body:not(.has-transparent-header) .site-header .logo-img {
   filter: brightness(0.35);
 }
 
-body:not(.page-hero) .site-header .nav-link {
+body:not(.has-transparent-header) .site-header .nav-link {
   color: var(--color-text-secondary);
 }
 
-body:not(.page-hero) .site-header .nav-toggle span {
+body:not(.has-transparent-header) .site-header .nav-toggle span {
   background-color: var(--color-text-heading);
 }
 
@@ -1190,6 +1361,21 @@ body.menu-open {
     padding-block: var(--space-5xl);
   }
 
+  .page-hero-heading {
+    font-size: var(--text-6xl);
+    line-height: var(--leading-6xl);
+  }
+
+  .page-hero-accent {
+    font-size: var(--text-3xl);
+    line-height: var(--leading-3xl);
+  }
+
+  .section-cta-heading {
+    font-size: var(--text-5xl);
+    line-height: var(--leading-5xl);
+  }
+
   .footer-inner {
     grid-template-columns: 2fr 1fr 1fr 1fr;
     padding-inline: var(--space-lg);
@@ -1222,7 +1408,7 @@ body.menu-open {
     justify-content: space-between;
   }
 
-  .page-hero .site-header:not(.scrolled) {
+  .has-transparent-header .site-header:not(.scrolled) {
     left: var(--space-md);
     right: var(--space-md);
     top: var(--space-md);
@@ -1233,6 +1419,10 @@ body.menu-open {
 @media (min-width: 1024px) {
   .site-header {
     height: var(--nav-height);
+  }
+
+  .page-hero-content {
+    padding: var(--space-5xl) var(--space-lg);
   }
 
   .nav-desktop {
@@ -1266,5 +1456,16 @@ body.menu-open {
   h2 {
     font-size: var(--text-5xl);
     line-height: var(--leading-5xl);
+  }
+
+  .page-hero-heading {
+    font-size: 76px;
+    line-height: 84px;
+    letter-spacing: var(--tracking-tighter);
+  }
+
+  .page-hero-accent {
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
   }
 }

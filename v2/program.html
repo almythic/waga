@@ -26,7 +26,7 @@
   <link rel="stylesheet" href="css/program.css">
 </head>
 
-<body class="page-hero">
+<body class="has-transparent-header">
 
   <!-- Skip to content -->
   <a href="#main" class="skip-link">Skip to content</a>
@@ -47,17 +47,17 @@
     <!-- ============================================================
          HERO — Full-bleed image, seamless fade into next section
          ============================================================ -->
-    <section class="program-hero" id="program-hero">
+    <section class="page-hero" id="program-hero">
       <!-- Background image layer -->
-      <div class="program-hero-image" aria-hidden="true">
-        <img src="assets/images/program/hero-image.jpg" alt="WAGA Wellness five-day program" class="program-hero-bg-img">
+      <div class="page-hero-image hero-with-fade" aria-hidden="true">
+        <img src="assets/images/program/hero-image.jpg" alt="WAGA Wellness five-day program" class="page-hero-bg-img">
       </div>
 
       <!-- Hero content -->
-      <div class="program-hero-content">
+      <div class="page-hero-content">
         <p class="badge badge-warm reveal">The Five-Day Program</p>
-        <h1 class="program-hero-heading reveal" data-reveal-delay="1">Five Days</h1>
-        <p class="program-hero-accent accent-voice reveal" data-reveal-delay="2">to feel like yourself again.</p>
+        <h1 class="page-hero-heading reveal" data-reveal-delay="1">Five Days</h1>
+        <p class="page-hero-accent accent-voice reveal" data-reveal-delay="2">to feel like yourself again.</p>
       </div>
     </section>
 
@@ -119,25 +119,31 @@
     </section>
 
 
+    <!-- ================================================================
+         DAYS 1–5 — Scroll-driven sticky transitions
+         ================================================================ -->
+    <div class="days-scroll-section" id="days-scroll">
+      <div class="days-sticky-frame">
+
     <!-- ============================================================
          DAY 1 — neutral-50 (warm white)
          ============================================================ -->
-    <section class="day-section" id="day-1" data-day="1">
+    <section class="day-section is-active" id="day-1" data-day="1">
       <div class="day-watermark" aria-hidden="true">1</div>
       <div class="container day-content">
 
         <div class="day-col-personal">
-          <p class="day-number reveal">Day One</p>
-          <h2 class="day-title reveal" data-reveal-delay="1">Prepare</h2>
-          <p class="day-subtitle accent-voice reveal" data-reveal-delay="2">Your body begins to listen.</p>
-          <p class="day-body reveal" data-reveal-delay="3">
+          <p class="day-number">Day One</p>
+          <h2 class="day-title">Prepare</h2>
+          <p class="day-subtitle accent-voice">Your body begins to listen.</p>
+          <p class="day-body">
             The first day is about easing in. Your metabolism starts to shift as processed inputs fall away and whole,
             calibrated nutrition takes over. You may feel a subtle awareness — a quiet signal that something new has
             begun.
           </p>
         </div>
 
-        <div class="day-col-clinical reveal" data-reveal-delay="2">
+        <div class="day-col-clinical">
           <div class="day-track">
             <p class="day-track-label track-body">Body</p>
             <p>Digestive system begins to reset. Glycogen stores start to deplete as your body transitions to cleaner
@@ -167,16 +173,16 @@
       <div class="container day-content">
 
         <div class="day-col-personal">
-          <p class="day-number reveal">Day Two</p>
-          <h2 class="day-title reveal" data-reveal-delay="1">Deepen</h2>
-          <p class="day-subtitle accent-voice reveal" data-reveal-delay="2">The body finds its rhythm.</p>
-          <p class="day-body reveal" data-reveal-delay="3">
+          <p class="day-number">Day Two</p>
+          <h2 class="day-title">Deepen</h2>
+          <p class="day-subtitle accent-voice">The body finds its rhythm.</p>
+          <p class="day-body">
             Your system adjusts. The initial novelty settles into a rhythm. Meals arrive, you eat mindfully, and between
             meals the body begins its quieter work — processing, releasing, recalibrating.
           </p>
         </div>
 
-        <div class="day-col-clinical reveal" data-reveal-delay="2">
+        <div class="day-col-clinical">
           <div class="day-track">
             <p class="day-track-label track-body">Body</p>
             <p>Liver and kidney function optimizes for detoxification. Inflammatory markers begin to decrease. Sleep
@@ -206,17 +212,17 @@
       <div class="container day-content">
 
         <div class="day-col-personal">
-          <p class="day-number reveal">Day Three</p>
-          <h2 class="day-title reveal" data-reveal-delay="1">Reset</h2>
-          <p class="day-subtitle accent-voice reveal" data-reveal-delay="2">The turning point.</p>
-          <p class="day-body reveal" data-reveal-delay="3">
+          <p class="day-number">Day Three</p>
+          <h2 class="day-title">Reset</h2>
+          <p class="day-subtitle accent-voice">The turning point.</p>
+          <p class="day-body">
             The midpoint. This is where the deepest work happens. Your metabolism has fully shifted. The body is in
             active restoration mode — every system recalibrating to a cleaner baseline. Many clients call this the day
             they "feel the difference."
           </p>
         </div>
 
-        <div class="day-col-clinical reveal" data-reveal-delay="2">
+        <div class="day-col-clinical">
           <div class="day-track">
             <p class="day-track-label track-body">Body</p>
             <p>Peak detoxification activity. Cellular autophagy increases. Gut microbiome begins rebalancing. Skin often
@@ -246,17 +252,17 @@
       <div class="container day-content">
 
         <div class="day-col-personal">
-          <p class="day-number reveal">Day Four</p>
-          <h2 class="day-title reveal" data-reveal-delay="1">Restore</h2>
-          <p class="day-subtitle accent-voice reveal" data-reveal-delay="2">Building on the new foundation.</p>
-          <p class="day-body reveal" data-reveal-delay="3">
+          <p class="day-number">Day Four</p>
+          <h2 class="day-title">Restore</h2>
+          <p class="day-subtitle accent-voice">Building on the new foundation.</p>
+          <p class="day-body">
             Your body begins to build on the reset. The deepest detox is behind you; now it is about consolidation.
             Nutrients absorb more efficiently. Energy returns — not the jittery, caffeine kind, but something steadier
             and deeper.
           </p>
         </div>
 
-        <div class="day-col-clinical reveal" data-reveal-delay="2">
+        <div class="day-col-clinical">
           <div class="day-track">
             <p class="day-track-label track-body">Body</p>
             <p>Nutrient absorption efficiency increases. Energy metabolism stabilizes at a new baseline. Inflammation
@@ -286,17 +292,17 @@
       <div class="container day-content">
 
         <div class="day-col-personal">
-          <p class="day-number reveal">Day Five</p>
-          <h2 class="day-title reveal" data-reveal-delay="1">Emerge</h2>
-          <p class="day-subtitle accent-voice reveal" data-reveal-delay="2">You feel the difference.</p>
-          <p class="day-body reveal" data-reveal-delay="3">
+          <p class="day-number">Day Five</p>
+          <h2 class="day-title">Emerge</h2>
+          <p class="day-subtitle accent-voice">You feel the difference.</p>
+          <p class="day-body">
             The final day. Your body has completed the arc. What you feel now — the clarity, the lightness, the quiet
             energy — is your new baseline. Not a temporary high, but a recalibration. The program ends, but the reset
             stays with you.
           </p>
         </div>
 
-        <div class="day-col-clinical reveal" data-reveal-delay="2">
+        <div class="day-col-clinical">
           <div class="day-track">
             <p class="day-track-label track-body">Body</p>
             <p>Metabolic reset complete. Digestive efficiency at its highest. Skin clearer, sleep deeper, inflammation
@@ -316,6 +322,9 @@
 
       </div>
     </section>
+
+      </div><!-- /.days-sticky-frame -->
+    </div><!-- /.days-scroll-section -->
 
 
     <!-- ============================================================
@@ -400,14 +409,16 @@
     <!-- ============================================================
          FINAL CTA — section-olive
          ============================================================ -->
-    <section class="program-cta" id="program-cta">
-      <div class="container reveal">
-        <p class="badge badge-warm">Ready?</p>
-        <h2>Begin Your Transformation</h2>
-        <p class="accent-voice">Five days that change everything after.</p>
-        <div class="program-cta-buttons">
-          <a href="order.html" class="btn btn-primary btn-lg">Begin Your Reset</a>
-          <a href="science.html" class="btn btn-secondary btn-lg">Read the Science</a>
+    <section class="section-cta" id="program-cta">
+      <div class="container">
+        <div class="section-cta-inner reveal">
+          <p class="badge badge-warm">Begin Your Journey</p>
+          <h2 class="section-cta-heading">Begin Your Transformation</h2>
+          <p class="accent-voice">Five days that change everything after.</p>
+          <div class="section-cta-buttons">
+            <a href="order.html" class="btn btn-primary btn-lg">Begin Your Reset</a>
+            <a href="science.html" class="btn btn-secondary btn-lg">Read the Science</a>
+          </div>
         </div>
       </div>
     </section>

@@ -322,35 +322,6 @@
 
 
 /* =======================================================================
-   7. CTA
-   ======================================================================= */
-
-.science-cta {
-  text-align: center;
-  padding-block: var(--space-5xl);
-  background-color: var(--color-bg-sand);
-}
-
-.science-cta h2 {
-  margin-bottom: var(--space-xs);
-}
-
-.science-cta .accent-voice {
-  font-size: var(--text-xl);
-  line-height: var(--leading-xl);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-2xl);
-}
-
-.science-cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  justify-content: center;
-}
-
-
-/* =======================================================================
    8. RESPONSIVE
    ======================================================================= */
 
