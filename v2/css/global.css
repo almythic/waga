@@ -672,7 +672,12 @@ h6 {
     top var(--duration-normal) var(--ease-organic),
     left var(--duration-normal) var(--ease-organic),
     right var(--duration-normal) var(--ease-organic),
-    border-radius var(--duration-normal) var(--ease-organic);
+    border-radius var(--duration-normal) var(--ease-organic),
+    transform var(--duration-slow) var(--ease-organic);
+}
+
+.site-header.is-hidden {
+  transform: translateY(-110%);
 }
 
 .site-header.scrolled {

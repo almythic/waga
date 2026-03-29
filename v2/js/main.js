@@ -163,6 +163,28 @@
       );
 
       observer.observe(sentinel);
+
+      // Hide on scroll down, show on scroll up
+      var lastScrollY = 0;
+      var scrollThreshold = 80; // px scrolled before hiding kicks in
+
+      window.addEventListener('scroll', function () {
+        var currentScrollY = window.scrollY;
+        var diff = currentScrollY - lastScrollY;
+
+        if (currentScrollY <= scrollThreshold) {
+          // Near the top — always show
+          header.classList.remove('is-hidden');
+        } else if (diff > 0) {
+          // Scrolling down
+          header.classList.add('is-hidden');
+        } else if (diff < 0) {
+          // Scrolling up
+          header.classList.remove('is-hidden');
+        }
+
+        lastScrollY = currentScrollY;
+      }, { passive: true });
     }
 
 
