@@ -18,6 +18,8 @@ WAGA Wellness is a multi-page luxury website for a premium five-day detox meal p
 - **Phosphor Icons** for iconography
 - **Google Fonts:** Geist (sans-serif) + Instrument Serif (italic only)
 - **Hosting:** GitHub Pages (subfolder approach)
+- **Repository:** `https://github.com/almythic/waga.git`
+- **Deployment:** Push to the `v2/` folder in the `main` branch of the repo above
 - **Image generation:** Nano Banana — available for generating placeholder or section imagery when needed. Ask the user to generate via Nano Banana whenever a new image is required for a section or page.
 
 ## File Structure
