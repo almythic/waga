@@ -12,21 +12,26 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@1&display=swap"></noscript>
+
+    <!-- Cloudinary CDN -->
+    <link rel="preconnect" href="https://res.cloudinary.com">
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css"></noscript>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.18/dist/lenis.css">
+    <link rel="preload" href="https://unpkg.com/lenis@1.3.18/dist/lenis.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://unpkg.com/lenis@1.3.18/dist/lenis.css"></noscript>
     <link rel="stylesheet" href="tokens.min.css">
     <link rel="stylesheet" href="css/global.min.css">
     <link rel="stylesheet" href="css/testimonials.min.css">
 </head>
 
-<body>
+<body class="has-transparent-header">
 
     <!-- Skip to content -->
     <a href="#main" class="skip-link">Skip to content</a>
@@ -39,15 +44,17 @@
     <main id="main">
 
         <!-- ============================================================
-         HERO
+         HERO — Full-bleed image
          ============================================================ -->
-        <section class="testimonials-hero">
-            <p class="text-label reveal">Testimonials</p>
-            <h1 class="reveal" data-reveal-delay="1">Real People. Real Results.</h1>
-            <p class="accent-voice reveal" data-reveal-delay="2">In their own words.</p>
-            <p class="testimonials-hero-hook reveal" data-reveal-delay="3">
-                From first-time detoxers to lifelong clients — these are the stories behind the transformation.
-            </p>
+        <section class="page-hero" id="testimonials-hero">
+            <div class="page-hero-image hero-with-fade" aria-hidden="true">
+                <img src="assets/images/testimonials/hero.webp" alt="WAGA Wellness client testimonials" class="page-hero-bg-img">
+            </div>
+            <div class="page-hero-content">
+                <p class="badge badge-warm reveal">Testimonials</p>
+                <h1 class="page-hero-heading reveal" data-reveal-delay="1">Real People.<br>Real Results.</h1>
+                <p class="page-hero-accent accent-voice reveal" data-reveal-delay="2">In their own words.</p>
+            </div>
         </section>
 
 
@@ -110,21 +117,17 @@
 
                 <!-- Card 2 — Video -->
                 <div class="masonry-card card-video" data-type="video">
-                    <div class="card-video-thumbnail">
-                        <div
-                            style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--color-primary-200), var(--color-botanical-200));">
-                        </div>
-                        <div class="card-video-play">
+                    <div class="card-video-thumbnail" data-video-src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/q_auto/v1774964490/andjelka-web_pw1pbd.mp4" data-video-poster="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_2,q_auto,f_auto/v1774964490/andjelka-web_pw1pbd.jpg" role="button" tabindex="0" aria-label="Play Anđelka's testimonial">
+                        <img src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_2,q_auto,f_auto/v1774964490/andjelka-web_pw1pbd.jpg" alt="Anđelka's video testimonial" class="card-video-poster" loading="lazy">
+                        <div class="card-video-play" aria-hidden="true">
                             <div class="card-video-play-icon">
-                                <svg viewBox="0 0 20 20">
-                                    <polygon points="6,3 17,10 6,17" />
-                                </svg>
+                                <svg viewBox="0 0 20 20"><polygon points="6,3 17,10 6,17" /></svg>
                             </div>
                         </div>
                     </div>
                     <div class="card-video-body">
-                        <span class="card-author-name">Ana K.</span>
-                        <p>Day 5 morning — how it feels to finish</p>
+                        <span class="card-author-name">Anđelka S.</span>
+                        <p>Five days — in her own words</p>
                     </div>
                 </div>
 
@@ -252,21 +255,17 @@
 
                 <!-- Card 6 — Video -->
                 <div class="masonry-card card-video" data-type="video">
-                    <div class="card-video-thumbnail">
-                        <div
-                            style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--color-botanical-200), var(--color-primary-100));">
-                        </div>
-                        <div class="card-video-play">
+                    <div class="card-video-thumbnail" data-video-src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/q_auto/v1774964481/marija-web_yhgsij.mp4" data-video-poster="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_2,q_auto,f_auto/v1774964481/marija-web_yhgsij.jpg" role="button" tabindex="0" aria-label="Play Marija's testimonial">
+                        <img src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_2,q_auto,f_auto/v1774964481/marija-web_yhgsij.jpg" alt="Marija's video testimonial" class="card-video-poster" loading="lazy">
+                        <div class="card-video-play" aria-hidden="true">
                             <div class="card-video-play-icon">
-                                <svg viewBox="0 0 20 20">
-                                    <polygon points="6,3 17,10 6,17" />
-                                </svg>
+                                <svg viewBox="0 0 20 20"><polygon points="6,3 17,10 6,17" /></svg>
                             </div>
                         </div>
                     </div>
                     <div class="card-video-body">
-                        <span class="card-author-name">Milica D.</span>
-                        <p>The unboxing experience</p>
+                        <span class="card-author-name">Marija K.</span>
+                        <p>What she noticed by day three</p>
                     </div>
                 </div>
 
@@ -395,21 +394,17 @@
 
                 <!-- Card 10 — Video -->
                 <div class="masonry-card card-video" data-type="video">
-                    <div class="card-video-thumbnail">
-                        <div
-                            style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--color-primary-100), var(--color-neutral-200));">
-                        </div>
-                        <div class="card-video-play">
+                    <div class="card-video-thumbnail" data-video-src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/q_auto/v1774964503/sanja-web_fjetor.mp4" data-video-poster="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_2,q_auto,f_auto/v1774964503/sanja-web_fjetor.jpg" role="button" tabindex="0" aria-label="Play Sanja's testimonial">
+                        <img src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_2,q_auto,f_auto/v1774964503/sanja-web_fjetor.jpg" alt="Sanja's video testimonial" class="card-video-poster" loading="lazy">
+                        <div class="card-video-play" aria-hidden="true">
                             <div class="card-video-play-icon">
-                                <svg viewBox="0 0 20 20">
-                                    <polygon points="6,3 17,10 6,17" />
-                                </svg>
+                                <svg viewBox="0 0 20 20"><polygon points="6,3 17,10 6,17" /></svg>
                             </div>
                         </div>
                     </div>
                     <div class="card-video-body">
-                        <span class="card-author-name">Jelena S.</span>
-                        <p>Preparing meals for day two</p>
+                        <span class="card-author-name">Sanja</span>
+                        <p>Her experience from start to finish</p>
                     </div>
                 </div>
 
@@ -484,8 +479,7 @@
                                 fill="currentColor" />
                         </svg>
                     </div>
-                    <p class="card-quote card-quote-short">&ldquo;My partner and I did it together. Best five days
-                        we&rsquo;ve had as a couple in years.&rdquo;</p>
+                    <p class="card-quote">&ldquo;My partner and I did it together. Best five days we&rsquo;ve had as a couple in years. We ate the same meals, went to bed earlier, and actually talked. We&rsquo;re already booking the next one.&rdquo;</p>
                     <div class="card-author">
                         <div class="card-avatar">LW</div>
                         <div class="card-author-info">
@@ -503,7 +497,7 @@
         <!-- ============================================================
          FEATURED VIDEO SECTION
          ============================================================ -->
-        <section class="featured-video-section" id="featured-videos">
+        <section class="featured-video-section section-olive" id="featured-videos">
             <div class="container">
                 <div class="section-heading reveal">
                     <p class="text-label">Experience</p>
@@ -513,40 +507,32 @@
 
                 <div class="featured-video-grid">
                     <div class="featured-video-item reveal">
-                        <div class="featured-video-wrapper">
-                            <div
-                                style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--color-primary-200), var(--color-botanical-100));">
-                            </div>
-                            <div class="card-video-play">
+                        <div class="featured-video-wrapper" data-video-src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/q_auto/v1774964500/waga-kitchen-web_fsa7id.mp4" data-video-poster="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_3,q_auto,f_auto/v1774964500/waga-kitchen-web_fsa7id.jpg" role="button" tabindex="0" aria-label="Play: Inside the WAGA kitchen">
+                            <img src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_3,q_auto,f_auto/v1774964500/waga-kitchen-web_fsa7id.jpg" alt="Inside the WAGA kitchen" class="featured-video-poster" loading="lazy">
+                            <div class="card-video-play" aria-hidden="true">
                                 <div class="card-video-play-icon">
-                                    <svg viewBox="0 0 20 20">
-                                        <polygon points="6,3 17,10 6,17" />
-                                    </svg>
+                                    <svg viewBox="0 0 20 20"><polygon points="6,3 17,10 6,17" /></svg>
                                 </div>
                             </div>
                         </div>
                         <div class="featured-video-caption">
-                            <h5>The Full Experience</h5>
-                            <p>A client's complete five-day journey, from unboxing to day five.</p>
+                            <h5>Inside the Kitchen</h5>
+                            <p>How each meal is crafted, portioned, and packed with intention.</p>
                         </div>
                     </div>
 
                     <div class="featured-video-item reveal" data-reveal-delay="1">
-                        <div class="featured-video-wrapper">
-                            <div
-                                style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--color-botanical-200), var(--color-primary-100));">
-                            </div>
-                            <div class="card-video-play">
+                        <div class="featured-video-wrapper" data-video-src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/q_auto/v1774964495/waga-office-web_mktr0i.mp4" data-video-poster="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_3,q_auto,f_auto/v1774964495/waga-office-web_mktr0i.jpg" role="button" tabindex="0" aria-label="Play: Behind the scenes at WAGA">
+                            <img src="https://res.cloudinary.com/aleksandar-swiftylabs/video/upload/so_3,q_auto,f_auto/v1774964495/waga-office-web_mktr0i.jpg" alt="Behind the scenes at WAGA" class="featured-video-poster" loading="lazy">
+                            <div class="card-video-play" aria-hidden="true">
                                 <div class="card-video-play-icon">
-                                    <svg viewBox="0 0 20 20">
-                                        <polygon points="6,3 17,10 6,17" />
-                                    </svg>
+                                    <svg viewBox="0 0 20 20"><polygon points="6,3 17,10 6,17" /></svg>
                                 </div>
                             </div>
                         </div>
                         <div class="featured-video-caption">
-                            <h5>Behind the Preparation</h5>
-                            <p>How each meal is crafted, portioned, and packed with intention.</p>
+                            <h5>Behind the Scenes</h5>
+                            <p>The team, the process, and the care that goes into every box.</p>
                         </div>
                     </div>
                 </div>
@@ -557,10 +543,10 @@
         <!-- ============================================================
          CTA SECTION
          ============================================================ -->
-        <section class="section-cta section-sand" id="testimonials-cta">
+        <section class="section-cta" id="testimonials-cta">
             <div class="container">
                 <div class="section-cta-inner reveal">
-                    <p class="text-label">Ready?</p>
+                    <p class="badge badge-warm">Ready?</p>
                     <h2 class="section-cta-heading">Begin Your Own Story</h2>
                     <p class="accent-voice">Five days that change everything after.</p>
                     <div class="section-cta-buttons">
@@ -572,6 +558,16 @@
         </section>
 
     </main>
+
+    <!-- Video Lightbox -->
+    <dialog id="video-lightbox" class="video-lightbox" aria-label="Video player">
+        <button class="video-lightbox-close" aria-label="Close video">
+            <i class="ph ph-x"></i>
+        </button>
+        <div class="video-lightbox-inner">
+            <video id="lightbox-video" controls playsinline preload="none"></video>
+        </div>
+    </dialog>
 
     <div id="site-footer"></div>
 

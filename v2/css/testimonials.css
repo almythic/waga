@@ -6,40 +6,8 @@
 
 
 /* =======================================================================
-   1. HERO
+   1. HERO — uses global .page-hero (see global.css)
    ======================================================================= */
-
-.testimonials-hero {
-    position: relative;
-    min-height: 50vh;
-    min-height: 50dvh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--space-4xl) var(--space-md);
-    padding-top: calc(var(--nav-height-mobile) + var(--space-3xl));
-}
-
-.testimonials-hero h1 {
-    margin-bottom: var(--space-xs);
-}
-
-.testimonials-hero .accent-voice {
-    font-size: var(--text-2xl);
-    line-height: var(--leading-2xl);
-    color: var(--color-text-secondary);
-}
-
-.testimonials-hero-hook {
-    margin-top: var(--space-lg);
-    font-size: var(--text-lg);
-    line-height: var(--leading-lg);
-    color: var(--color-text-secondary);
-    max-width: 480px;
-    margin-inline: auto;
-}
 
 
 /* =======================================================================
@@ -50,7 +18,7 @@
     display: flex;
     justify-content: center;
     gap: var(--space-sm);
-    padding: var(--space-lg) var(--space-md);
+    padding: var(--space-4xl) var(--space-md) var(--space-lg);
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -178,8 +146,8 @@
 }
 
 .card-quote {
-    font-family: var(--font-accent);
-    font-style: italic;
+    font-family: var(--font-body);
+    font-style: normal;
     font-size: var(--text-lg);
     line-height: var(--leading-lg);
     color: var(--color-text-heading);
@@ -251,17 +219,19 @@
 
 .card-video-thumbnail {
     position: relative;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 9 / 16;
     background-color: var(--color-neutral-200);
     overflow: hidden;
     cursor: pointer;
 }
 
 .card-video-thumbnail img,
-.card-video-thumbnail video {
+.card-video-thumbnail video,
+.card-video-poster {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .card-video-play {
@@ -321,7 +291,24 @@
 
 .featured-video-section {
     padding-block: var(--space-4xl);
-    background-color: var(--color-bg-cream);
+}
+
+/* Olive overrides for featured video section */
+.featured-video-section .featured-video-item {
+    background-color: rgba(253, 251, 245, 0.06);
+    box-shadow: none;
+}
+
+.featured-video-section .featured-video-caption h5 {
+    color: var(--color-neutral-50);
+}
+
+.featured-video-section .featured-video-caption p {
+    color: var(--color-neutral-300);
+}
+
+.featured-video-section .featured-video-wrapper {
+    background-color: rgba(253, 251, 245, 0.08);
 }
 
 .featured-video-grid {
@@ -340,15 +327,18 @@
 
 .featured-video-wrapper {
     position: relative;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 9 / 16;
     background-color: var(--color-neutral-200);
     cursor: pointer;
 }
 
-.featured-video-wrapper video {
+.featured-video-wrapper img,
+.featured-video-wrapper video,
+.featured-video-poster {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .featured-video-wrapper .card-video-play {
@@ -385,11 +375,6 @@
 
 /* Tablet: 768px+ */
 @media (min-width: 768px) {
-    .testimonials-hero .accent-voice {
-        font-size: var(--text-3xl);
-        line-height: var(--leading-3xl);
-    }
-
     .masonry-grid {
         column-count: 2;
         padding-inline: var(--space-lg);
@@ -402,10 +387,6 @@
 
 /* Desktop: 1024px+ */
 @media (min-width: 1024px) {
-    .testimonials-hero {
-        padding-top: calc(var(--nav-height) + var(--space-3xl));
-    }
-
     .masonry-grid {
         column-count: 3;
         padding-inline: var(--space-2xl);
@@ -414,8 +395,68 @@
 
 /* Wide: 1280px+ */
 @media (min-width: 1280px) {
-    .testimonials-hero .accent-voice {
-        font-size: var(--text-4xl);
-        line-height: var(--leading-4xl);
+    .featured-video-grid {
+        max-width: 800px;
+        margin-inline: auto;
     }
+}
+
+
+/* =======================================================================
+   8. VIDEO LIGHTBOX
+   ======================================================================= */
+
+.video-lightbox {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: min(420px, 90vw);
+    width: 100%;
+    overflow: visible;
+    border-radius: var(--radius-xl);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+}
+
+.video-lightbox::backdrop {
+    background-color: rgba(46, 37, 24, 0.88);
+    backdrop-filter: blur(6px);
+}
+
+.video-lightbox-close {
+    position: absolute;
+    top: calc(-1 * var(--space-3xl));
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: rgba(253, 251, 245, 0.12);
+    border: 1.5px solid rgba(253, 251, 245, 0.25);
+    color: var(--color-neutral-50);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: background-color var(--duration-fast) var(--ease-organic);
+}
+
+.video-lightbox-close:hover {
+    background-color: rgba(253, 251, 245, 0.22);
+}
+
+.video-lightbox-inner {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.video-lightbox video {
+    width: 100%;
+    display: block;
+    background: #000;
+    max-height: 85vh;
+    object-fit: contain;
 }
