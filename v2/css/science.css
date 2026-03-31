@@ -1,94 +1,99 @@
 /* ==========================================================================
    WAGA WELLNESS — Science Page Styles
-
-   Three-tier architecture: overview → detail → source.
-   Medical journal structure with visual diagram placeholders.
    ========================================================================== */
 
 
 /* =======================================================================
-   1. HERO
+   1. EDITORIAL INTRO
    ======================================================================= */
 
-.science-hero {
-  position: relative;
-  min-height: 80vh;
-  min-height: 80dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.science-intro {
+  background-color: var(--color-neutral-50);
+}
+
+.science-intro-inner {
+  max-width: 760px;
+  margin-inline: auto;
   text-align: center;
-  padding: var(--space-4xl) var(--space-md);
 }
 
-.science-hero h1 {
-  margin-bottom: var(--space-xs);
+.science-intro-heading {
+  font-size: var(--text-4xl);
+  font-weight: var(--font-regular);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-tighter);
+  color: var(--color-text-heading);
+  margin-bottom: var(--space-xl);
 }
 
-.science-hero .accent-voice {
-  font-size: var(--text-2xl);
-  line-height: var(--leading-2xl);
+.science-intro-heading .accent-voice {
+  font-size: inherit;
+  line-height: inherit;
   color: var(--color-text-secondary);
 }
 
-.science-hero-summary {
-  margin-top: var(--space-xl);
+.science-intro-body {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  max-width: 620px;
   margin-inline: auto;
-  max-width: 560px;
+}
+
+
+/* =======================================================================
+   2. EDITORIAL — The Problem (Toxic Load)
+   ======================================================================= */
+
+.science-editorial-inner {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.science-editorial-inner h2 {
+  margin-bottom: var(--space-md);
+}
+
+.science-editorial-body p {
   font-size: var(--text-lg);
   line-height: var(--leading-lg);
   color: var(--color-text-secondary);
 }
 
+.science-editorial-body p + p {
+  margin-top: var(--space-md);
+}
 
-/* =======================================================================
-   2. OVERVIEW CLAIMS (Tier 1)
-   ======================================================================= */
-
-.claims-grid {
+.science-symptoms {
+  margin-top: var(--space-2xl);
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
-  max-width: 1120px;
-  margin-inline: auto;
+  gap: var(--space-sm);
 }
 
-.claim-card {
-  padding: var(--space-xl);
-  background-color: var(--color-bg-card);
-  border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow);
-  text-align: center;
-}
-
-.claim-icon {
-  width: 56px;
-  height: 56px;
-  margin-inline: auto;
-  margin-bottom: var(--space-md);
+.science-symptom {
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-full);
-  background-color: var(--color-botanical-100);
-  color: var(--color-botanical-500);
-  font-size: var(--text-xl);
-}
-
-.claim-card h4 {
-  margin-bottom: var(--space-xs);
-}
-
-.claim-card p {
-  font-size: var(--text-sm);
-  line-height: var(--leading-base);
+  gap: var(--space-md);
+  font-size: var(--text-base);
   color: var(--color-text-secondary);
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--color-neutral-50);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border-muted);
+}
+
+.science-symptom-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--waga-camel);
 }
 
 
 /* =======================================================================
-   3. PHASE EXPLANATIONS (Tier 2 — split layout with diagrams)
+   3. SPLIT SECTIONS
    ======================================================================= */
 
 .science-split {
@@ -101,16 +106,25 @@
 }
 
 .science-split-text .text-label {
+  font-size: var(--text-caption);
+  font-weight: var(--font-semibold);
+  line-height: var(--leading-caption);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
   margin-bottom: var(--space-sm);
 }
 
 .science-split-text h3 {
-  margin-bottom: var(--space-xs);
+  font-size: var(--text-4xl);
+  line-height: var(--leading-4xl);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-md);
 }
 
 .science-split-text .accent-voice {
-  font-size: var(--text-base);
-  line-height: var(--leading-base);
+  font-size: var(--text-xl);
+  line-height: var(--leading-xl);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-lg);
 }
@@ -125,246 +139,216 @@
   margin-top: var(--space-md);
 }
 
-/* Diagram placeholder */
-.diagram-placeholder {
-  aspect-ratio: 16 / 10;
-  background-color: var(--color-neutral-100);
-  border: 1.5px dashed var(--color-border-strong);
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  padding: var(--space-lg);
+.science-split-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
 }
 
-.diagram-label {
-  font-size: var(--text-sm);
-  font-weight: var(--font-medium);
-  color: var(--color-text-tertiary);
-  letter-spacing: var(--tracking-wide);
-}
-
-.diagram-sublabel {
-  font-size: var(--text-caption);
-  color: var(--color-neutral-400);
-}
-
-
-/* =======================================================================
-   4. KEY MECHANISMS (Tier 2 — deeper detail)
-   ======================================================================= */
-
-.mechanism {
-  max-width: 860px;
-  margin-inline: auto;
-}
-
-.mechanism + .mechanism {
-  margin-top: var(--space-3xl);
-  padding-top: var(--space-3xl);
-  border-top: 1px solid var(--color-border-default);
-}
-
-.mechanism-header {
-  margin-bottom: var(--space-lg);
-}
-
-.mechanism-header .text-label {
-  margin-bottom: var(--space-xs);
-}
-
-.mechanism-header h3 {
-  margin-bottom: var(--space-xs);
-}
-
-.mechanism-header .accent-voice {
-  font-size: var(--text-base);
-  line-height: var(--leading-base);
-  color: var(--color-text-secondary);
-}
-
-.mechanism-body {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
-}
-
-.mechanism-text p {
-  font-size: var(--text-base);
-  line-height: var(--leading-base);
-  color: var(--color-text-secondary);
-}
-
-.mechanism-text p + p {
-  margin-top: var(--space-md);
-}
-
-.mechanism-chart {
-  aspect-ratio: 16 / 9;
-  background-color: var(--color-neutral-100);
-  border: 1.5px dashed var(--color-border-strong);
-  border-radius: var(--radius-lg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
-  padding: var(--space-lg);
-}
-
-
-/* =======================================================================
-   5. NUTRITIONAL FRAMEWORK (data table)
-   ======================================================================= */
-
-.nutrition-table-wrapper {
-  max-width: 960px;
-  margin-inline: auto;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.nutrition-table {
+.science-img {
   width: 100%;
-  border-collapse: collapse;
-  font-size: var(--text-sm);
-  line-height: var(--leading-base);
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
 }
 
-.nutrition-table thead {
-  position: sticky;
-  top: 0;
+/* Bullet list inside split sections */
+
+.science-bullet-list {
+  margin-top: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
 }
 
-.nutrition-table th {
-  padding: var(--space-sm) var(--space-md);
-  text-align: left;
-  font-weight: var(--font-semibold);
-  font-size: var(--text-caption);
-  letter-spacing: var(--tracking-wider);
-  text-transform: uppercase;
-  color: var(--color-text-tertiary);
-  background-color: var(--color-bg-cream);
-  border-bottom: 1.5px solid var(--color-border-strong);
+.science-bullet {
+  padding-left: var(--space-lg);
+  border-left: 2px solid var(--waga-camel);
 }
 
-.nutrition-table td {
-  padding: var(--space-sm) var(--space-md);
-  color: var(--color-text-secondary);
-  border-bottom: 1px solid var(--color-border-muted);
-  white-space: nowrap;
-}
-
-.nutrition-table tbody tr:hover {
-  background-color: var(--color-neutral-100);
-}
-
-.nutrition-table .day-highlight {
+.science-bullet strong {
+  display: block;
+  font-size: var(--text-base);
   font-weight: var(--font-medium);
   color: var(--color-text-heading);
+  margin-bottom: var(--space-3xs);
 }
 
-.nutrition-note {
-  margin-top: var(--space-md);
-  font-size: var(--text-caption);
+.science-bullet p {
+  font-size: var(--text-sm);
   color: var(--color-text-tertiary);
-  text-align: center;
+  margin: 0;
+  line-height: var(--leading-base);
 }
 
 
 /* =======================================================================
-   6. REFERENCES (Tier 3)
+   4. IS / ISN'T
    ======================================================================= */
 
-.references-list {
-  max-width: 860px;
+.science-isnt-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: 960px;
   margin-inline: auto;
 }
 
-.reference-group + .reference-group {
-  margin-top: var(--space-xl);
+.science-isnt-col {
+  padding: var(--space-2xl);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-bg-card);
+  box-shadow: var(--card-shadow);
 }
 
-.reference-group-title {
+.science-isnt-label {
   font-size: var(--text-caption);
   font-weight: var(--font-semibold);
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--color-text-tertiary);
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-xs);
-  border-bottom: 1px solid var(--color-border-muted);
+  margin-bottom: var(--space-lg);
+  display: block;
 }
 
-.reference-item {
-  padding: var(--space-sm) 0;
+.science-isnt-label-yes {
+  color: var(--color-success-text);
+}
+
+.science-isnt-label-no {
+  color: var(--color-error-text);
+}
+
+.science-isnt-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.science-isnt-list li {
   font-size: var(--text-sm);
   line-height: var(--leading-base);
   color: var(--color-text-secondary);
+  padding-left: var(--space-xl);
+  position: relative;
 }
 
-.reference-item + .reference-item {
-  border-top: 1px solid var(--color-border-muted);
-}
-
-.reference-title {
+.science-isnt-list-yes li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-success-text);
   font-weight: var(--font-medium);
-  color: var(--color-text-primary);
 }
 
-.reference-meta {
-  font-size: var(--text-caption);
+.science-isnt-list-no li::before {
+  content: '✕';
+  position: absolute;
+  left: 0;
+  color: var(--color-error-text);
+  font-weight: var(--font-medium);
+}
+
+.science-disclaimer {
+  margin-top: var(--space-2xl);
+  font-size: var(--text-sm);
+  line-height: var(--leading-base);
   color: var(--color-text-tertiary);
-  margin-top: var(--space-3xs);
+  text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
+  display: block;
 }
 
 
 /* =======================================================================
-   8. RESPONSIVE
+   5. OLIVE SECTION OVERRIDES
    ======================================================================= */
 
-/* Tablet: 768px+ */
-@media (min-width: 768px) {
-  .claims-grid {
+/* Labels on olive */
+.section-olive .science-split-text .text-label {
+  color: var(--color-primary-300);
+}
+
+/* Headings not inside .section-heading */
+.section-olive .science-editorial-inner h2,
+.section-olive .science-split-text h3 {
+  color: var(--color-neutral-50);
+}
+
+/* accent-voice outside .section-heading */
+.section-olive .science-editorial-accent,
+.section-olive .science-split-text .accent-voice {
+  color: var(--color-neutral-200);
+}
+
+/* Body text */
+.section-olive .science-editorial-body p,
+.section-olive .science-split-text p {
+  color: var(--color-neutral-300);
+}
+
+/* Symptom cards — semi-transparent white on olive */
+.section-olive .science-symptom {
+  background-color: rgba(253, 251, 245, 0.08);
+  border-color: rgba(253, 251, 245, 0.18);
+  color: var(--color-neutral-200);
+}
+
+.section-olive .science-symptom-dot {
+  background-color: var(--color-primary-300);
+}
+
+/* Bullet list on olive */
+.section-olive .science-bullet {
+  border-left-color: var(--color-primary-300);
+}
+
+.section-olive .science-bullet strong {
+  color: var(--color-neutral-50);
+}
+
+.section-olive .science-bullet p {
+  color: var(--color-neutral-300);
+}
+
+
+/* =======================================================================
+   6. RESPONSIVE
+   ======================================================================= */
+
+@media (min-width: 640px) {
+  .science-symptoms {
     grid-template-columns: 1fr 1fr;
   }
+}
 
+@media (min-width: 768px) {
   .science-split {
     grid-template-columns: 1fr 1fr;
   }
 
-  .science-split.reverse .science-split-text {
-    order: 2;
-  }
-
-  .science-split.reverse .diagram-placeholder {
+  .science-split-reverse .science-split-image {
     order: 1;
   }
 
-  .mechanism-body {
+  .science-split-reverse .science-split-text {
+    order: 2;
+  }
+
+  .science-isnt-grid {
     grid-template-columns: 1fr 1fr;
-    align-items: start;
   }
 }
 
-/* Desktop: 1024px+ */
 @media (min-width: 1024px) {
-  .claims-grid {
-    grid-template-columns: repeat(4, 1fr);
+  .science-intro-heading {
+    font-size: var(--text-5xl);
   }
 
-  .science-hero .accent-voice {
-    font-size: var(--text-3xl);
-    line-height: var(--leading-3xl);
-  }
-}
-
-/* Wide: 1280px+ */
-@media (min-width: 1280px) {
-  .science-hero .accent-voice {
-    font-size: var(--text-4xl);
-    line-height: var(--leading-4xl);
+  .science-img {
+    aspect-ratio: 4 / 3;
   }
 }

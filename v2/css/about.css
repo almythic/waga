@@ -41,7 +41,7 @@
   font-weight: var(--font-regular);
   line-height: var(--leading-4xl);
   letter-spacing: var(--tracking-tight);
-  background: linear-gradient(135deg, var(--color-neutral-800) 0%, var(--waga-russet) 100%);
+  background: linear-gradient(135deg, var(--color-neutral-800) 0%, var(--waga-camel) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -70,17 +70,6 @@
   letter-spacing: var(--tracking-wide);
 }
 
-/* Vertical dividers between stats on desktop */
-.about-stat::after {
-  content: '';
-  position: absolute;
-  top: 25%;
-  right: 0;
-  height: 50%;
-  width: 1px;
-  background-color: var(--color-neutral-300);
-  opacity: 0;
-}
 
 
 /* =======================================================================
@@ -746,15 +735,7 @@
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .about-stat::after {
-    opacity: 1;
-  }
-
-  .about-stat:last-child::after {
-    display: none;
-  }
-
-  .about-stat-number {
+.about-stat-number {
     font-size: var(--text-5xl);
     line-height: var(--leading-5xl);
   }
