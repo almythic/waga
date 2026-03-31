@@ -6,39 +6,54 @@
 
 
 /* =======================================================================
-   1. HERO
+   1. PAGE INTRO (slim, testimonials-style typography)
    ======================================================================= */
 
-.order-hero {
-    position: relative;
-    min-height: 50vh;
-    min-height: 50dvh;
+.order-intro {
+    padding-top: calc(var(--nav-height-mobile) + var(--space-sm) + var(--space-3xl));
+    padding-bottom: var(--space-3xl);
+    text-align: center;
+}
+
+.order-intro-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--space-4xl) var(--space-md);
-    padding-top: calc(var(--nav-height-mobile) + var(--space-3xl));
+    gap: 0;
 }
 
-.order-hero h1 {
-    margin-bottom: var(--space-xs);
+.order-intro-content .badge-warm {
+    margin-bottom: var(--space-xl);
 }
 
-.order-hero .accent-voice {
+/* Same scale as .page-hero-heading but dark for light bg */
+.order-intro-heading {
+    font-family: var(--font-heading);
+    font-size: var(--text-5xl);
+    font-weight: var(--font-regular);
+    line-height: var(--leading-5xl);
+    letter-spacing: var(--tracking-tighter);
+    color: var(--color-neutral-950);
+    margin-bottom: var(--space-md);
+}
+
+/* Same scale as .page-hero-accent but muted warm for light bg */
+.order-intro-accent {
     font-size: var(--text-2xl);
     line-height: var(--leading-2xl);
     color: var(--color-text-secondary);
 }
 
-.order-hero-hook {
-    margin-top: var(--space-lg);
-    font-size: var(--text-lg);
-    line-height: var(--leading-lg);
-    color: var(--color-text-secondary);
-    max-width: 540px;
-    margin-inline: auto;
+/* Reduce section-heading bottom margin inside the form context */
+.order-steps .section-heading {
+    margin-bottom: var(--space-2xl);
+}
+
+/* Small supplementary note under section-heading */
+.section-heading-note {
+    margin-top: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
 }
 
 
@@ -46,9 +61,14 @@
    2. STEP INDICATOR
    ======================================================================= */
 
+/* Scoping container — sticky stops when this ends (before FAQ) */
+.order-form-area {
+    position: relative;
+}
+
 .step-indicator {
     position: sticky;
-    top: var(--nav-height-mobile);
+    top: 0; /* Nav is hidden on scroll-down, so sit at top of viewport */
     z-index: calc(var(--z-sticky) - 1);
     display: flex;
     align-items: center;
@@ -239,27 +259,6 @@
     margin-inline: auto;
 }
 
-.form-section-title {
-    text-align: center;
-    margin-bottom: var(--space-2xl);
-}
-
-.form-section-title h3 {
-    margin-bottom: var(--space-xs);
-}
-
-.form-section-title .accent-voice {
-    font-size: var(--text-lg);
-    line-height: var(--leading-lg);
-    color: var(--color-text-secondary);
-}
-
-.form-section-title p:not(.accent-voice) {
-    font-size: var(--text-sm);
-    color: var(--color-text-tertiary);
-    margin-top: var(--space-sm);
-}
-
 .form-group {
     margin-bottom: var(--space-lg);
 }
@@ -276,6 +275,51 @@
     font-weight: var(--font-regular);
     color: var(--color-text-tertiary);
     font-size: var(--text-caption);
+}
+
+/* --- Chip multi-select group --- */
+.form-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+}
+
+.form-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-default);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition:
+        border-color var(--duration-fast) var(--ease-organic),
+        background-color var(--duration-fast) var(--ease-organic),
+        color var(--duration-fast) var(--ease-organic),
+        box-shadow var(--duration-fast) var(--ease-organic);
+}
+
+.form-chip:hover {
+    border-color: var(--color-primary-300);
+    color: var(--color-text-heading);
+}
+
+.form-chip.selected {
+    background-color: var(--color-primary-100);
+    border-color: var(--color-primary-400);
+    color: var(--color-text-heading);
+    box-shadow: inset 0 0 0 1px var(--color-primary-400);
+}
+
+/* None chip deselects others */
+.form-chip[data-value="None"].selected {
+    background-color: var(--color-botanical-100);
+    border-color: var(--color-botanical-400);
+    color: var(--color-botanical-700);
+    box-shadow: inset 0 0 0 1px var(--color-botanical-400);
 }
 
 .form-input,
@@ -404,8 +448,6 @@
     display: flex;
     gap: var(--space-md);
     margin-top: var(--space-2xl);
-    padding-top: var(--space-xl);
-    border-top: 1px solid var(--color-border-muted);
 }
 
 .step-nav .btn {
@@ -581,12 +623,16 @@
 
 
 /* =======================================================================
-   9. FAQ ACCORDION
+   9. FAQ ACCORDION  (olive background variant)
    ======================================================================= */
 
 .faq-section {
     padding-block: var(--space-4xl);
-    background-color: var(--color-bg-cream);
+}
+
+/* When on olive background */
+.faq-section.section-olive {
+    background-color: var(--waga-olive);
 }
 
 .faq-container {
@@ -595,6 +641,11 @@
 }
 
 .faq-item {
+    border-bottom: 1px solid rgba(253, 251, 245, 0.15);
+}
+
+/* Default (light) faq-item border */
+.faq-section:not(.section-olive) .faq-item {
     border-bottom: 1px solid var(--color-border-default);
 }
 
@@ -610,13 +661,22 @@
     font-size: var(--text-lg);
     font-weight: var(--font-medium);
     line-height: var(--leading-lg);
-    color: var(--color-text-heading);
+    color: var(--color-neutral-50);
     cursor: pointer;
     transition: color var(--duration-fast) var(--ease-organic);
 }
 
-.faq-question:hover {
+/* Non-olive default question color */
+.faq-section:not(.section-olive) .faq-question {
+    color: var(--color-text-heading);
+}
+
+.faq-section:not(.section-olive) .faq-question:hover {
     color: var(--color-accent-500);
+}
+
+.faq-question:hover {
+    color: var(--color-primary-300);
 }
 
 .faq-question:focus-visible {
@@ -660,6 +720,10 @@
     padding-bottom: var(--space-lg);
     font-size: var(--text-sm);
     line-height: var(--leading-base);
+    color: rgba(253, 251, 245, 0.75);
+}
+
+.faq-section:not(.section-olive) .faq-answer-inner {
     color: var(--color-text-secondary);
 }
 
@@ -671,8 +735,12 @@
     margin-top: var(--space-2xl);
     font-size: var(--text-caption);
     line-height: var(--leading-base);
-    color: var(--color-text-tertiary);
+    color: rgba(253, 251, 245, 0.45);
     text-align: center;
+}
+
+.faq-section:not(.section-olive) .faq-disclaimer {
+    color: var(--color-text-tertiary);
 }
 
 
@@ -682,15 +750,11 @@
 
 /* Tablet: 768px+ */
 @media (min-width: 768px) {
-    .order-hero .accent-voice {
-        font-size: var(--text-3xl);
-        line-height: var(--leading-3xl);
-    }
-
     .form-row-2col {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--space-lg);
+        margin-bottom: var(--space-lg);
     }
 
     .form-row-2col .form-group {
@@ -700,28 +764,8 @@
 
 /* Desktop: 1024px+ */
 @media (min-width: 1024px) {
-    .order-hero {
+    .order-intro {
         padding-top: calc(var(--nav-height) + var(--space-3xl));
-    }
-
-    .step-indicator {
-        top: var(--nav-height);
-    }
-
-    .program-card-header {
-        padding: var(--space-3xl);
-    }
-
-    .program-card-body {
-        padding: var(--space-3xl);
-    }
-}
-
-/* Wide: 1280px+ */
-@media (min-width: 1280px) {
-    .order-hero .accent-voice {
-        font-size: var(--text-4xl);
-        line-height: var(--leading-4xl);
     }
 }
 

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="css/order.min.css">
 </head>
 
-<body>
+<body class="has-floating-header">
 
     <!-- Skip to content -->
     <a href="#main" class="skip-link">Skip to content</a>
@@ -41,39 +41,42 @@
     <main id="main">
 
         <!-- ============================================================
-         HERO
+         PAGE INTRO (slim)
          ============================================================ -->
-        <section class="order-hero">
-            <p class="text-label reveal">Preorder &amp; Waitlist</p>
-            <h1 class="reveal" data-reveal-delay="1">Reserve Your Reset</h1>
-            <p class="accent-voice reveal" data-reveal-delay="2">Limited spots each month.</p>
-            <p class="order-hero-hook reveal" data-reveal-delay="3">
-                Enrollment is limited for each monthly round so we can protect quality, logistics, and support. Complete
-                the steps below to reserve your spot.
-            </p>
+        <section class="order-intro">
+            <div class="container">
+                <div class="order-intro-content reveal">
+                    <p class="badge badge-warm">Preorder &amp; Waitlist</p>
+                    <h1 class="order-intro-heading">Reserve Your Reset</h1>
+                    <p class="order-intro-accent accent-voice">Limited spots each month.</p>
+                </div>
+            </div>
         </section>
 
 
         <!-- ============================================================
-         STEP INDICATOR
+         FORM AREA — step indicator + wizard (sticky scoped here)
          ============================================================ -->
-        <div class="step-indicator" aria-live="polite" aria-atomic="true">
-            <span class="step-indicator-text">Step 1 of 4</span>
-            <div class="step-indicator-progress">
-                <div class="step-indicator-fill" style="width: 25%;"></div>
-            </div>
-            <div class="step-dots">
-                <div class="step-dot active"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-                <div class="step-dot"></div>
-            </div>
-        </div>
+        <div class="order-form-area">
 
 
         <!-- ============================================================
          FORM WIZARD
          ============================================================ -->
+            <!-- STEP INDICATOR (sticky, but scoped to .order-form-area) -->
+            <div class="step-indicator" aria-live="polite" aria-atomic="true">
+                <span class="step-indicator-text">Step 1 of 4</span>
+                <div class="step-indicator-progress">
+                    <div class="step-indicator-fill" style="width: 25%;"></div>
+                </div>
+                <div class="step-dots">
+                    <div class="step-dot active"></div>
+                    <div class="step-dot"></div>
+                    <div class="step-dot"></div>
+                    <div class="step-dot"></div>
+                </div>
+            </div>
+
         <form id="order-form" class="order-steps" novalidate>
 
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -82,7 +85,7 @@
             <div class="order-step active" id="step-1">
                 <div class="container">
 
-                    <div class="form-section-title">
+                    <div class="section-heading">
                         <p class="text-label">Step 1</p>
                         <h3>Your Program</h3>
                         <p class="accent-voice">Everything you need for five days.</p>
@@ -126,12 +129,11 @@
                 <div class="container">
                     <div class="order-form-container">
 
-                        <div class="form-section-title">
+                        <div class="section-heading">
                             <p class="text-label">Step 2</p>
                             <h3>About You</h3>
                             <p class="accent-voice">Help us personalize your experience.</p>
-                            <p>Our nutritionist reviews every response to ensure your box is safe and tailored to you.
-                            </p>
+                            <p class="section-heading-note">Our nutritionist reviews every response to tailor your box.</p>
                         </div>
 
                         <!-- Preferred Diet -->
@@ -162,50 +164,88 @@
                             <p class="form-error-message">Please select an option</p>
                         </div>
 
-                        <!-- Food Allergies -->
+                        <!-- Food Allergies — chip multi-select -->
                         <div class="form-group">
-                            <label for="allergies" class="form-label">
-                                Food allergies <span class="form-label-optional">(optional)</span>
-                            </label>
-                            <textarea id="allergies" class="form-textarea" rows="2"
-                                placeholder="e.g. nuts, shellfish, gluten, dairy..."></textarea>
-                            <p class="form-hint">List any known food allergies or intolerances.</p>
+                            <label class="form-label">Food allergies <span class="form-label-optional">(select all that apply)</span></label>
+                            <div class="form-chip-group" data-field="allergies" id="allergies-chips">
+                                <button type="button" class="form-chip" data-value="Nuts">Nuts</button>
+                                <button type="button" class="form-chip" data-value="Shellfish">Shellfish</button>
+                                <button type="button" class="form-chip" data-value="Gluten">Gluten</button>
+                                <button type="button" class="form-chip" data-value="Dairy">Dairy</button>
+                                <button type="button" class="form-chip" data-value="Eggs">Eggs</button>
+                                <button type="button" class="form-chip" data-value="Soy">Soy</button>
+                                <button type="button" class="form-chip" data-value="Fish">Fish</button>
+                                <button type="button" class="form-chip" data-value="Sesame">Sesame</button>
+                                <button type="button" class="form-chip" data-value="None">None</button>
+                            </div>
+                            <input type="hidden" id="allergies" name="allergies">
                         </div>
 
-                        <!-- Chronic Diseases -->
+                        <!-- Chronic Conditions — chip multi-select -->
                         <div class="form-group">
-                            <label for="chronic" class="form-label">
-                                Chronic diseases <span class="form-label-optional">(optional)</span>
-                            </label>
-                            <textarea id="chronic" class="form-textarea" rows="2"
-                                placeholder="e.g. diabetes, hypertension, autoimmune conditions..."></textarea>
+                            <label class="form-label">Chronic health conditions <span class="form-label-optional">(select all that apply)</span></label>
+                            <div class="form-chip-group" data-field="chronic" id="chronic-chips">
+                                <button type="button" class="form-chip" data-value="Diabetes">Diabetes</button>
+                                <button type="button" class="form-chip" data-value="Hypertension">Hypertension</button>
+                                <button type="button" class="form-chip" data-value="Thyroid disorder">Thyroid disorder</button>
+                                <button type="button" class="form-chip" data-value="Autoimmune condition">Autoimmune condition</button>
+                                <button type="button" class="form-chip" data-value="IBS / gut issues">IBS / gut issues</button>
+                                <button type="button" class="form-chip" data-value="Cardiovascular disease">Cardiovascular disease</button>
+                                <button type="button" class="form-chip" data-value="Kidney disease">Kidney disease</button>
+                                <button type="button" class="form-chip" data-value="None">None</button>
+                            </div>
+                            <input type="hidden" id="chronic" name="chronic">
                         </div>
 
-                        <!-- Regular Medications -->
+                        <!-- Medications — dropdown select -->
                         <div class="form-group">
-                            <label for="medications" class="form-label">
-                                Regular therapy / medications <span class="form-label-optional">(optional)</span>
-                            </label>
-                            <textarea id="medications" class="form-textarea" rows="2"
-                                placeholder="List any medications you take regularly..."></textarea>
+                            <label for="medications" class="form-label">Regular medications / therapy <span class="form-label-optional">(optional)</span></label>
+                            <select id="medications" class="form-select">
+                                <option value="">Select an option</option>
+                                <option value="None">None</option>
+                                <option value="Blood pressure medication">Blood pressure medication</option>
+                                <option value="Cholesterol medication">Cholesterol medication</option>
+                                <option value="Diabetes medication / insulin">Diabetes medication / insulin</option>
+                                <option value="Thyroid medication">Thyroid medication</option>
+                                <option value="Antidepressants / mood stabilizers">Antidepressants / mood stabilizers</option>
+                                <option value="Immunosuppressants">Immunosuppressants</option>
+                                <option value="Blood thinners">Blood thinners</option>
+                                <option value="Hormone therapy">Hormone therapy</option>
+                                <option value="Other (mentioned in health notes)">Other</option>
+                            </select>
                         </div>
 
-                        <!-- Foods You Dislike -->
+                        <!-- Foods Disliked — chip multi-select -->
                         <div class="form-group">
-                            <label for="dislikes" class="form-label">
-                                Foods you dislike or don't eat <span class="form-label-optional">(optional)</span>
-                            </label>
-                            <textarea id="dislikes" class="form-textarea" rows="2"
-                                placeholder="e.g. olives, cilantro, raw tomatoes..."></textarea>
+                            <label class="form-label">Foods you avoid or dislike <span class="form-label-optional">(select all that apply)</span></label>
+                            <div class="form-chip-group" data-field="dislikes" id="dislikes-chips">
+                                <button type="button" class="form-chip" data-value="Cilantro">Cilantro</button>
+                                <button type="button" class="form-chip" data-value="Raw onion">Raw onion</button>
+                                <button type="button" class="form-chip" data-value="Raw tomatoes">Raw tomatoes</button>
+                                <button type="button" class="form-chip" data-value="Olives">Olives</button>
+                                <button type="button" class="form-chip" data-value="Mushrooms">Mushrooms</button>
+                                <button type="button" class="form-chip" data-value="Beets">Beets</button>
+                                <button type="button" class="form-chip" data-value="Avocado">Avocado</button>
+                                <button type="button" class="form-chip" data-value="Spicy food">Spicy food</button>
+                                <button type="button" class="form-chip" data-value="None">None</button>
+                            </div>
+                            <input type="hidden" id="dislikes" name="dislikes">
                         </div>
 
-                        <!-- Additional Health Notes -->
+                        <!-- Health Goal — dropdown (replaces free-text notes) -->
                         <div class="form-group">
-                            <label for="health-notes" class="form-label">
-                                Additional health notes <span class="form-label-optional">(optional)</span>
-                            </label>
-                            <textarea id="health-notes" class="form-textarea" rows="2"
-                                placeholder="Anything else we should know about your health or preferences..."></textarea>
+                            <label for="health-notes" class="form-label">Primary wellness goal <span class="form-label-optional">(optional)</span></label>
+                            <select id="health-notes" class="form-select">
+                                <option value="">Select your main goal</option>
+                                <option value="Reduce bloating and digestive discomfort">Reduce bloating &amp; digestive discomfort</option>
+                                <option value="Increase energy levels">Increase energy levels</option>
+                                <option value="Reset eating habits">Reset eating habits</option>
+                                <option value="Reduce inflammation">Reduce inflammation</option>
+                                <option value="Improve sleep quality">Improve sleep quality</option>
+                                <option value="General detox and cleanse">General detox &amp; cleanse</option>
+                                <option value="Weight management">Weight management</option>
+                                <option value="Hormonal balance">Hormonal balance</option>
+                            </select>
                         </div>
 
                         <div class="step-nav">
@@ -226,7 +266,7 @@
                 <div class="container">
                     <div class="order-form-container">
 
-                        <div class="form-section-title">
+                        <div class="section-heading">
                             <p class="text-label">Step 3</p>
                             <h3>Delivery Details</h3>
                             <p class="accent-voice">Where should we deliver your reset?</p>
@@ -294,7 +334,7 @@
                 <div class="container">
                     <div class="review-container">
 
-                        <div class="form-section-title">
+                        <div class="section-heading">
                             <p class="text-label">Step 4</p>
                             <h3>Review &amp; Reserve</h3>
                             <p class="accent-voice">Confirm your details below.</p>
@@ -428,11 +468,13 @@
 
         </form>
 
+        </div><!-- /.order-form-area -->
+
 
         <!-- ============================================================
          FAQ SECTION
          ============================================================ -->
-        <section class="faq-section" id="order-faq">
+        <section class="faq-section section-olive" id="order-faq">
             <div class="container">
                 <div class="faq-container">
 

@@ -19,6 +19,45 @@
     var totalSteps = 4; // active steps (5th is confirmation)
 
     /* -------------------------------------------------------------------
+       1b. CHIP GROUP MULTI-SELECT
+       ------------------------------------------------------------------- */
+
+    document.querySelectorAll('.form-chip-group').forEach(function (group) {
+        var hiddenInput = document.getElementById(group.getAttribute('data-field'));
+
+        function syncHidden() {
+            var selected = [];
+            group.querySelectorAll('.form-chip.selected').forEach(function (chip) {
+                selected.push(chip.getAttribute('data-value'));
+            });
+            if (hiddenInput) hiddenInput.value = selected.join(', ');
+        }
+
+        group.querySelectorAll('.form-chip').forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                var val = chip.getAttribute('data-value');
+
+                if (val === 'None') {
+                    // Select None, deselect everything else
+                    group.querySelectorAll('.form-chip').forEach(function (c) {
+                        c.classList.remove('selected');
+                    });
+                    chip.classList.add('selected');
+                } else {
+                    // Deselect None chip if present
+                    var noneChip = group.querySelector('.form-chip[data-value="None"]');
+                    if (noneChip) noneChip.classList.remove('selected');
+
+                    // Toggle this chip
+                    chip.classList.toggle('selected');
+                }
+
+                syncHidden();
+            });
+        });
+    });
+
+    /* -------------------------------------------------------------------
        2. STEP NAVIGATION
        ------------------------------------------------------------------- */
 
@@ -194,7 +233,10 @@
 
     function getFieldValue(id) {
         var field = document.getElementById(id);
-        return field ? field.value.trim() : '';
+        if (!field) return '';
+        // For chip groups the value is stored in a hidden input
+        // For selects and regular inputs just use .value
+        return field.value.trim();
     }
 
     function setReviewValue(id, value) {

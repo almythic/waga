@@ -724,21 +724,54 @@ h6 {
 }
 
 /* Explicit dark header for non-hero pages (cream background, dark text) */
-body:not(.has-transparent-header) .site-header {
+body:not(.has-transparent-header):not(.has-floating-header) .site-header {
   background-color: rgba(253, 251, 245, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
 
-body:not(.has-transparent-header) .site-header .logo-img {
+body:not(.has-transparent-header):not(.has-floating-header) .site-header .logo-img {
   filter: brightness(0.35);
 }
 
-body:not(.has-transparent-header) .site-header .nav-link {
+body:not(.has-transparent-header):not(.has-floating-header) .site-header .nav-link {
   color: var(--color-text-secondary);
 }
 
-body:not(.has-transparent-header) .site-header .nav-toggle span {
+body:not(.has-transparent-header):not(.has-floating-header) .site-header .nav-toggle span {
+  background-color: var(--color-text-heading);
+}
+
+/* Floating solid header — same pill shape as transparent header but
+   with warm-white background and dark text. For light-background pages. */
+.has-floating-header .site-header {
+  background-color: rgba(253, 251, 245, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  left: var(--space-sm);
+  right: var(--space-sm);
+  top: var(--space-sm);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.has-floating-header .site-header.scrolled {
+  left: 0;
+  right: 0;
+  top: 0;
+  border-radius: 0;
+  background-color: rgba(253, 251, 245, 0.95);
+  box-shadow: var(--shadow-sm);
+}
+
+.has-floating-header .site-header .logo-img {
+  filter: brightness(0.35);
+}
+
+.has-floating-header .site-header .nav-link {
+  color: var(--color-text-secondary);
+}
+
+.has-floating-header .site-header .nav-toggle span {
   background-color: var(--color-text-heading);
 }
 
