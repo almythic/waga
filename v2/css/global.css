@@ -540,7 +540,6 @@ h6 {
   max-width: 800px;
   text-align: center;
   margin-inline: auto;
-  will-change: transform, opacity;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -549,6 +548,12 @@ h6 {
 .page-hero-content .badge,
 .page-hero-content .badge-warm {
   margin-bottom: var(--space-xl);
+  /* Frosted glass look — matches home hero badge */
+  background-color: rgba(74, 61, 46, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--color-neutral-50);
+  border: 1px solid rgba(253, 251, 245, 0.15);
 }
 
 .page-hero-heading {
@@ -1446,7 +1451,8 @@ body.menu-open {
     justify-content: space-between;
   }
 
-  .has-transparent-header .site-header:not(.scrolled) {
+  .has-transparent-header .site-header:not(.scrolled),
+  .has-floating-header .site-header:not(.scrolled) {
     left: var(--space-md);
     right: var(--space-md);
     top: var(--space-md);
