@@ -1,65 +1,154 @@
 /* ==========================================================================
    WAGA WELLNESS — Order Page Scripts
 
-   Multi-step form wizard, validation, review population, FAQ accordion.
+   4-step wizard: zip gate → details + date → payment → health profile → confirmation
    ========================================================================== */
 
 (function () {
     'use strict';
 
     /* -------------------------------------------------------------------
-       1. DOM REFERENCES
+       1. ELIGIBLE ZIP CODES
+       Placeholder list — Sandra to supply the final delivery zone.
+       NYC range: 10001–10282. Selected NJ codes included.
+       ------------------------------------------------------------------- */
+
+    function isEligibleZip(zip) {
+        var code = parseInt(zip, 10);
+        // NYC zip codes (10001–10282)
+        if (!isNaN(code) && code >= 10001 && code <= 10282) return true;
+        // Selected NJ zip codes
+        var njZips = ['07302', '07030', '07047'];
+        return njZips.indexOf(zip.trim()) !== -1;
+    }
+
+
+    /* -------------------------------------------------------------------
+       2. DOM REFERENCES
        ------------------------------------------------------------------- */
 
     var steps = document.querySelectorAll('.order-step');
+    var stepIndicator = document.querySelector('.step-indicator');
     var stepIndicatorText = document.querySelector('.step-indicator-text');
     var stepIndicatorFill = document.querySelector('.step-indicator-fill');
     var stepDots = document.querySelectorAll('.step-dot');
     var currentStep = 1;
-    var totalSteps = 4; // active steps (5th is confirmation)
+    var totalSteps = 4;
+
 
     /* -------------------------------------------------------------------
-       1b. CHIP GROUP MULTI-SELECT
+       3. ZIP GATE
        ------------------------------------------------------------------- */
 
-    document.querySelectorAll('.form-chip-group').forEach(function (group) {
-        var hiddenInput = document.getElementById(group.getAttribute('data-field'));
+    var zipInput = document.getElementById('zip-input');
+    var zipCheckBtn = document.getElementById('zip-check-btn');
+    var zipGate = document.getElementById('zip-gate');
+    var zipWaitlist = document.getElementById('zip-waitlist');
+    var zipWaitlistConfirmed = document.getElementById('zip-waitlist-confirmed');
 
-        function syncHidden() {
-            var selected = [];
-            group.querySelectorAll('.form-chip.selected').forEach(function (chip) {
-                selected.push(chip.getAttribute('data-value'));
-            });
-            if (hiddenInput) hiddenInput.value = selected.join(', ');
+    function checkZip() {
+        if (!zipInput) return;
+        var zip = zipInput.value.trim();
+
+        if (!zip || zip.length < 5) {
+            zipInput.classList.add('error');
+            return;
         }
 
-        group.querySelectorAll('.form-chip').forEach(function (chip) {
-            chip.addEventListener('click', function () {
-                var val = chip.getAttribute('data-value');
+        if (isEligibleZip(zip)) {
+            // Valid zip — prefill in step 2 and advance
+            var addressZipField = document.getElementById('address-zip');
+            if (addressZipField) addressZipField.value = zip;
+            showStep(2);
+        } else {
+            // Not in delivery zone — show waitlist offer
+            var waitlistZipField = document.getElementById('waitlist-zip');
+            if (waitlistZipField) waitlistZipField.value = zip;
+            zipGate.hidden = true;
+            zipWaitlist.hidden = false;
+            if (stepIndicator) stepIndicator.classList.add('hidden');
+        }
+    }
 
-                if (val === 'None') {
-                    // Select None, deselect everything else
-                    group.querySelectorAll('.form-chip').forEach(function (c) {
-                        c.classList.remove('selected');
-                    });
-                    chip.classList.add('selected');
-                } else {
-                    // Deselect None chip if present
-                    var noneChip = group.querySelector('.form-chip[data-value="None"]');
-                    if (noneChip) noneChip.classList.remove('selected');
+    if (zipCheckBtn) {
+        zipCheckBtn.addEventListener('click', checkZip);
+    }
 
-                    // Toggle this chip
-                    chip.classList.toggle('selected');
-                }
-
-                syncHidden();
-            });
+    if (zipInput) {
+        zipInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                checkZip();
+            }
         });
+
+        zipInput.addEventListener('input', function () {
+            this.classList.remove('error');
+            this.value = this.value.replace(/\D/g, '').slice(0, 5);
+        });
+    }
+
+    // Waitlist "Different zip" — go back to gate
+    var waitlistBackBtn = document.getElementById('waitlist-back-btn');
+    if (waitlistBackBtn) {
+        waitlistBackBtn.addEventListener('click', function () {
+            zipGate.hidden = false;
+            zipWaitlist.hidden = true;
+            if (stepIndicator) stepIndicator.classList.remove('hidden');
+            if (zipInput) {
+                zipInput.value = '';
+                zipInput.focus();
+            }
+        });
+    }
+
+    // Waitlist submit
+    var waitlistSubmitBtn = document.getElementById('waitlist-submit-btn');
+    if (waitlistSubmitBtn) {
+        waitlistSubmitBtn.addEventListener('click', function () {
+            var nameEl = document.getElementById('waitlist-name');
+            var emailEl = document.getElementById('waitlist-email');
+            var name = nameEl ? nameEl.value.trim() : '';
+            var email = emailEl ? emailEl.value.trim() : '';
+            var valid = true;
+
+            if (!name) {
+                showFieldError(nameEl, 'Please enter your name');
+                valid = false;
+            }
+            if (!email || !isValidEmail(email)) {
+                showFieldError(emailEl, !email ? 'Please enter your email' : 'Please enter a valid email');
+                valid = false;
+            }
+            if (!valid) return;
+
+            zipWaitlist.hidden = true;
+            zipWaitlistConfirmed.hidden = false;
+        });
+    }
+
+    // Clear waitlist input errors on input
+    ['waitlist-name', 'waitlist-email'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', function () {
+                this.classList.remove('error');
+            });
+        }
     });
 
+
     /* -------------------------------------------------------------------
-       2. STEP NAVIGATION
+       4. STEP NAVIGATION
        ------------------------------------------------------------------- */
+
+    function scrollToTop() {
+        if (window.__lenis) {
+            window.__lenis.scrollTo(0, { immediate: true });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+    }
 
     function showStep(n) {
         steps.forEach(function (step) {
@@ -71,21 +160,29 @@
             target.classList.add('active');
             currentStep = n;
             updateIndicator();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            scrollToTop();
         }
+
+        if (n === 3) updateOrderSummaryDate();
+        if (n === 5) updateConfirmationDate();
     }
 
     function updateIndicator() {
-        if (currentStep <= totalSteps) {
-            stepIndicatorText.textContent = 'Step ' + currentStep + ' of ' + totalSteps;
-            stepIndicatorFill.style.width = ((currentStep / totalSteps) * 100) + '%';
-        } else {
-            // Confirmation
-            stepIndicatorText.textContent = 'Complete';
-            stepIndicatorFill.style.width = '100%';
+        if (currentStep >= 5) {
+            if (stepIndicator) stepIndicator.classList.add('hidden');
+            return;
         }
 
-        // Update dots
+        if (stepIndicator) stepIndicator.classList.remove('hidden');
+
+        if (stepIndicatorText) {
+            stepIndicatorText.textContent = 'Step ' + currentStep + ' of ' + totalSteps;
+        }
+
+        if (stepIndicatorFill) {
+            stepIndicatorFill.style.width = ((currentStep / totalSteps) * 100) + '%';
+        }
+
         stepDots.forEach(function (dot, index) {
             dot.classList.remove('active', 'completed');
             if (index + 1 === currentStep) {
@@ -97,9 +194,12 @@
     }
 
     function goNext() {
-        if (currentStep >= totalSteps) return;
         if (!validateStep(currentStep)) return;
-        showStep(currentStep + 1);
+        if (currentStep < totalSteps) {
+            showStep(currentStep + 1);
+        } else {
+            goToConfirmation();
+        }
     }
 
     function goBack() {
@@ -107,189 +207,288 @@
         showStep(currentStep - 1);
     }
 
-    function goToStep(n) {
-        showStep(n);
+    function goToConfirmation() {
+        steps.forEach(function (step) {
+            step.classList.remove('active');
+        });
+
+        var confirmation = document.getElementById('step-5');
+        if (confirmation) {
+            confirmation.classList.add('active');
+            currentStep = 5;
+            updateIndicator();
+            updateConfirmationDate();
+            scrollToTop();
+        }
     }
 
-    // Next buttons
+    // Wire up navigation buttons
     document.querySelectorAll('[data-action="next"]').forEach(function (btn) {
         btn.addEventListener('click', goNext);
     });
 
-    // Back buttons
     document.querySelectorAll('[data-action="back"]').forEach(function (btn) {
         btn.addEventListener('click', goBack);
     });
 
-    // Edit buttons (review step)
-    document.querySelectorAll('[data-action="edit"]').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            var targetStep = parseInt(this.getAttribute('data-target'), 10);
-            goToStep(targetStep);
+    // Skip health profile
+    var skipProfileBtn = document.getElementById('skip-profile-btn');
+    if (skipProfileBtn) {
+        skipProfileBtn.addEventListener('click', goToConfirmation);
+    }
+
+    // Prevent accidental native form submission
+    var orderForm = document.getElementById('order-form');
+    if (orderForm) {
+        orderForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+        });
+    }
+
+
+    /* -------------------------------------------------------------------
+       5. DATE CARD SELECTION
+       ------------------------------------------------------------------- */
+
+    var selectableDateCards = document.querySelectorAll('.date-card:not(.sold-out)');
+    var selectedDateInput = document.getElementById('selected-date');
+
+    selectableDateCards.forEach(function (card) {
+        card.addEventListener('click', function () {
+            selectableDateCards.forEach(function (c) {
+                c.classList.remove('selected');
+                c.setAttribute('aria-checked', 'false');
+            });
+            card.classList.add('selected');
+            card.setAttribute('aria-checked', 'true');
+            if (selectedDateInput) selectedDateInput.value = card.getAttribute('data-date');
+
+            var dateError = document.getElementById('date-error');
+            if (dateError) dateError.classList.remove('visible');
+        });
+
+        card.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                card.click();
+            }
+        });
+    });
+
+    function formatSelectedDate() {
+        if (!selectedDateInput || !selectedDateInput.value) return null;
+        var d = new Date(selectedDateInput.value + 'T00:00:00');
+        return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+    }
+
+    function updateOrderSummaryDate() {
+        var summaryDate = document.getElementById('summary-selected-date');
+        if (!summaryDate) return;
+        summaryDate.textContent = formatSelectedDate() || '—';
+    }
+
+    function updateConfirmationDate() {
+        var confirmDateEl = document.getElementById('confirmation-date-display');
+        if (!confirmDateEl) return;
+        var formatted = formatSelectedDate();
+        confirmDateEl.textContent = formatted ? 'Starting ' + formatted : '';
+    }
+
+
+    /* -------------------------------------------------------------------
+       6. CHIP GROUP — multi-select + single-select mode + "Other" field
+       ------------------------------------------------------------------- */
+
+    document.querySelectorAll('.form-chip-group').forEach(function (group) {
+        var fieldId = group.getAttribute('data-field');
+        var hiddenInput = document.getElementById(fieldId);
+        var isSingle = group.getAttribute('data-single') === 'true';
+
+        function syncHidden() {
+            var selected = [];
+            group.querySelectorAll('.form-chip.selected').forEach(function (chip) {
+                selected.push(chip.getAttribute('data-value'));
+            });
+            if (hiddenInput) hiddenInput.value = selected.join(', ');
+        }
+
+        function toggleOtherField(show) {
+            var otherField = document.getElementById(fieldId + '-other-field');
+            if (otherField) otherField.hidden = !show;
+        }
+
+        group.querySelectorAll('.form-chip').forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                var val = chip.getAttribute('data-value');
+
+                if (isSingle) {
+                    group.querySelectorAll('.form-chip').forEach(function (c) {
+                        c.classList.remove('selected');
+                    });
+                    chip.classList.add('selected');
+
+                    // Clear diet required error
+                    var fieldError = document.getElementById(fieldId + '-error');
+                    if (fieldError) fieldError.classList.remove('visible');
+
+                } else if (val === 'None') {
+                    group.querySelectorAll('.form-chip').forEach(function (c) {
+                        c.classList.remove('selected');
+                    });
+                    chip.classList.add('selected');
+                    toggleOtherField(false);
+
+                } else {
+                    // Deselect None
+                    var noneChip = group.querySelector('.form-chip[data-value="None"]');
+                    if (noneChip) noneChip.classList.remove('selected');
+                    chip.classList.toggle('selected');
+
+                    // Show/hide Other freeform field
+                    var otherChip = group.querySelector('.form-chip[data-value="Other"]');
+                    toggleOtherField(otherChip && otherChip.classList.contains('selected'));
+                }
+
+                syncHidden();
+            });
         });
     });
 
 
     /* -------------------------------------------------------------------
-       3. VALIDATION
+       7. CARD INPUT FORMATTING + TYPE DETECTION
        ------------------------------------------------------------------- */
 
-    function validateStep(step) {
-        var stepEl = document.getElementById('step-' + step);
-        if (!stepEl) return true;
+    var visaLogo = document.getElementById('card-logo-visa');
+    var mcLogo = document.getElementById('card-logo-mc');
 
-        var requiredFields = stepEl.querySelectorAll('[required]');
-        var valid = true;
-
-        requiredFields.forEach(function (field) {
-            clearFieldError(field);
-
-            if (field.type === 'radio') {
-                // Check if any radio in the group is selected
-                var name = field.name;
-                var groupChecked = stepEl.querySelector('input[name="' + name + '"]:checked');
-                if (!groupChecked) {
-                    showFieldError(field, 'Please select an option');
-                    valid = false;
-                }
-            } else if (!field.value.trim()) {
-                showFieldError(field, 'This field is required');
-                valid = false;
-            } else if (field.type === 'email' && !isValidEmail(field.value)) {
-                showFieldError(field, 'Please enter a valid email address');
-                valid = false;
-            }
-        });
-
-        return valid;
+    function detectCardType(digits) {
+        if (/^4/.test(digits)) return 'visa';
+        if (/^(5[1-5]|2[2-7]\d{2})/.test(digits)) return 'mastercard';
+        return null;
     }
+
+    function updateCardLogos(digits) {
+        var type = detectCardType(digits);
+        if (visaLogo) visaLogo.hidden = (type !== 'visa');
+        if (mcLogo) mcLogo.hidden = (type !== 'mastercard');
+    }
+
+    var cardNumberInput = document.getElementById('card-number');
+    if (cardNumberInput) {
+        cardNumberInput.addEventListener('input', function () {
+            var val = this.value.replace(/\D/g, '').slice(0, 16);
+            var groups = val.match(/.{1,4}/g);
+            this.value = groups ? groups.join(' ') : val;
+            updateCardLogos(val);
+        });
+    }
+
+    var cardExpiryInput = document.getElementById('card-expiry');
+    if (cardExpiryInput) {
+        cardExpiryInput.addEventListener('input', function () {
+            var val = this.value.replace(/\D/g, '').slice(0, 4);
+            this.value = val.length >= 3 ? val.slice(0, 2) + ' / ' + val.slice(2) : val;
+        });
+    }
+
+    var cardCvvInput = document.getElementById('card-cvv');
+    if (cardCvvInput) {
+        cardCvvInput.addEventListener('input', function () {
+            this.value = this.value.replace(/\D/g, '').slice(0, 4);
+        });
+    }
+
+
+    /* -------------------------------------------------------------------
+       8. VALIDATION
+       ------------------------------------------------------------------- */
 
     function isValidEmail(email) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
+    function validateStep(step) {
+        // Step 1 validation is handled by checkZip()
+        if (step === 1) return true;
+
+        var stepEl = document.getElementById('step-' + step);
+        if (!stepEl) return true;
+
+        var valid = true;
+
+        stepEl.querySelectorAll('[required]').forEach(function (field) {
+            clearFieldError(field);
+
+            if (!field.value.trim()) {
+                showFieldError(field, 'This field is required');
+                valid = false;
+            } else if (field.type === 'email' && !isValidEmail(field.value)) {
+                showFieldError(field, 'Please enter a valid email');
+                valid = false;
+            }
+        });
+
+        // Step 2: require a date selection
+        if (step === 2) {
+            if (!selectedDateInput || !selectedDateInput.value) {
+                var dateError = document.getElementById('date-error');
+                if (dateError) dateError.classList.add('visible');
+                valid = false;
+            }
+        }
+
+        // Step 4: require a diet selection
+        if (step === 4) {
+            var dietInput = document.getElementById('diet');
+            if (!dietInput || !dietInput.value) {
+                var dietError = document.getElementById('diet-error');
+                if (dietError) dietError.classList.add('visible');
+                valid = false;
+            }
+        }
+
+        // Scroll to first error
+        if (!valid) {
+            var firstError = stepEl.querySelector('.form-input.error, .form-error-message.visible');
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        return valid;
+    }
+
     function showFieldError(field, message) {
         field.classList.add('error');
-        var errorEl = field.closest('.form-group').querySelector('.form-error-message');
-        if (errorEl) {
-            errorEl.textContent = message;
-            errorEl.classList.add('visible');
+        var group = field.closest('.form-group');
+        if (group) {
+            var errorEl = group.querySelector('.form-error-message');
+            if (errorEl) {
+                errorEl.textContent = message;
+                errorEl.classList.add('visible');
+            }
         }
     }
 
     function clearFieldError(field) {
         field.classList.remove('error');
-        var errorEl = field.closest('.form-group');
-        if (errorEl) {
-            var msg = errorEl.querySelector('.form-error-message');
-            if (msg) {
-                msg.classList.remove('visible');
-            }
+        var group = field.closest('.form-group');
+        if (group) {
+            var msg = group.querySelector('.form-error-message');
+            if (msg) msg.classList.remove('visible');
         }
     }
 
-    // Clear errors on input
-    document.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(function (field) {
+    document.querySelectorAll('.form-input, .form-textarea').forEach(function (field) {
         field.addEventListener('input', function () {
-            clearFieldError(this);
-        });
-    });
-
-    document.querySelectorAll('input[type="radio"]').forEach(function (radio) {
-        radio.addEventListener('change', function () {
-            // Clear error on the first radio of the group
-            var group = document.querySelector('input[name="' + this.name + '"]');
-            if (group) clearFieldError(group);
+            if (!this.readOnly) clearFieldError(this);
         });
     });
 
 
     /* -------------------------------------------------------------------
-       4. REVIEW STEP — POPULATE SUMMARY
-       ------------------------------------------------------------------- */
-
-    function populateReview() {
-        // Program
-        setReviewValue('review-program', '5-Day Detox Box — $2,000');
-
-        // Diet
-        var dietRadio = document.querySelector('input[name="diet"]:checked');
-        setReviewValue('review-diet', dietRadio ? dietRadio.value : '');
-
-        // Health fields
-        setReviewValue('review-allergies', getFieldValue('allergies'));
-        setReviewValue('review-chronic', getFieldValue('chronic'));
-        setReviewValue('review-medications', getFieldValue('medications'));
-        setReviewValue('review-dislikes', getFieldValue('dislikes'));
-        setReviewValue('review-health-notes', getFieldValue('health-notes'));
-
-        // Delivery fields
-        setReviewValue('review-name', getFieldValue('full-name'));
-        setReviewValue('review-email', getFieldValue('email'));
-        setReviewValue('review-phone', getFieldValue('phone'));
-        setReviewValue('review-address', getFieldValue('address'));
-        setReviewValue('review-delivery-notes', getFieldValue('delivery-notes'));
-    }
-
-    function getFieldValue(id) {
-        var field = document.getElementById(id);
-        if (!field) return '';
-        // For chip groups the value is stored in a hidden input
-        // For selects and regular inputs just use .value
-        return field.value.trim();
-    }
-
-    function setReviewValue(id, value) {
-        var el = document.getElementById(id);
-        if (!el) return;
-
-        if (value) {
-            el.textContent = value;
-            el.classList.remove('empty');
-        } else {
-            el.textContent = 'Not provided';
-            el.classList.add('empty');
-        }
-    }
-
-    // Populate review when entering step 4
-    var originalShowStep = showStep;
-    showStep = function (n) {
-        if (n === 4) populateReview();
-        originalShowStep(n);
-    };
-
-
-    /* -------------------------------------------------------------------
-       5. FORM SUBMISSION
-       ------------------------------------------------------------------- */
-
-    var orderForm = document.getElementById('order-form');
-
-    if (orderForm) {
-        orderForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            if (!validateStep(currentStep)) return;
-
-            // Show confirmation step
-            steps.forEach(function (step) {
-                step.classList.remove('active');
-            });
-
-            var confirmation = document.getElementById('step-5');
-            if (confirmation) {
-                confirmation.classList.add('active');
-                currentStep = 5;
-                updateIndicator();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-        });
-    }
-
-
-    /* -------------------------------------------------------------------
-       6. FAQ ACCORDION
+       9. FAQ ACCORDION
        ------------------------------------------------------------------- */
 
     var faqItems = document.querySelectorAll('.faq-item');
@@ -297,30 +496,32 @@
     faqItems.forEach(function (item) {
         var question = item.querySelector('.faq-question');
         var answer = item.querySelector('.faq-answer');
+        if (!question || !answer) return;
 
         question.addEventListener('click', function () {
             var isOpen = item.classList.contains('open');
 
-            // Close all other items
-            faqItems.forEach(function (otherItem) {
-                if (otherItem !== item) {
-                    otherItem.classList.remove('open');
-                    var otherAnswer = otherItem.querySelector('.faq-answer');
+            faqItems.forEach(function (other) {
+                if (other !== item) {
+                    other.classList.remove('open');
+                    var otherAnswer = other.querySelector('.faq-answer');
                     if (otherAnswer) otherAnswer.style.maxHeight = null;
+                    var otherQ = other.querySelector('.faq-question');
+                    if (otherQ) otherQ.setAttribute('aria-expanded', 'false');
                 }
             });
 
-            // Toggle this item
             if (isOpen) {
                 item.classList.remove('open');
                 answer.style.maxHeight = null;
+                question.setAttribute('aria-expanded', 'false');
             } else {
                 item.classList.add('open');
                 answer.style.maxHeight = answer.scrollHeight + 'px';
+                question.setAttribute('aria-expanded', 'true');
             }
         });
 
-        // Keyboard support
         question.addEventListener('keydown', function (e) {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -331,7 +532,7 @@
 
 
     /* -------------------------------------------------------------------
-       7. INITIALIZE
+       10. INITIALIZE
        ------------------------------------------------------------------- */
 
     showStep(1);

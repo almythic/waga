@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Reserve your 5-Day Detox Box by WAGA Wellness. $2,000 for a medically-designed, five-day nutritional reset delivered to your door in NYC.">
+        content="Reserve your 5-Day Detox Box by WAGA Wellness. $1,950 for a medically-designed, five-day nutritional reset delivered to your door in NYC.">
     <meta name="theme-color" content="#FDFBF5">
     <title>Order — WAGA Wellness</title>
 
@@ -59,11 +59,7 @@
          ============================================================ -->
         <div class="order-form-area">
 
-
-        <!-- ============================================================
-         FORM WIZARD
-         ============================================================ -->
-            <!-- STEP INDICATOR (sticky, but scoped to .order-form-area) -->
+            <!-- STEP INDICATOR (sticky, scoped to .order-form-area) -->
             <div class="step-indicator" aria-live="polite" aria-atomic="true">
                 <span class="step-indicator-text">Step 1 of 4</span>
                 <div class="step-indicator-progress">
@@ -80,42 +76,86 @@
         <form id="order-form" class="order-steps" novalidate>
 
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           STEP 1 — YOUR PROGRAM
+           STEP 1 — ZIP CODE GATE
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <div class="order-step active" id="step-1">
                 <div class="container">
 
-                    <div class="section-heading">
-                        <p class="text-label">Step 1</p>
-                        <h3>Your Program</h3>
-                        <p class="accent-voice">Everything you need for five days.</p>
+                    <!-- Gate state: zip input -->
+                    <div class="zip-gate" id="zip-gate">
+                        <div class="order-form-container zip-gate-content">
+
+                            <div class="section-heading" style="text-align: center;">
+                                <p class="text-label">Step 1 of 4</p>
+                                <h3>Do We Deliver to You?</h3>
+                                <p class="accent-voice">Enter your zip code to check availability in your area.</p>
+                            </div>
+
+                            <div class="form-group zip-input-group">
+                                <label for="zip-input" class="form-label" style="text-align: center; display: block;">Delivery zip code</label>
+                                <div class="zip-input-row">
+                                    <input type="text" id="zip-input" class="form-input zip-input"
+                                        placeholder="e.g. 10021" maxlength="5" inputmode="numeric"
+                                        autocomplete="postal-code" aria-label="Delivery zip code">
+                                    <button type="button" class="btn btn-primary btn-lg" id="zip-check-btn">
+                                        Check availability &rarr;
+                                    </button>
+                                </div>
+                                <p class="form-hint" style="text-align: center;">NYC &amp; Tri-State area. No card required to check.</p>
+                            </div>
+
+                        </div>
                     </div>
 
-                    <div class="program-card">
-                        <div class="program-card-header">
-                            <p class="program-card-price">$2,000</p>
-                            <p class="program-card-price-sub">/ 5-Day Detox Box</p>
-                            <p class="program-card-badge">&#9737; Kosher &amp; Halal safe</p>
-                        </div>
-                        <div class="program-card-body">
-                            <h5>Your Detox Box includes:</h5>
-                            <ul class="program-includes-list">
-                                <li>All food, drinks, and functional components for the full 5 days</li>
-                                <li>Glass jars and eco-conscious gable box packaging</li>
-                                <li>Printed guide explaining the science, daily routine, and how to prepare</li>
-                                <li>Email and message support during your 5-day cycle</li>
-                            </ul>
-                            <p class="program-card-meta">
-                                One 5-day cycle&ensp;·&ensp;NYC &amp; Tri-State area only&ensp;·&ensp;Limited spots per
-                                month
-                            </p>
+                    <!-- Waitlist state: zip not eligible -->
+                    <div class="zip-waitlist" id="zip-waitlist" hidden>
+                        <div class="order-form-container">
+
+                            <div class="waitlist-heading">
+                                <div class="waitlist-icon" aria-hidden="true">&#9825;</div>
+                                <h3>We're not in your area yet.</h3>
+                                <p class="accent-voice">We're expanding soon.</p>
+                                <p class="waitlist-body">Leave your details and you'll be the first to know — along with an exclusive offer when we arrive.</p>
+                            </div>
+
+                            <div class="form-row-2col">
+                                <div class="form-group">
+                                    <label for="waitlist-name" class="form-label">Full name *</label>
+                                    <input type="text" id="waitlist-name" class="form-input" placeholder="Your full name" autocomplete="name">
+                                    <p class="form-error-message">Please enter your name</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="waitlist-email" class="form-label">Email address *</label>
+                                    <input type="email" id="waitlist-email" class="form-input" placeholder="you@example.com" autocomplete="email">
+                                    <p class="form-error-message">Please enter a valid email</p>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="waitlist-zip" class="form-label">Your zip code</label>
+                                <input type="text" id="waitlist-zip" class="form-input" maxlength="5" inputmode="numeric" autocomplete="postal-code">
+                            </div>
+
+                            <div class="step-nav">
+                                <button type="button" class="btn btn-secondary btn-lg btn-back" id="waitlist-back-btn">
+                                    &larr; Different zip
+                                </button>
+                                <button type="button" class="btn btn-primary btn-lg" id="waitlist-submit-btn" style="flex: 1;">
+                                    Notify me
+                                </button>
+                            </div>
+
                         </div>
                     </div>
 
-                    <div class="step-nav" style="max-width: 720px; margin-inline: auto;">
-                        <button type="button" class="btn btn-primary btn-lg" data-action="next" style="flex: 1;">
-                            Continue
-                        </button>
+                    <!-- Waitlist confirmed state -->
+                    <div class="zip-waitlist-confirmed" id="zip-waitlist-confirmed" hidden>
+                        <div class="order-form-container waitlist-confirmed-content">
+                            <div class="confirmation-icon" aria-hidden="true">&#10003;</div>
+                            <h3>You're on the list.</h3>
+                            <p class="accent-voice">We'll reach out when WAGA arrives in your area.</p>
+                            <a href="index.html" class="btn btn-secondary btn-lg" style="margin-top: var(--space-2xl);">Return Home</a>
+                        </div>
                     </div>
 
                 </div>
@@ -123,48 +163,290 @@
 
 
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           STEP 2 — ABOUT YOU (Health & Dietary Profile)
+           STEP 2 — PERSONAL DETAILS + DELIVERY + DATE
            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
             <div class="order-step" id="step-2">
                 <div class="container">
                     <div class="order-form-container">
 
                         <div class="section-heading">
-                            <p class="text-label">Step 2</p>
-                            <h3>About You</h3>
-                            <p class="accent-voice">Help us personalize your experience.</p>
-                            <p class="section-heading-note">Our nutritionist reviews every response to tailor your box.</p>
+                            <p class="text-label">Step 2 of 4</p>
+                            <h3>Your Details</h3>
+                            <p class="accent-voice">Who are we delivering to?</p>
                         </div>
 
-                        <!-- Preferred Diet -->
+                        <!-- Name -->
+                        <div class="form-row-2col">
+                            <div class="form-group">
+                                <label for="first-name" class="form-label">First name *</label>
+                                <input type="text" id="first-name" class="form-input" placeholder="First name"
+                                    autocomplete="given-name" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name" class="form-label">Last name *</label>
+                                <input type="text" id="last-name" class="form-input" placeholder="Last name"
+                                    autocomplete="family-name" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                        </div>
+
+                        <!-- Email + Phone -->
+                        <div class="form-row-2col">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email address *</label>
+                                <input type="email" id="email" class="form-input" placeholder="you@example.com"
+                                    autocomplete="email" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone *</label>
+                                <input type="tel" id="phone" class="form-input" placeholder="+1 (212) ..."
+                                    autocomplete="tel" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                        </div>
+
+                        <!-- Street address -->
                         <div class="form-group">
-                            <label class="form-label">Preferred diet *</label>
-                            <div class="form-radio-group">
-                                <div class="form-radio-option">
-                                    <input type="radio" id="diet-standard" name="diet" value="Standard" required>
-                                    <label for="diet-standard" class="form-radio-label">Standard</label>
+                            <label for="address-street" class="form-label">Street address *</label>
+                            <input type="text" id="address-street" class="form-input"
+                                placeholder="e.g. 123 Park Ave" autocomplete="address-line1" required>
+                            <p class="form-error-message">This field is required</p>
+                        </div>
+
+                        <!-- Apt + Zip (pre-filled) -->
+                        <div class="form-row-2col">
+                            <div class="form-group">
+                                <label for="address-apt" class="form-label">Apt / Suite <span class="form-label-optional">(optional)</span></label>
+                                <input type="text" id="address-apt" class="form-input" placeholder="Apt 4B"
+                                    autocomplete="address-line2">
+                            </div>
+                            <div class="form-group">
+                                <label for="address-zip" class="form-label">Zip code</label>
+                                <input type="text" id="address-zip" class="form-input form-input-readonly"
+                                    autocomplete="postal-code" readonly aria-readonly="true">
+                                <p class="form-hint">Auto-filled from your zip check.</p>
+                            </div>
+                        </div>
+
+                        <!-- City + State -->
+                        <div class="form-row-2col">
+                            <div class="form-group">
+                                <label for="address-city" class="form-label">City *</label>
+                                <input type="text" id="address-city" class="form-input" placeholder="New York"
+                                    autocomplete="address-level2" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="address-state" class="form-label">State *</label>
+                                <input type="text" id="address-state" class="form-input" placeholder="NY"
+                                    autocomplete="address-level1" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+                        </div>
+
+                        <!-- Delivery notes -->
+                        <div class="form-group">
+                            <label for="delivery-notes" class="form-label">Delivery notes <span class="form-label-optional">(optional)</span></label>
+                            <textarea id="delivery-notes" class="form-textarea" rows="2"
+                                placeholder="e.g. Leave with doorman, ring bell twice..."></textarea>
+                        </div>
+
+                        <!-- Program date selection -->
+                        <div class="form-group date-select-group">
+                            <label class="form-label">Select your program start date *</label>
+                            <p class="form-hint">Your Detox Box is delivered on this date. Reserve early — spots are limited each cycle.</p>
+                            <div class="date-cards" id="date-cards" role="radiogroup" aria-label="Select a program start date">
+
+                                <!-- Placeholder dates — to be replaced with live availability data -->
+                                <div class="date-card" data-date="2025-05-08" tabindex="0" role="radio" aria-checked="false">
+                                    <div class="date-card-month">May</div>
+                                    <div class="date-card-day">8</div>
+                                    <div class="date-card-year">2025</div>
+                                    <div class="date-card-meta">
+                                        <span class="date-card-spots">4 spots left</span>
+                                        <span class="date-card-price">$1,950</span>
+                                    </div>
                                 </div>
-                                <div class="form-radio-option">
-                                    <input type="radio" id="diet-vegetarian" name="diet" value="Vegetarian">
-                                    <label for="diet-vegetarian" class="form-radio-label">Vegetarian</label>
+
+                                <div class="date-card" data-date="2025-05-25" tabindex="0" role="radio" aria-checked="false">
+                                    <div class="date-card-month">May</div>
+                                    <div class="date-card-day">25</div>
+                                    <div class="date-card-year">2025</div>
+                                    <div class="date-card-meta">
+                                        <span class="date-card-spots">8 spots left</span>
+                                        <span class="date-card-price">$1,950</span>
+                                    </div>
                                 </div>
-                                <div class="form-radio-option">
-                                    <input type="radio" id="diet-vegan" name="diet" value="Vegan">
-                                    <label for="diet-vegan" class="form-radio-label">Vegan</label>
+
+                                <div class="date-card sold-out" data-date="2025-06-12" tabindex="0" role="radio" aria-checked="false" aria-disabled="true">
+                                    <div class="date-card-month">June</div>
+                                    <div class="date-card-day">12</div>
+                                    <div class="date-card-year">2025</div>
+                                    <div class="date-card-meta">
+                                        <span class="date-card-sold">Sold out</span>
+                                    </div>
+                                    <a href="#order-faq" class="date-card-waitlist-link">Join waitlist for this date</a>
                                 </div>
-                                <div class="form-radio-option">
-                                    <input type="radio" id="diet-pescatarian" name="diet" value="Pescatarian">
-                                    <label for="diet-pescatarian" class="form-radio-label">Pescatarian</label>
+
+                            </div>
+                            <input type="hidden" id="selected-date" name="selected-date">
+                            <p class="form-error-message" id="date-error">Please select a program date</p>
+                        </div>
+
+                        <div class="step-nav">
+                            <button type="button" class="btn btn-secondary btn-lg btn-back" data-action="back">Back</button>
+                            <button type="button" class="btn btn-primary btn-lg" data-action="next" style="flex: 1;">Continue to Payment</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 3 — PAYMENT
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step" id="step-3">
+                <div class="container">
+
+                    <div class="section-heading" style="text-align: center;">
+                        <p class="text-label">Step 3 of 4</p>
+                        <h3>Complete Your Reservation</h3>
+                        <p class="accent-voice">Secure your spot for five days.</p>
+                    </div>
+
+                    <div class="payment-layout">
+
+                        <!-- Order summary (shown first on mobile, right side on desktop) -->
+                        <div class="order-summary-panel">
+                            <h5 class="order-summary-title">Order Summary</h5>
+
+                            <div class="order-summary-item order-summary-item-main">
+                                <span>5-Day Detox Box</span>
+                                <span>$1,950</span>
+                            </div>
+
+                            <ul class="order-summary-includes">
+                                <li>Daily delivery for 5 days</li>
+                                <li>Nutritionist consultation</li>
+                                <li>Printed program guide</li>
+                                <li>Email &amp; message support</li>
+                            </ul>
+
+                            <div class="order-summary-divider"></div>
+
+                            <div class="order-summary-total">
+                                <span>Total</span>
+                                <span>$1,950</span>
+                            </div>
+
+                            <div class="order-summary-date-row">
+                                <span class="order-summary-date-label">Start date</span>
+                                <span class="order-summary-date-value" id="summary-selected-date">—</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment form -->
+                        <div class="payment-form-section">
+
+                            <!-- Payment integration: Stripe or Square — to be connected by engineering team -->
+
+                            <div class="form-group">
+                                <label for="card-name" class="form-label">Cardholder name *</label>
+                                <input type="text" id="card-name" class="form-input"
+                                    placeholder="As it appears on your card" autocomplete="cc-name" required>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="card-number" class="form-label">Card number *</label>
+                                <div class="card-number-wrapper">
+                                    <input type="text" id="card-number" class="form-input card-number-input"
+                                        placeholder="1234 5678 9012 3456" maxlength="19"
+                                        inputmode="numeric" autocomplete="cc-number" required>
+                                    <span class="card-icons" aria-hidden="true">
+                                        <img src="assets/images/order/visa.png" alt="Visa" class="card-logo" id="card-logo-visa" hidden>
+                                        <img src="assets/images/order/mc.png" alt="Mastercard" class="card-logo" id="card-logo-mc" hidden>
+                                    </span>
                                 </div>
-                                <div class="form-radio-option">
-                                    <input type="radio" id="diet-other" name="diet" value="Other">
-                                    <label for="diet-other" class="form-radio-label">Other</label>
+                                <p class="form-error-message">This field is required</p>
+                            </div>
+
+                            <div class="form-row-2col">
+                                <div class="form-group">
+                                    <label for="card-expiry" class="form-label">Expiry date *</label>
+                                    <input type="text" id="card-expiry" class="form-input"
+                                        placeholder="MM / YY" maxlength="7"
+                                        inputmode="numeric" autocomplete="cc-exp" required>
+                                    <p class="form-error-message">This field is required</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="card-cvv" class="form-label">Security code *</label>
+                                    <input type="text" id="card-cvv" class="form-input"
+                                        placeholder="CVV" maxlength="4"
+                                        inputmode="numeric" autocomplete="cc-csc" required>
+                                    <p class="form-error-message">This field is required</p>
                                 </div>
                             </div>
-                            <p class="form-error-message">Please select an option</p>
+
+                            <!-- Trust row -->
+                            <div class="trust-row">
+                                <div class="trust-item">
+                                    <i class="ph ph-lock-simple" aria-hidden="true"></i>
+                                    <span>Secure checkout</span>
+                                </div>
+                                <div class="trust-item">
+                                    <i class="ph ph-shield-check" aria-hidden="true"></i>
+                                    <span>We never store card details</span>
+                                </div>
+                                <div class="trust-item">
+                                    <i class="ph ph-heart" aria-hidden="true"></i>
+                                    <span>Satisfaction backed by WAGA</span>
+                                </div>
+                            </div>
+
+                            <div class="step-nav">
+                                <button type="button" class="btn btn-secondary btn-lg btn-back" data-action="back">Back</button>
+                                <button type="button" class="btn btn-primary btn-lg" data-action="next" style="flex: 1;">Reserve my spot &rarr;</button>
+                            </div>
+
                         </div>
 
-                        <!-- Food Allergies — chip multi-select -->
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+           STEP 4 — HEALTH PROFILE (post-payment)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+            <div class="order-step" id="step-4">
+                <div class="container">
+                    <div class="order-form-container">
+
+                        <div class="section-heading">
+                            <p class="text-label">Step 4 of 4</p>
+                            <h3>Personalize Your Program</h3>
+                            <p class="accent-voice">This takes 2 minutes.</p>
+                            <p class="section-heading-note">Our nutritionists review every response to tailor your five days to you specifically.</p>
+                        </div>
+
+                        <!-- Dietary preference (single select) -->
+                        <div class="form-group">
+                            <label class="form-label">Dietary preference *</label>
+                            <div class="form-chip-group" data-field="diet" data-single="true" id="diet-chips">
+                                <button type="button" class="form-chip" data-value="Standard">Standard</button>
+                                <button type="button" class="form-chip" data-value="Vegetarian">Vegetarian</button>
+                                <button type="button" class="form-chip" data-value="Vegan">Vegan</button>
+                                <button type="button" class="form-chip" data-value="Pescatarian">Pescatarian</button>
+                            </div>
+                            <input type="hidden" id="diet" name="diet">
+                            <p class="form-error-message" id="diet-error">Please select an option</p>
+                        </div>
+
+                        <!-- Food allergies (multi-select) -->
                         <div class="form-group">
                             <label class="form-label">Food allergies <span class="form-label-optional">(select all that apply)</span></label>
                             <div class="form-chip-group" data-field="allergies" id="allergies-chips">
@@ -176,12 +458,16 @@
                                 <button type="button" class="form-chip" data-value="Soy">Soy</button>
                                 <button type="button" class="form-chip" data-value="Fish">Fish</button>
                                 <button type="button" class="form-chip" data-value="Sesame">Sesame</button>
+                                <button type="button" class="form-chip" data-value="Other">Other</button>
                                 <button type="button" class="form-chip" data-value="None">None</button>
+                            </div>
+                            <div class="chip-other-field" id="allergies-other-field" hidden>
+                                <input type="text" id="allergies-other" class="form-input" placeholder="Please describe your allergy">
                             </div>
                             <input type="hidden" id="allergies" name="allergies">
                         </div>
 
-                        <!-- Chronic Conditions — chip multi-select -->
+                        <!-- Chronic health conditions (multi-select) -->
                         <div class="form-group">
                             <label class="form-label">Chronic health conditions <span class="form-label-optional">(select all that apply)</span></label>
                             <div class="form-chip-group" data-field="chronic" id="chronic-chips">
@@ -192,15 +478,19 @@
                                 <button type="button" class="form-chip" data-value="IBS / gut issues">IBS / gut issues</button>
                                 <button type="button" class="form-chip" data-value="Cardiovascular disease">Cardiovascular disease</button>
                                 <button type="button" class="form-chip" data-value="Kidney disease">Kidney disease</button>
+                                <button type="button" class="form-chip" data-value="Other">Other</button>
                                 <button type="button" class="form-chip" data-value="None">None</button>
+                            </div>
+                            <div class="chip-other-field" id="chronic-other-field" hidden>
+                                <input type="text" id="chronic-other" class="form-input" placeholder="Please describe your condition">
                             </div>
                             <input type="hidden" id="chronic" name="chronic">
                         </div>
 
-                        <!-- Medications — dropdown select -->
+                        <!-- Medications / therapy (dropdown) -->
                         <div class="form-group">
                             <label for="medications" class="form-label">Regular medications / therapy <span class="form-label-optional">(optional)</span></label>
-                            <select id="medications" class="form-select">
+                            <select id="medications" name="medications" class="form-select">
                                 <option value="">Select an option</option>
                                 <option value="None">None</option>
                                 <option value="Blood pressure medication">Blood pressure medication</option>
@@ -211,11 +501,11 @@
                                 <option value="Immunosuppressants">Immunosuppressants</option>
                                 <option value="Blood thinners">Blood thinners</option>
                                 <option value="Hormone therapy">Hormone therapy</option>
-                                <option value="Other (mentioned in health notes)">Other</option>
+                                <option value="Other">Other (noted in additional notes)</option>
                             </select>
                         </div>
 
-                        <!-- Foods Disliked — chip multi-select -->
+                        <!-- Food dislikes (multi-select) -->
                         <div class="form-group">
                             <label class="form-label">Foods you avoid or dislike <span class="form-label-optional">(select all that apply)</span></label>
                             <div class="form-chip-group" data-field="dislikes" id="dislikes-chips">
@@ -227,15 +517,19 @@
                                 <button type="button" class="form-chip" data-value="Beets">Beets</button>
                                 <button type="button" class="form-chip" data-value="Avocado">Avocado</button>
                                 <button type="button" class="form-chip" data-value="Spicy food">Spicy food</button>
+                                <button type="button" class="form-chip" data-value="Other">Other</button>
                                 <button type="button" class="form-chip" data-value="None">None</button>
+                            </div>
+                            <div class="chip-other-field" id="dislikes-other-field" hidden>
+                                <input type="text" id="dislikes-other" class="form-input" placeholder="Please describe what you avoid">
                             </div>
                             <input type="hidden" id="dislikes" name="dislikes">
                         </div>
 
-                        <!-- Health Goal — dropdown (replaces free-text notes) -->
+                        <!-- Primary wellness goal (dropdown) -->
                         <div class="form-group">
                             <label for="health-notes" class="form-label">Primary wellness goal <span class="form-label-optional">(optional)</span></label>
-                            <select id="health-notes" class="form-select">
+                            <select id="health-notes" name="health-notes" class="form-select">
                                 <option value="">Select your main goal</option>
                                 <option value="Reduce bloating and digestive discomfort">Reduce bloating &amp; digestive discomfort</option>
                                 <option value="Increase energy levels">Increase energy levels</option>
@@ -248,182 +542,22 @@
                             </select>
                         </div>
 
-                        <div class="step-nav">
-                            <button type="button" class="btn btn-secondary btn-lg btn-back"
-                                data-action="back">Back</button>
-                            <button type="button" class="btn btn-primary btn-lg" data-action="next">Continue</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           STEP 3 — DELIVERY DETAILS
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-            <div class="order-step" id="step-3">
-                <div class="container">
-                    <div class="order-form-container">
-
-                        <div class="section-heading">
-                            <p class="text-label">Step 3</p>
-                            <h3>Delivery Details</h3>
-                            <p class="accent-voice">Where should we deliver your reset?</p>
-                        </div>
-
-                        <div class="form-row-2col">
-                            <!-- Full Name -->
-                            <div class="form-group">
-                                <label for="full-name" class="form-label">Full name *</label>
-                                <input type="text" id="full-name" class="form-input" placeholder="First and last name"
-                                    required>
-                                <p class="form-error-message">This field is required</p>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="form-group">
-                                <label for="email" class="form-label">Email *</label>
-                                <input type="email" id="email" class="form-input" placeholder="you@example.com"
-                                    required>
-                                <p class="form-error-message">This field is required</p>
-                            </div>
-                        </div>
-
-                        <!-- Phone -->
+                        <!-- Additional notes -->
                         <div class="form-group">
-                            <label for="phone" class="form-label">Phone *</label>
-                            <input type="tel" id="phone" class="form-input" placeholder="+1 (212) ..." required>
-                            <p class="form-error-message">This field is required</p>
-                        </div>
-
-                        <!-- Address -->
-                        <div class="form-group">
-                            <label for="address" class="form-label">Delivery address with instructions *</label>
-                            <input type="text" id="address" class="form-input"
-                                placeholder="e.g. 123 Park Ave, Apt 4B, New York, NY 10016" required>
-                            <p class="form-error-message">This field is required</p>
-                            <p class="form-hint">Include apartment or suite number and any gate codes.</p>
-                        </div>
-
-                        <!-- Delivery Notes -->
-                        <div class="form-group">
-                            <label for="delivery-notes" class="form-label">
-                                Delivery notes <span class="form-label-optional">(optional)</span>
-                            </label>
-                            <textarea id="delivery-notes" class="form-textarea" rows="2"
-                                placeholder="e.g. Leave with doorman, ring bell twice..."></textarea>
+                            <label for="health-notes" class="form-label">Additional notes <span class="form-label-optional">(optional)</span></label>
+                            <textarea id="health-notes" class="form-textarea" rows="3"
+                                placeholder="Anything else our nutritionist should know?"></textarea>
                         </div>
 
                         <div class="step-nav">
-                            <button type="button" class="btn btn-secondary btn-lg btn-back"
-                                data-action="back">Back</button>
-                            <button type="button" class="btn btn-primary btn-lg" data-action="next">Review Your
-                                Order</button>
+                            <button type="button" class="btn btn-secondary btn-lg btn-back" data-action="back">Back</button>
+                            <button type="button" class="btn btn-primary btn-lg" data-action="next" style="flex: 1;">Complete my profile &rarr;</button>
                         </div>
 
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-           STEP 4 — REVIEW & RESERVE
-           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-            <div class="order-step" id="step-4">
-                <div class="container">
-                    <div class="review-container">
-
-                        <div class="section-heading">
-                            <p class="text-label">Step 4</p>
-                            <h3>Review &amp; Reserve</h3>
-                            <p class="accent-voice">Confirm your details below.</p>
-                        </div>
-
-                        <!-- Program Review -->
-                        <div class="review-section">
-                            <div class="review-section-header">
-                                <h5>Program</h5>
-                                <button type="button" class="review-edit-btn" data-action="edit"
-                                    data-target="1">Edit</button>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Selection</span>
-                                <span class="review-row-value" id="review-program">5-Day Detox Box — $2,000</span>
-                            </div>
-                        </div>
-
-                        <!-- Health Profile Review -->
-                        <div class="review-section">
-                            <div class="review-section-header">
-                                <h5>Health Profile</h5>
-                                <button type="button" class="review-edit-btn" data-action="edit"
-                                    data-target="2">Edit</button>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Preferred Diet</span>
-                                <span class="review-row-value" id="review-diet"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Food Allergies</span>
-                                <span class="review-row-value" id="review-allergies"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Chronic Diseases</span>
-                                <span class="review-row-value" id="review-chronic"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Medications</span>
-                                <span class="review-row-value" id="review-medications"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Food Dislikes</span>
-                                <span class="review-row-value" id="review-dislikes"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Additional Notes</span>
-                                <span class="review-row-value" id="review-health-notes"></span>
-                            </div>
-                        </div>
-
-                        <!-- Delivery Review -->
-                        <div class="review-section">
-                            <div class="review-section-header">
-                                <h5>Delivery</h5>
-                                <button type="button" class="review-edit-btn" data-action="edit"
-                                    data-target="3">Edit</button>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Full Name</span>
-                                <span class="review-row-value" id="review-name"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Email</span>
-                                <span class="review-row-value" id="review-email"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Phone</span>
-                                <span class="review-row-value" id="review-phone"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Address</span>
-                                <span class="review-row-value" id="review-address"></span>
-                            </div>
-                            <div class="review-row">
-                                <span class="review-row-label">Delivery Notes</span>
-                                <span class="review-row-value" id="review-delivery-notes"></span>
-                            </div>
-                        </div>
-
-                        <div class="review-disclaimer">
-                            Submitting this form does not charge your card. It lets us review your details, confirm
-                            availability, and follow up with payment and next steps.
-                        </div>
-
-                        <div class="step-nav">
-                            <button type="button" class="btn btn-secondary btn-lg btn-back"
-                                data-action="back">Back</button>
-                            <button type="submit" class="btn btn-primary btn-lg">Reserve Your Spot</button>
+                        <div class="skip-profile-wrapper">
+                            <button type="button" class="btn-skip-profile" id="skip-profile-btn">
+                                Skip for now — I'll complete this later
+                            </button>
                         </div>
 
                     </div>
@@ -439,24 +573,21 @@
                     <div class="confirmation-container">
 
                         <div class="confirmation-icon" aria-hidden="true">&#10003;</div>
-                        <h2>You're on the List</h2>
-                        <p class="accent-voice">We'll be in touch soon.</p>
+                        <h2 class="confirmation-heading">Your reset begins soon.</h2>
+                        <p class="confirmation-date-display" id="confirmation-date-display"></p>
 
                         <div class="confirmation-steps">
                             <div class="confirmation-step">
                                 <div class="confirmation-step-number">1</div>
-                                <p>You've submitted your details and preferences. Our team has received your reservation
-                                    request.</p>
+                                <p><strong>Confirmation email</strong> — We've received your reservation. Check your inbox for a welcome note and next steps from our team.</p>
                             </div>
                             <div class="confirmation-step">
                                 <div class="confirmation-step-number">2</div>
-                                <p>We'll confirm delivery coverage and availability for the upcoming cycle, and review
-                                    your health profile.</p>
+                                <p><strong>Pre-program guide</strong> — Five days before your start date, you'll receive a printed guide and digital prep instructions.</p>
                             </div>
                             <div class="confirmation-step">
                                 <div class="confirmation-step-number">3</div>
-                                <p>You'll receive payment instructions and final confirmation via email. Your spot is
-                                    secured once payment is received.</p>
+                                <p><strong>Delivery day</strong> — Your full Detox Box arrives on your selected date. Everything you need for five days, at your door.</p>
                             </div>
                         </div>
 

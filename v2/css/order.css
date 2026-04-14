@@ -1,12 +1,12 @@
 /* ==========================================================================
    WAGA WELLNESS — Order Page Styles
 
-   Multi-step wizard: program → health → delivery → review → confirmation
+   4-step wizard: zip gate → details + date → payment → health profile → confirmation
    ========================================================================== */
 
 
 /* =======================================================================
-   1. PAGE INTRO (slim, testimonials-style typography)
+   1. PAGE INTRO (slim)
    ======================================================================= */
 
 .order-intro {
@@ -26,7 +26,6 @@
     margin-bottom: var(--space-xl);
 }
 
-/* Same scale as .page-hero-heading but dark for light bg */
 .order-intro-heading {
     font-family: var(--font-heading);
     font-size: var(--text-5xl);
@@ -37,19 +36,16 @@
     margin-bottom: var(--space-md);
 }
 
-/* Same scale as .page-hero-accent but muted warm for light bg */
 .order-intro-accent {
     font-size: var(--text-2xl);
     line-height: var(--leading-2xl);
     color: var(--color-text-secondary);
 }
 
-/* Reduce section-heading bottom margin inside the form context */
 .order-steps .section-heading {
     margin-bottom: var(--space-2xl);
 }
 
-/* Small supplementary note under section-heading */
 .section-heading-note {
     margin-top: var(--space-sm);
     font-size: var(--text-sm);
@@ -61,14 +57,13 @@
    2. STEP INDICATOR
    ======================================================================= */
 
-/* Scoping container — sticky stops when this ends (before FAQ) */
 .order-form-area {
     position: relative;
 }
 
 .step-indicator {
     position: sticky;
-    top: 0; /* Nav is hidden on scroll-down, so sit at top of viewport */
+    top: 0;
     z-index: calc(var(--z-sticky) - 1);
     display: flex;
     align-items: center;
@@ -79,6 +74,12 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border-default);
+    transition: opacity var(--duration-normal) var(--ease-organic);
+}
+
+.step-indicator.hidden {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .step-indicator-text {
@@ -103,7 +104,6 @@
     transition: width var(--duration-normal) var(--ease-organic);
 }
 
-/* Step dots */
 .step-dots {
     display: flex;
     gap: var(--space-xs);
@@ -160,98 +160,90 @@
 
 
 /* =======================================================================
-   4. STEP 1 — YOUR PROGRAM
+   4. STEP 1 — ZIP GATE & WAITLIST
    ======================================================================= */
 
-.program-card {
-    max-width: 720px;
-    margin-inline: auto;
-}
-
-.program-card-header {
-    text-align: center;
-    padding: var(--space-2xl);
-    background-color: var(--color-bg-card);
-    border-radius: var(--card-radius) var(--card-radius) 0 0;
-    box-shadow: var(--card-shadow);
-    border-bottom: 1px solid var(--color-border-muted);
-}
-
-.program-card-price {
-    font-family: var(--font-heading);
-    font-size: var(--text-4xl);
-    font-weight: var(--font-regular);
-    line-height: var(--leading-4xl);
-    letter-spacing: var(--tracking-tight);
-    color: var(--color-text-heading);
-    margin-bottom: var(--space-2xs);
-}
-
-.program-card-price-sub {
-    font-size: var(--text-sm);
-    color: var(--color-text-secondary);
-}
-
-.program-card-badge {
-    display: inline-flex;
+/* Centered gate layout */
+.zip-gate-content {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: var(--space-2xs);
-    margin-top: var(--space-md);
-    padding: var(--space-2xs) var(--space-sm);
-    background-color: var(--color-botanical-100);
-    color: var(--color-botanical-700);
-    font-size: var(--text-caption);
-    font-weight: var(--font-medium);
-    letter-spacing: var(--tracking-wide);
-    border-radius: var(--radius-full);
+    padding-block: var(--space-2xl);
 }
 
-.program-card-body {
-    padding: var(--space-2xl);
-    background-color: var(--color-bg-card);
-    border-radius: 0 0 var(--card-radius) var(--card-radius);
-    box-shadow: var(--card-shadow);
+/* Zip input + button row */
+.zip-input-group {
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
 }
 
-.program-card-body h5 {
-    margin-bottom: var(--space-md);
-}
-
-.program-includes-list {
+.zip-input-row {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
-    margin-bottom: var(--space-xl);
+    margin-top: var(--space-xs);
 }
 
-.program-includes-list li {
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-sm);
+.zip-input {
+    text-align: center;
+    font-size: var(--text-lg);
+    letter-spacing: var(--tracking-wide);
+}
+
+/* Waitlist state */
+.waitlist-heading {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+}
+
+.waitlist-icon {
+    font-size: var(--text-4xl);
+    color: var(--color-primary-400);
+    margin-bottom: var(--space-md);
+    line-height: 1;
+}
+
+.waitlist-heading h3 {
+    margin-bottom: var(--space-xs);
+}
+
+.waitlist-heading .accent-voice {
+    font-size: var(--text-xl);
+    line-height: var(--leading-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-md);
+}
+
+.waitlist-body {
     font-size: var(--text-sm);
     line-height: var(--leading-base);
     color: var(--color-text-secondary);
+    max-width: 440px;
+    margin-inline: auto;
 }
 
-.program-includes-list li::before {
-    content: '✓';
-    flex-shrink: 0;
-    color: var(--color-botanical-500);
-    font-weight: var(--font-semibold);
-    margin-top: 1px;
-}
-
-.program-card-meta {
-    font-size: var(--text-caption);
-    color: var(--color-text-tertiary);
+/* Waitlist confirmed */
+.waitlist-confirmed-content {
     text-align: center;
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--color-border-muted);
+    padding-block: var(--space-4xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Ensure accent-voice (Instrument Serif italic) is readable in confirmation/waitlist contexts */
+.waitlist-confirmed-content .accent-voice,
+.confirmation-container .accent-voice {
+    font-size: var(--text-xl);
+    line-height: var(--leading-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
 }
 
 
 /* =======================================================================
-   5. FORM STYLES (shared across steps 2–3)
+   5. FORM STYLES (shared across steps 2–4)
    ======================================================================= */
 
 .order-form-container {
@@ -275,51 +267,6 @@
     font-weight: var(--font-regular);
     color: var(--color-text-tertiary);
     font-size: var(--text-caption);
-}
-
-/* --- Chip multi-select group --- */
-.form-chip-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-}
-
-.form-chip {
-    display: inline-flex;
-    align-items: center;
-    padding: var(--space-xs) var(--space-md);
-    font-size: var(--text-sm);
-    font-weight: var(--font-medium);
-    color: var(--color-text-secondary);
-    background-color: var(--color-bg-card);
-    border: 1.5px solid var(--color-border-default);
-    border-radius: var(--radius-full);
-    cursor: pointer;
-    transition:
-        border-color var(--duration-fast) var(--ease-organic),
-        background-color var(--duration-fast) var(--ease-organic),
-        color var(--duration-fast) var(--ease-organic),
-        box-shadow var(--duration-fast) var(--ease-organic);
-}
-
-.form-chip:hover {
-    border-color: var(--color-primary-300);
-    color: var(--color-text-heading);
-}
-
-.form-chip.selected {
-    background-color: var(--color-primary-100);
-    border-color: var(--color-primary-400);
-    color: var(--color-text-heading);
-    box-shadow: inset 0 0 0 1px var(--color-primary-400);
-}
-
-/* None chip deselects others */
-.form-chip[data-value="None"].selected {
-    background-color: var(--color-botanical-100);
-    border-color: var(--color-botanical-400);
-    color: var(--color-botanical-700);
-    box-shadow: inset 0 0 0 1px var(--color-botanical-400);
 }
 
 .form-input,
@@ -354,10 +301,18 @@
 }
 
 .form-input.error,
-.form-textarea.error,
-.form-select.error {
+.form-textarea.error {
     border-color: var(--color-error-500);
     box-shadow: 0 0 0 3px rgba(163, 83, 59, 0.12);
+}
+
+/* Readonly / pre-filled input (e.g. zip in step 2) */
+.form-input-readonly,
+.form-input[readonly] {
+    background-color: var(--color-neutral-100);
+    color: var(--color-text-secondary);
+    cursor: default;
+    border-color: var(--color-border-muted);
 }
 
 .form-error-message {
@@ -376,6 +331,12 @@
     min-height: 88px;
 }
 
+.form-hint {
+    font-size: var(--text-caption);
+    color: var(--color-text-tertiary);
+    margin-top: var(--space-2xs);
+}
+
 .form-select {
     background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23786A5C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -384,31 +345,15 @@
     cursor: pointer;
 }
 
-.form-hint {
-    font-size: var(--text-caption);
-    color: var(--color-text-tertiary);
+/* Chip multi-select */
+.form-chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
     margin-top: var(--space-2xs);
 }
 
-/* Radio group for diet preference */
-.form-radio-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-}
-
-.form-radio-option {
-    position: relative;
-}
-
-.form-radio-option input[type="radio"] {
-    position: absolute;
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.form-radio-label {
+.form-chip {
     display: inline-flex;
     align-items: center;
     padding: var(--space-xs) var(--space-md);
@@ -422,21 +367,32 @@
     transition:
         border-color var(--duration-fast) var(--ease-organic),
         background-color var(--duration-fast) var(--ease-organic),
-        color var(--duration-fast) var(--ease-organic);
+        color var(--duration-fast) var(--ease-organic),
+        box-shadow var(--duration-fast) var(--ease-organic);
 }
 
-.form-radio-label:hover {
+.form-chip:hover {
     border-color: var(--color-primary-300);
-}
-
-.form-radio-option input[type="radio"]:checked+.form-radio-label {
-    background-color: var(--color-primary-100);
-    border-color: var(--color-primary-400);
     color: var(--color-text-heading);
 }
 
-.form-radio-option input[type="radio"]:focus-visible+.form-radio-label {
-    box-shadow: var(--focus-ring);
+.form-chip.selected {
+    background-color: var(--color-primary-100);
+    border-color: var(--color-primary-400);
+    color: var(--color-text-heading);
+    box-shadow: inset 0 0 0 1px var(--color-primary-400);
+}
+
+.form-chip[data-value="None"].selected {
+    background-color: var(--color-botanical-100);
+    border-color: var(--color-botanical-400);
+    color: var(--color-botanical-700);
+    box-shadow: inset 0 0 0 1px var(--color-botanical-400);
+}
+
+/* "Other" freeform field revealed when Other chip is selected */
+.chip-other-field {
+    margin-top: var(--space-sm);
 }
 
 
@@ -460,95 +416,338 @@
 
 
 /* =======================================================================
-   7. STEP 4 — REVIEW
+   7. STEP 2 — DATE CARD SELECTION
    ======================================================================= */
 
-.review-container {
-    max-width: 640px;
-    margin-inline: auto;
+.date-select-group {
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-xl);
+    border-top: 1px solid var(--color-border-muted);
 }
 
-.review-section {
-    padding: var(--space-xl);
-    background-color: var(--color-bg-card);
-    border-radius: var(--card-radius);
-    box-shadow: var(--card-shadow);
-    margin-bottom: var(--space-lg);
+.date-select-group .form-label {
+    font-size: var(--text-base);
 }
 
-.review-section-header {
+/* Horizontal scroll on mobile, grid on wider screens */
+.date-cards {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-sm);
-    border-bottom: 1px solid var(--color-border-muted);
+    gap: var(--space-md);
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);
+    padding-top: var(--space-md);
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-300) transparent;
+    -webkit-overflow-scrolling: touch;
 }
 
-.review-section-header h5 {
-    font-size: var(--text-sm);
+.date-cards::-webkit-scrollbar {
+    height: 4px;
+}
+
+.date-cards::-webkit-scrollbar-thumb {
+    background-color: var(--color-neutral-300);
+    border-radius: var(--radius-full);
+}
+
+.date-card {
+    flex-shrink: 0;
+    width: 148px;
+    padding: var(--space-lg) var(--space-md);
+    background-color: var(--color-bg-card);
+    border: 1.5px solid var(--color-border-default);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2xs);
+    transition:
+        border-color var(--duration-fast) var(--ease-organic),
+        background-color var(--duration-fast) var(--ease-organic),
+        box-shadow var(--duration-fast) var(--ease-organic),
+        transform var(--duration-fast) var(--ease-organic);
+    position: relative;
+}
+
+.date-card:hover:not(.sold-out) {
+    border-color: var(--color-primary-300);
+    transform: translateY(-2px);
+}
+
+.date-card:focus-visible {
+    outline: none;
+    box-shadow: var(--focus-ring);
+}
+
+.date-card.selected {
+    border-color: var(--color-accent-400);
+    background-color: var(--color-primary-50, #fdf5ef);
+    box-shadow: 0 0 0 3px rgba(196, 102, 31, 0.12);
+    transform: translateY(-2px);
+}
+
+.date-card.sold-out {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.date-card.sold-out .date-card-waitlist-link {
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+.date-card-month {
+    font-size: var(--text-caption);
     font-weight: var(--font-semibold);
     letter-spacing: var(--tracking-wider);
     text-transform: uppercase;
     color: var(--color-text-tertiary);
 }
 
-.review-edit-btn {
+.date-card-day {
+    font-family: var(--font-heading);
+    font-size: var(--text-4xl);
+    font-weight: var(--font-regular);
+    line-height: 1;
+    letter-spacing: var(--tracking-tight);
+    color: var(--color-text-heading);
+}
+
+.date-card.selected .date-card-day {
+    color: var(--color-accent-500);
+}
+
+.date-card-year {
     font-size: var(--text-caption);
-    font-weight: var(--font-medium);
-    color: var(--color-accent-400);
-    cursor: pointer;
-    transition: color var(--duration-fast) var(--ease-organic);
+    color: var(--color-text-tertiary);
 }
 
-.review-edit-btn:hover {
-    color: var(--color-accent-600);
-}
-
-.review-row {
+.date-card-meta {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2xs);
-    padding: var(--space-sm) 0;
+    align-items: center;
+    gap: 2px;
+    margin-top: var(--space-xs);
 }
 
-.review-row+.review-row {
-    border-top: 1px solid var(--color-border-muted);
-}
-
-.review-row-label {
+.date-card-spots {
     font-size: var(--text-caption);
     font-weight: var(--font-medium);
-    color: var(--color-text-tertiary);
-    letter-spacing: var(--tracking-wide);
+    color: var(--color-botanical-600);
 }
 
-.review-row-value {
+.date-card-price {
     font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
     color: var(--color-text-primary);
-    line-height: var(--leading-base);
 }
 
-.review-row-value.empty {
-    color: var(--color-text-tertiary);
-    font-style: italic;
-}
-
-.review-disclaimer {
-    margin-top: var(--space-lg);
-    padding: var(--space-md);
-    background-color: var(--color-info-bg);
-    border: 1px solid var(--color-info-border);
-    border-radius: var(--radius-md);
+.date-card-sold {
     font-size: var(--text-caption);
-    line-height: var(--leading-base);
-    color: var(--color-info-text);
-    text-align: center;
+    font-weight: var(--font-medium);
+    color: var(--color-error-500);
+    text-transform: uppercase;
+    letter-spacing: var(--tracking-wider);
+}
+
+.date-card-waitlist-link {
+    font-size: 11px;
+    color: var(--color-accent-400);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-top: var(--space-xs);
+    line-height: 1.3;
 }
 
 
 /* =======================================================================
-   8. STEP 5 — CONFIRMATION
+   8. STEP 3 — PAYMENT LAYOUT
+   ======================================================================= */
+
+.payment-layout {
+    max-width: 960px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+/* Order summary panel */
+.order-summary-panel {
+    padding: var(--space-xl);
+    background-color: var(--color-bg-card);
+    border-radius: var(--card-radius);
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--color-border-muted);
+}
+
+.order-summary-title {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-wider);
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-lg);
+}
+
+.order-summary-item-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--text-base);
+    font-weight: var(--font-medium);
+    color: var(--color-text-heading);
+    margin-bottom: var(--space-sm);
+}
+
+.order-summary-includes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin-bottom: var(--space-lg);
+    padding-left: 0;
+    list-style: none;
+}
+
+.order-summary-includes li {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    padding-left: var(--space-md);
+    position: relative;
+}
+
+.order-summary-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-botanical-500);
+    font-weight: var(--font-semibold);
+}
+
+.order-summary-divider {
+    height: 1px;
+    background-color: var(--color-border-muted);
+    margin-block: var(--space-md);
+}
+
+.order-summary-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-heading);
+    margin-bottom: var(--space-md);
+}
+
+.order-summary-date-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-muted);
+}
+
+.order-summary-date-label {
+    font-size: var(--text-caption);
+    font-weight: var(--font-medium);
+    letter-spacing: var(--tracking-wide);
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.order-summary-date-value {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-text-primary);
+}
+
+/* Card number input with icons overlay */
+.card-number-wrapper {
+    position: relative;
+}
+
+.card-number-wrapper .form-input {
+    padding-right: 80px;
+}
+
+.card-icons {
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: var(--space-xs);
+    pointer-events: none;
+}
+
+.card-logo {
+    height: 22px;
+    width: auto;
+    max-width: 52px;
+    display: block;
+    object-fit: contain;
+}
+
+.card-logo[hidden] {
+    display: none;
+}
+
+/* Trust row */
+.trust-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-top: 1px solid var(--color-border-muted);
+    border-bottom: 1px solid var(--color-border-muted);
+    margin-block: var(--space-xl);
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    font-size: var(--text-caption);
+    color: var(--color-text-tertiary);
+}
+
+.trust-item i {
+    font-size: 14px;
+    color: var(--color-botanical-500);
+}
+
+
+/* =======================================================================
+   9. STEP 4 — HEALTH PROFILE (skip button)
+   ======================================================================= */
+
+.skip-profile-wrapper {
+    text-align: center;
+    margin-top: var(--space-lg);
+}
+
+.btn-skip-profile {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--duration-fast) var(--ease-organic);
+}
+
+.btn-skip-profile:hover {
+    color: var(--color-text-secondary);
+}
+
+
+/* =======================================================================
+   10. STEP 5 — CONFIRMATION
    ======================================================================= */
 
 .confirmation-container {
@@ -571,15 +770,25 @@
     font-size: var(--text-3xl);
 }
 
-.confirmation-container h2 {
-    margin-bottom: var(--space-xs);
+/* Instrument Serif italic heading for the confirmation */
+.confirmation-heading {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-weight: var(--font-regular);
+    font-size: var(--text-4xl);
+    line-height: var(--leading-4xl);
+    letter-spacing: 0;
+    color: var(--color-text-heading);
+    margin-bottom: var(--space-sm);
 }
 
-.confirmation-container .accent-voice {
-    font-size: var(--text-xl);
-    line-height: var(--leading-xl);
-    color: var(--color-text-secondary);
+.confirmation-date-display {
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--color-primary-600);
+    letter-spacing: var(--tracking-wide);
     margin-bottom: var(--space-2xl);
+    min-height: 1.2em;
 }
 
 .confirmation-steps {
@@ -623,14 +832,13 @@
 
 
 /* =======================================================================
-   9. FAQ ACCORDION  (olive background variant)
+   11. FAQ ACCORDION (olive background variant)
    ======================================================================= */
 
 .faq-section {
     padding-block: var(--space-4xl);
 }
 
-/* When on olive background */
 .faq-section.section-olive {
     background-color: var(--waga-olive);
 }
@@ -644,7 +852,6 @@
     border-bottom: 1px solid rgba(253, 251, 245, 0.15);
 }
 
-/* Default (light) faq-item border */
 .faq-section:not(.section-olive) .faq-item {
     border-bottom: 1px solid var(--color-border-default);
 }
@@ -666,7 +873,6 @@
     transition: color var(--duration-fast) var(--ease-organic);
 }
 
-/* Non-olive default question color */
 .faq-section:not(.section-olive) .faq-question {
     color: var(--color-text-heading);
 }
@@ -727,7 +933,7 @@
     color: var(--color-text-secondary);
 }
 
-.faq-answer-inner p+p {
+.faq-answer-inner p + p {
     margin-top: var(--space-sm);
 }
 
@@ -745,8 +951,38 @@
 
 
 /* =======================================================================
-   10. RESPONSIVE
+   12. RESPONSIVE
    ======================================================================= */
+
+/* 480px: zip input row goes inline */
+@media (min-width: 480px) {
+    .zip-input-row {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .zip-input {
+        flex: 1;
+    }
+
+    .zip-input-row .btn {
+        flex-shrink: 0;
+    }
+}
+
+/* 640px: date cards expand to grid */
+@media (min-width: 640px) {
+    .date-cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+    }
+
+    .date-card {
+        width: auto;
+        flex-shrink: 1;
+    }
+}
 
 /* Tablet: 768px+ */
 @media (min-width: 768px) {
@@ -760,6 +996,23 @@
     .form-row-2col .form-group {
         margin-bottom: 0;
     }
+
+    /* Payment: form left, summary right */
+    .payment-layout {
+        flex-direction: row-reverse;
+        align-items: flex-start;
+    }
+
+    .order-summary-panel {
+        flex: 0 0 280px;
+        position: sticky;
+        top: 56px;
+    }
+
+    .payment-form-section {
+        flex: 1;
+        min-width: 0;
+    }
 }
 
 /* Desktop: 1024px+ */
@@ -767,11 +1020,20 @@
     .order-intro {
         padding-top: calc(var(--nav-height) + var(--space-3xl));
     }
+
+    .order-summary-panel {
+        flex: 0 0 320px;
+    }
 }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
     .order-step.active {
         animation: none;
+    }
+
+    .date-card:hover:not(.sold-out),
+    .date-card.selected {
+        transform: none;
     }
 }
