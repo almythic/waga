@@ -210,6 +210,28 @@
     color: var(--color-accent-600);
 }
 
+.card-source {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--text-caption);
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+.card-read-more {
+    display: inline-block;
+    font-size: var(--text-caption);
+    color: var(--color-text-tertiary);
+    margin-bottom: var(--space-md);
+    transition: color var(--duration-fast) var(--ease-organic);
+}
+
+.card-read-more:hover {
+    color: var(--color-text-secondary);
+}
+
 
 /* --- Video card --- */
 
