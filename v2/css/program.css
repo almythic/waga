@@ -156,6 +156,234 @@
   margin-top: var(--space-2xl);
 }
 
+/* Expandable narrative */
+.narrative-expandable {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.6s var(--ease-out), opacity 0.4s var(--ease-out);
+}
+
+.narrative-expandable.is-open {
+  max-height: 800px;
+  opacity: 1;
+}
+
+.narrative-phase-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--space-lg) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.narrative-phase-list li {
+  font-size: var(--text-lg);
+  line-height: var(--leading-lg);
+  color: var(--color-text-secondary);
+  padding-left: var(--space-lg);
+  position: relative;
+}
+
+.narrative-phase-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 1px;
+  background-color: var(--color-primary-400);
+}
+
+.btn-read-more,
+.btn-read-less {
+  display: inline;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-primary-500);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s var(--ease-organic);
+  vertical-align: baseline;
+  white-space: nowrap;
+  margin-left: 0.3em;
+}
+
+.btn-read-more:hover,
+.btn-read-less:hover {
+  color: var(--color-accent-600);
+}
+
+.btn-read-more[aria-expanded="true"] {
+  display: none;
+}
+
+
+/* =======================================================================
+   3b. PROGRAM VIDEOS — Three-column row beneath intro
+   ======================================================================= */
+
+.program-videos-section {
+  padding-block: var(--space-2xl) var(--space-4xl);
+}
+
+.program-video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.program-video-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.program-video-wrapper {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  background-color: var(--color-neutral-100);
+}
+
+.program-video-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.program-video-wrapper:hover .program-video-poster {
+  transform: scale(1.03);
+}
+
+.program-video-wrapper .card-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(74, 61, 46, 0.3);
+  transition: background-color var(--duration-fast) var(--ease-organic);
+}
+
+.program-video-wrapper:hover .card-video-play {
+  background-color: rgba(74, 61, 46, 0.15);
+}
+
+.program-video-wrapper .card-video-play-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background-color: rgba(253, 251, 245, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.program-video-wrapper:hover .card-video-play-icon {
+  transform: scale(1.08);
+}
+
+.program-video-caption {
+  padding: var(--space-md) var(--space-xs) 0;
+}
+
+.program-video-caption h5 {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-neutral-800);
+  margin-bottom: var(--space-2xs);
+}
+
+.program-video-caption p {
+  font-size: var(--text-sm);
+  color: var(--color-neutral-500);
+  line-height: 1.55;
+}
+
+.program-video-wrapper .card-video-play-icon svg {
+  width: 20px;
+  height: 20px;
+  margin-left: 3px;
+  fill: var(--color-accent-500);
+}
+
+/* Video lightbox — shared styles (program page doesn't load testimonials.css) */
+.video-lightbox {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: min(1100px, 94vw);
+  width: 100%;
+  overflow: visible;
+  border-radius: var(--radius-xl);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+.video-lightbox::backdrop {
+  background-color: rgba(46, 37, 24, 0.88);
+  backdrop-filter: blur(6px);
+}
+.video-lightbox-close {
+  position: absolute;
+  top: calc(-1 * var(--space-3xl));
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: rgba(253, 251, 245, 0.12);
+  border: 1.5px solid rgba(253, 251, 245, 0.25);
+  color: var(--color-neutral-50);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: background-color var(--duration-fast) var(--ease-organic);
+}
+.video-lightbox-close:hover {
+  background-color: rgba(253, 251, 245, 0.22);
+}
+.video-lightbox-inner {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+.video-lightbox video {
+  width: 100%;
+  display: block;
+  background: #000;
+  max-height: 85vh;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .program-video-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .program-video-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+}
+
 
 /* =======================================================================
    4. DAY SECTIONS — Two-column Protocol layout, progressive backgrounds
