@@ -720,4 +720,45 @@
 
   } // end init
 
+
+  /* -------------------------------------------------------------------
+     COOKIE CONSENT
+     Injected directly into <body> — no dependency on async components.
+     ------------------------------------------------------------------- */
+
+  (function () {
+    if (localStorage.getItem('waga_cookie_consent')) return;
+
+    var banner = document.createElement('div');
+    banner.id = 'cookie-banner';
+    banner.setAttribute('role', 'dialog');
+    banner.setAttribute('aria-label', 'Cookie consent');
+    banner.innerHTML = [
+      '<div class="cookie-banner-card">',
+        '<p class="cookie-banner-text">',
+          'By clicking <strong>"Ok, got it"</strong>, you agree to the storing of cookies on your device to enhance site navigation, analyze site usage, and assist in our marketing efforts.',
+          ' View our <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a> for more information.',
+        '</p>',
+        '<div class="cookie-banner-actions">',
+          '<button type="button" class="cookie-btn cookie-btn-decline" id="cookie-decline">Decline</button>',
+          '<button type="button" class="cookie-btn cookie-btn-accept" id="cookie-accept">Ok, got it</button>',
+        '</div>',
+      '</div>'
+    ].join('');
+
+    document.body.appendChild(banner);
+
+    // Animate in after a short delay
+    setTimeout(function () { banner.classList.add('is-visible'); }, 300);
+
+    function dismiss(choice) {
+      localStorage.setItem('waga_cookie_consent', choice);
+      banner.classList.remove('is-visible');
+      banner.classList.add('is-hidden');
+    }
+
+    document.getElementById('cookie-accept').addEventListener('click', function () { dismiss('accepted'); });
+    document.getElementById('cookie-decline').addEventListener('click', function () { dismiss('declined'); });
+  }());
+
 })();

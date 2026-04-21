@@ -438,6 +438,16 @@
             }
         }
 
+        // Step 3: require terms checkbox
+        if (step === 3) {
+            var termsCheckbox = document.getElementById('terms-agree');
+            var termsError = document.getElementById('terms-error');
+            if (termsCheckbox && !termsCheckbox.checked) {
+                if (termsError) termsError.classList.add('visible');
+                valid = false;
+            }
+        }
+
         // Step 4: require a diet selection
         if (step === 4) {
             var dietInput = document.getElementById('diet');
@@ -485,6 +495,16 @@
             if (!this.readOnly) clearFieldError(this);
         });
     });
+
+    var termsCheckbox = document.getElementById('terms-agree');
+    if (termsCheckbox) {
+        termsCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                var termsError = document.getElementById('terms-error');
+                if (termsError) termsError.classList.remove('visible');
+            }
+        });
+    }
 
 
     /* -------------------------------------------------------------------

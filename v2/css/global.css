@@ -798,6 +798,7 @@ body:not(.has-transparent-header):not(.has-floating-header) .site-header .nav-to
   text-decoration: none;
   line-height: 1;
   z-index: calc(var(--z-overlay) + 1);
+  position: relative;
 }
 
 .site-logo .logo-img {
@@ -807,6 +808,46 @@ body:not(.has-transparent-header):not(.has-floating-header) .site-header .nav-to
   /* Logo SVG is white — darken it by default for light backgrounds */
   filter: brightness(0.35);
   transition: filter var(--duration-normal) var(--ease-organic);
+}
+
+/* Tooltip — appears on logo hover */
+.logo-blob {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  translate: -50% 0;
+  white-space: nowrap;
+  padding: 7px 14px;
+  background-color: var(--waga-camel, #B99470);
+  color: #FDFBF5;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 6px;
+  opacity: 0;
+  transform: translateY(4px);
+  pointer-events: none;
+  transition: opacity 0.18s var(--ease-out), transform 0.18s var(--ease-out);
+}
+
+/* Arrow pointing up toward the logo */
+.logo-blob::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  translate: -50% 0;
+  border: 5px solid transparent;
+  border-bottom-color: var(--waga-camel, #B99470);
+}
+
+@media (hover: hover) {
+  .site-logo:hover .logo-blob {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* --- Desktop Nav --- */
@@ -1525,5 +1566,127 @@ body.menu-open {
   .page-hero-accent {
     font-size: var(--text-4xl);
     line-height: var(--leading-4xl);
+  }
+}
+
+
+/* =======================================================================
+   COOKIE CONSENT BANNER
+   ======================================================================= */
+
+#cookie-banner {
+  position: fixed;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  width: 360px;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+#cookie-banner.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#cookie-banner.is-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+}
+
+.cookie-banner-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  box-shadow: 0 8px 48px rgba(46, 37, 24, 0.18), 0 2px 12px rgba(46, 37, 24, 0.1);
+}
+
+.cookie-banner-text {
+  font-size: var(--text-base);
+  color: var(--color-neutral-700);
+  line-height: 1.7;
+  margin: 0 0 var(--space-xl) 0;
+}
+
+.cookie-banner-text strong {
+  color: var(--color-neutral-900);
+}
+
+.cookie-banner-text a {
+  color: var(--waga-alloy);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.cookie-banner-text a:hover {
+  color: var(--waga-russet);
+}
+
+.cookie-banner-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+.cookie-btn {
+  padding: 12px var(--space-xl);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: background-color var(--duration-fast) var(--ease-organic),
+              color var(--duration-fast) var(--ease-organic),
+              border-color var(--duration-fast) var(--ease-organic);
+  white-space: nowrap;
+}
+
+.cookie-btn-decline {
+  background: transparent;
+  color: var(--color-neutral-600);
+  border-color: var(--color-neutral-400);
+}
+
+.cookie-btn-decline:hover {
+  color: var(--color-neutral-800);
+  border-color: var(--color-neutral-600);
+}
+
+.cookie-btn-accept {
+  background-color: var(--color-neutral-950);
+  color: #ffffff;
+  border-color: var(--color-neutral-950);
+}
+
+.cookie-btn-accept:hover {
+  background-color: var(--waga-alloy);
+  border-color: var(--waga-alloy);
+}
+
+@media (max-width: 480px) {
+  #cookie-banner {
+    bottom: var(--space-md);
+    right: var(--space-md);
+    left: var(--space-md);
+    width: auto;
+  }
+
+  .cookie-banner-card {
+    padding: var(--space-lg);
+  }
+
+  .cookie-banner-actions {
+    justify-content: stretch;
+  }
+
+  .cookie-btn {
+    flex: 1;
+    text-align: center;
   }
 }
